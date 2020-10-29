@@ -1,8 +1,11 @@
 import React from 'react'
+import { WindoW } from '../layout-components'
 
 const Home = () => {
     return (
-        <div>Home</div>
+        <WindoW>
+            <div>Home</div>
+        </WindoW>
     )
 }
 
