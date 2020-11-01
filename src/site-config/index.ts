@@ -1,2 +1,3 @@
 export { default as colors } from './colors';
-export * from './interfaces'
+export { default as fontFamily } from './fontFamily';
+export * from './interfaces';

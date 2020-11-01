@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Colors, colors } from '../site-config';
+import { Colors, colors, fontFamily, FontFamily } from '../site-config';
 
 interface Props {
   children?: any;
@@ -12,6 +12,7 @@ interface Props {
   color?: Colors;
   textAlign?: 'left' | 'center' | 'right';
   weight?: 'bold' | 'semi' | 'normal';
+  fontFamily?: FontFamily;
 }
 
 const h1 = styled.h1`
@@ -43,7 +44,7 @@ const p = styled.p`
 `;
 
 const span = styled.span`
-  font-size: .5em;
+  font-size: 0.5em;
 `;
 
 const TextComponents = {
@@ -63,11 +64,15 @@ const Typography: React.FC<Props> = (props) => {
     : TextComponents.span;
 
   const StyledElement = styled(Element).attrs({})`
+    color: ${props.color ? colors[props.color] : colors.primary};
     margin: ${props.margin || '0'};
     padding: ${props.padding || '0'};
     line-height: 1.5;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    font-family: ${props.fontFamily
+      ? fontFamily[props.fontFamily]
+      : fontFamily.primary};
   `;
 
   return <StyledElement {...props}></StyledElement>;
