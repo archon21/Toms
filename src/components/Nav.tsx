@@ -1,17 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import { colors, Colors } from '../site-config';
 
-const Nav = styled.nav`
-    background: red;
-    width: 100%;
-    height: 80px;
-
-`
-
-const Navbar = () => {
-    return (
-        <Nav></Nav>
-    )
+interface Props {
+  background?: Colors;
 }
 
-export default Navbar
+const Nav = styled.nav<Props>`
+    background:  ${(props) =>
+      props.background ? colors[props.background] : colors.background};
+    width: 100%;
+    height: 70px;
+    box-shadow: 1px 1px transparent;
+    border-bottom: 1px solid #dadce0;
+
+`;
+
+const Navbar: React.FC<Props> = (props) => {
+return <Nav {...props}></Nav>;
+};
+
+export default Navbar;
