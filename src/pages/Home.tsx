@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '../content-components';
 import { Button } from '../element-components';
 import { Flex, Grid, WindoW } from '../layout-components';
 import { Typography } from '../typography-components';
@@ -21,6 +22,7 @@ const Home = () => {
         <Typography variant="p">Hello</Typography>
         <Typography variant="span">Hello</Typography>
       </Grid>
+      <Icon size='veryLarge' name='send' color='safe'></Icon>
     </WindoW>
   );
 };
