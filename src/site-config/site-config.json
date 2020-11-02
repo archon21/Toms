@@ -1,5 +1,6 @@
 {
   "style": {
-    "navHeight": "70px"
+    "navHeight": "70px",
+    "footerHeight": "70px"
   }
 }
