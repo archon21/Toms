@@ -10,8 +10,8 @@ const getFlexAlignment = ({ column, yAlign, xAlign }: Arguments): Array<string> 
     alignment.push(`justify-content: ${yAlign};`);
     alignment.push(`align-items: ${xAlign};`);
   } else {
-    alignment.push(`justify-content: ${yAlign};`);
-    alignment.push(`align-items: ${xAlign};`);
+    alignment.push(`justify-content: ${xAlign};`);
+    alignment.push(`align-items: ${yAlign};`);
   }
   return alignment;
 };

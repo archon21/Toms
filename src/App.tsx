@@ -14,11 +14,11 @@ function App() {
   return (
     <ThemeProvider theme={{ mode: 'light' }}>
       <div className="App">
-        <Nav></Nav>
-        <WindoW column>
+        <WindoW init column>
+          <Nav></Nav>
           <Routes></Routes>
+          <Footer></Footer>
         </WindoW>
-        <Footer></Footer>
       </div>
     </ThemeProvider>
   );

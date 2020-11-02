@@ -4,13 +4,13 @@ import { Typography } from '../typography-components';
 
 const Home = () => {
   return (
-    <WindoW xAlign="center" yAlign="center" column>
+    <WindoW init xAlign="center" yAlign="center" column>
       <Typography color="safe" variant="h1">
         Hello
       </Typography>
       <Typography variant="h2">Hello</Typography>
       <Typography variant="h3">Hello</Typography>
-      <Flex yAlign='center' xAlign='center'>
+      <Flex yAlign='flex-start' xAlign='center'>
         <Typography variant="h4">Hello</Typography>
         <Typography variant="h5">Hello</Typography>
       </Flex>

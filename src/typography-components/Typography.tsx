@@ -70,6 +70,7 @@ const Typography: React.FC<Props> = (props) => {
     line-height: 1.5;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    transition: all 300ms;
     font-family: ${props.fontFamily
       ? fontFamily[props.fontFamily]
       : fontFamily.primary};
