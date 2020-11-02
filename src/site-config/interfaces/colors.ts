@@ -6,5 +6,6 @@ type Colors =
   | 'safe'
   | 'danger'
   | 'background'
+  | 'disabled';
 
 export default Colors;

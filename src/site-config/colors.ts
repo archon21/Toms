@@ -1,6 +1,5 @@
 import theme from 'styled-theming';
 
-
 const colors = {
   primary: theme('mode', {
     light: 'red',
@@ -30,7 +29,10 @@ const colors = {
     light: '#fff',
     dark: '#000',
   }),
-  
+  disabled: theme('mode', {
+    light: '#eee',
+    dark: '#eee',
+  }),
 };
 
 export default colors;
