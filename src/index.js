@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
-import history from './history'
 
-import App from './App.tsx';
+import history from './history';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
+import App from './App';
+// import reportWebVitals from './reportWebVitals';
+
+ReactDOM.hydrate(
+  <React.Fragment>
     <Router history={history}>
       <App />
     </Router>
-  </React.StrictMode>,
+  </React.Fragment>,
+
   document.getElementById('root')
 );
 

@@ -18,7 +18,7 @@ const Vessel = styled.section<Props>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
-  min-height: ${props => props.init ? `calc(100vh - ${siteConfig.style.navHeight})`: '100vh'};
+  min-height: ${props => props.init ? `calc(100vh - ${siteConfig.style.navHeight} - ${siteConfig.style.footerHeight})`: '100vh'};
   width: 100vw;
   background: ${(props) =>
     props.background ? colors[props.background] : colors.background};
