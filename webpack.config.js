@@ -25,11 +25,11 @@ const Config = (entry, name, target, path) => {
   };
 };
 
-// const clientEntry = path.resolve(__dirname, 'src', 'client', 'index.tsx');
-// const clientPath = path.resolve(__dirname, 'dist');
-// const clientConfig = Config(clientEntry, 'main', 'web', clientPath);
+const clientEntry = path.resolve(__dirname, 'src', 'client', 'index.tsx');
+const clientPath = path.resolve(__dirname, 'dist');
+const clientConfig = Config(clientEntry, 'client', 'web', clientPath);
 
-const serverEntry = path.resolve(__dirname, 'server.js');
+const serverEntry = path.resolve(__dirname, 'server.ts');
 const serverPath = __dirname;
 const serverConfig = Config(serverEntry, 'server', 'node', serverPath);
 
@@ -37,4 +37,4 @@ const serverConfig = Config(serverEntry, 'server', 'node', serverPath);
  * First drawback, we need to transpile our server code when we could
  * have kept it as standard JavaScript.
  */
-module.exports = serverConfig;
+module.exports = [serverConfig, clientConfig];

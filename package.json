@@ -82,12 +82,12 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
     "dev:build-server": "NODE_ENV=development webpack --config webpack.config.js --mode=development -w",
-    "dev:start": "nodemon ./server-build/index.js",
-    "dev": "npm-run-all --parallel build dev:*"
+    "dev:start": "nodemon ./bundle.server.js",
+    "dev": "npm-run-all --parallel dev:*",
+    "prod:build-server": "NODE_ENV=production webpack --config webpack.config.js --mode=production ",
+    "prod:start": "node ./bundle.server.js",
+    "prod": "npm-run-all --parallel prod:*"
   },
   "eslintConfig": {
     "extends": [
