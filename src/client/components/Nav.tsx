@@ -17,6 +17,7 @@ const Nav = styled.nav<Props>`
     props.background ? colors[props.background] : colors.background};
   width: 100%;
   height: ${siteConfig.style.navHeight};
+  min-height: 60px;
   box-shadow: 1px 1px transparent;
   border-bottom: 1px solid #dadce0;
 `;
@@ -38,7 +39,7 @@ const Navbar: React.FC<Props> = (props) => {
         >
           {links.map(({ path, text }) => {
             return (
-              <Link color='safe' key={text} variant="h6" to={path}>
+              <Link color='safe' key={text} variant="p" to={path}>
                 Text
               </Link>
             );
