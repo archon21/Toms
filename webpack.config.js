@@ -1,23 +1,40 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
-module.exports = {
-  entry: './src/server/index.tsx',
-  target: 'node',
-  externals: [nodeExternals()],
-  output: {
-    path: path.resolve('server-build'),
-    filename: 'index.js',
-  },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-      },
-    ],
-  },
+const Config = (entry, name, target, path) => {
+  return {
+    entry,
+    target,
+    externals: [nodeExternals()],
+    output: {
+      path,
+      filename: `bundle.${name}.js`,
+    },
+    mode: 'development',
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js'],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+        },
+      ],
+    },
+  };
 };
+
+// const clientEntry = path.resolve(__dirname, 'src', 'client', 'index.tsx');
+// const clientPath = path.resolve(__dirname, 'dist');
+// const clientConfig = Config(clientEntry, 'main', 'web', clientPath);
+
+const serverEntry = path.resolve(__dirname, 'server.js');
+const serverPath = __dirname;
+const serverConfig = Config(serverEntry, 'server', 'node', serverPath);
+
+/**
+ * First drawback, we need to transpile our server code when we could
+ * have kept it as standard JavaScript.
+ */
+module.exports = serverConfig;

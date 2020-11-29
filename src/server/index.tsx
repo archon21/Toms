@@ -7,10 +7,9 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 
-import App from '../App';
+import App from '../client/App';
 import { getTitle, html } from './util';
 
-const PORT = process.env.PORT || 3006;
 const app = express();
 
 app.get('/', (req, res) => {
@@ -30,6 +29,4 @@ app.get('/', (req, res) => {
 
 app.use(express.static('./build'));
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+export default app;
