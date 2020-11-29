@@ -2,10 +2,12 @@ const html = ({
   body,
   title,
   styles,
+  defaultState,
 }: {
   body: string;
   title: string;
   styles: any;
+  defaultState: any;
 }) => `
   <!DOCTYPE html>
   <html>
@@ -35,6 +37,8 @@ const html = ({
     <body style="margin:0">
       <div id="app">${body}</div>
     </body>
+    <script>window.__STATE__ = ${JSON.stringify(defaultState)};</script>
+    <script src="/bundle.client.js"></script>
   </html>
 `;
 

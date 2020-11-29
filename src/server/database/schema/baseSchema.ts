@@ -1,8 +1,9 @@
-
 class Base {
-  async getBase() {
-    return 'base';
+  async get() {
+    return ['PNY', 'SDF', 'ADF'];
   }
 }
 
-export default Base;
+const base = new Base();
+
+export default base;

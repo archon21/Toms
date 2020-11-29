@@ -3,7 +3,14 @@
   "url": "/",
   "methods": [
     {
-      "method": "GET"
+      "method": "GET",
+      "services": [
+        {
+          "action": "GET",
+          "service": "Base",
+          "stateName": "base"
+        }
+      ]
     }
   ]
 }

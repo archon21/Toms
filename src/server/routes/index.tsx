@@ -9,12 +9,20 @@ import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet } from 'styled-components'; // <-- importing ServerStyleSheet
 
 import * as htmlRoutesConfig from './html';
-import * as apiRoutsConfig from './api';
+// import * as apiRoutsConfig from './api';
 import { getTitle, html } from '../util';
 import App from '../../client/App';
+import { Base } from '../database/schema';
+
+interface Service {
+  action: string;
+  service: string;
+  stateName: string;
+}
 
 interface Method {
   method: string;
+  services: Array<Service>;
 }
 
 interface Route {
@@ -23,11 +31,24 @@ interface Route {
   methods: Array<Method>;
 }
 
-console.log(htmlRoutesConfig, apiRoutsConfig);
 const router = Router();
 
+const handleService = (services: Array<Service>) => {
+  const defaultState = {};
+  services.forEach(async ({ service, action, stateName }) => {
+    if (action === 'GET') {
+      const data = await Base.get();
+      console.log(data, 'asdfasdfasdfasdfasd');
+      defaultState[stateName] = data;
+    }
+  });
+  return defaultState;
+};
+
 const createRoute = ({ methods, url, title }: Route) => {
-  methods.forEach(({ method }: Method) => {
+  methods.forEach(async ({ method, services }: Method) => {
+    const defaultState = await handleService(services);
+
     if (method === 'GET') {
       router.get(url, (req, res) => {
         const context = {};
@@ -41,14 +62,13 @@ const createRoute = ({ methods, url, title }: Route) => {
         const styles = sheet.getStyleTags();
 
         const indexFile = path.resolve('./build/index.html');
-        res.send(html({ body, title, styles }));
+        res.send(html({ body, title, styles, defaultState }));
       });
     }
   });
 };
 
 Object.entries(htmlRoutesConfig).forEach(([key, route]) => {
-  console.log(key, route);
   createRoute(route);
 });
 
