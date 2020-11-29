@@ -18,12 +18,8 @@ const Config = (entry, name, target, path, isPostProcess) => {
     },
     module: {
       rules: [
-        // {
-        //   test: /\.tsx?$/,
-        //   use: 'ts-loader',
-        // },
         {
-          test: /\.js$/,
+          test: /\.(js|jsx|tsx|ts)$/,
           use: 'babel-loader',
         },
       ],
@@ -47,4 +43,4 @@ const serverConfig = Config(serverEntry, 'server', 'node', serverPath);
  * First drawback, we need to transpile our server code when we could
  * have kept it as standard JavaScript.
  */
-module.exports = [serverConfig, clientConfig, postBabelConversion];
+module.exports = [serverConfig, clientConfig];

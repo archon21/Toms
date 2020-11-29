@@ -1,22 +1,33 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Pages from './pages';
+import * as Pages from './pages';
 import * as htmlRoutesConfig from '../server/routes/html';
 import { Interfaces } from '../site-config';
 
-const createRoute = (htmlRoutesConfig: object) => {
+interface Props {
+  defaultState: object;
+}
+
+const createRoute = (htmlRoutesConfig: object, defaultState: object) => {
   const routes = Object.entries(htmlRoutesConfig).map(
-    ([key, { component }]: [string, Interfaces.Route]) => {
-      return <Route component={Pages[component]}></Route>;
+    ([key, { component, url }]: [string, Interfaces.Route]) => {
+      const ComponentToRender = Pages[component];
+      return (
+        <Route
+          exact
+          path={url}
+          render={() => <ComponentToRender defaultState={defaultState} />}
+        ></Route>
+      );
     }
   );
   return routes;
 };
 
-const routes = createRoute(htmlRoutesConfig);
+const Routes: React.FC<Props> = ({ defaultState }) => {
+  const routes = createRoute(htmlRoutesConfig, defaultState);
 
-const Routes = () => {
   return <Switch>{routes}</Switch>;
 };
 

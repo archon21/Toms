@@ -40,7 +40,7 @@ const createRoute = ({ methods, url, title }: Interfaces.Route) => {
 
         const body = ReactDOMServer.renderToString(
           <StaticRouter location={req.url} context={context}>
-            {sheet.collectStyles(<App />)}
+            {sheet.collectStyles(<App defaultState={defaultState} />)}
           </StaticRouter>
         );
         const styles = sheet.getStyleTags();

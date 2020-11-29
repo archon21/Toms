@@ -8,10 +8,17 @@ import { Router } from 'react-router-dom';
 import history from './history';
 // import reportWebVitals from './reportWebVitals';
 
+declare global {
+  interface Window {
+    __STATE__: any;
+  }
+}
+
+console.log(window.__STATE__);
 ReactDOM.hydrate(
   <Router history={history}>
     <React.Fragment>
-      <App />
+      <App defaultState={window.__STATE__} />
     </React.Fragment>
   </Router>,
 
