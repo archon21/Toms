@@ -15,6 +15,7 @@ const createRoute = (htmlRoutesConfig: object, defaultState: object) => {
       const ComponentToRender = Pages[component];
       return (
         <Route
+          key={key}
           exact
           path={url}
           render={() => <ComponentToRender defaultState={defaultState} />}

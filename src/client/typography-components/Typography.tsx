@@ -16,31 +16,31 @@ interface Props {
 }
 
 const h1 = styled.h1`
-  font-size: 4em;
-`;
-
-const h2 = styled.h2`
-  font-size: 3.5em;
-`;
-
-const h3 = styled.h3`
   font-size: 3em;
 `;
 
-const h4 = styled.h4`
+const h2 = styled.h2`
   font-size: 2.5em;
 `;
 
-const h5 = styled.h5`
+const h3 = styled.h3`
   font-size: 2em;
 `;
 
-const h6 = styled.h6`
+const h4 = styled.h4`
   font-size: 1.5em;
 `;
 
-const p = styled.p`
+const h5 = styled.h5`
+  font-size: 1.25em;
+`;
+
+const h6 = styled.h6`
   font-size: 1em;
+`;
+
+const p = styled.p`
+  font-size: .75em;
 `;
 
 const span = styled.span`

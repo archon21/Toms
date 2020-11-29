@@ -22,7 +22,10 @@ const html = ({
         content="Web site created using create-react-app"
       />
       <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
+      <link
+      href="/css/index.css"
+      rel="stylesheet"
+    />
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"

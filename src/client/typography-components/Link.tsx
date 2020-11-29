@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Interfaces } from '../../site-config';
+import { colors, Interfaces } from '../../site-config';
 import { Typography } from '../typography-components';
 
 interface Props {
@@ -31,6 +31,7 @@ const L: React.FC<Props> = (props) => {
   })`
     transition: all 300ms;
     text-decoration: none;
+    color: ${props.color ? colors[props.color] : colors.primary};
     &:hover {
       text-decoration: underline;
     }

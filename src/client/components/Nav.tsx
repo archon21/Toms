@@ -38,7 +38,7 @@ const Navbar: React.FC<Props> = (props) => {
         >
           {links.map(({ path, text }) => {
             return (
-              <Link key={text} variant="p" to={path}>
+              <Link color='safe' key={text} variant="h6" to={path}>
                 Text
               </Link>
             );
