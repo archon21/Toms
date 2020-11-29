@@ -8,17 +8,13 @@ import Routes from './Routes';
 
 function App() {
   return (
-   
-      <ThemeProvider theme={{ mode: 'light' }}>
-        <div className="App">
-          <WindoW init column>
-            <Nav></Nav>
-            <Routes></Routes>
-            <Footer></Footer>
-          </WindoW>
-        </div>
-      </ThemeProvider>
-
+    <ThemeProvider theme={{ mode: 'light' }}>
+      <WindoW init column>
+        <Nav></Nav>
+        <Routes></Routes>
+        <Footer></Footer>
+      </WindoW>
+    </ThemeProvider>
   );
 }
 

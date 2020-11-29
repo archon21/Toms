@@ -10,6 +10,7 @@ interface ButtonProps {
   margin?: string;
   padding?: string;
   disabled?: boolean;
+
 }
 
 const Element = styled.button<ButtonProps>`

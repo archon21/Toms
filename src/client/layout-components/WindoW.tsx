@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Colors, colors, siteConfig } from '../site-config';
-import { getFlexAlignment } from '../util';
+import { getFlexAlignment } from '../util/functions';
 
 interface Props {
   column?: boolean;
