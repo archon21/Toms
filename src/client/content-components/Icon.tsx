@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Colors } from '../site-config';
+import { colors, Interfaces } from '../../site-config';
 
 interface Props {
   size?: 'verySmall' | 'small' | 'normal' | 'large' | 'veryLarge';
   provider?: 'material-icons';
   name?: string;
-  color?: Colors;
+  color?: Interfaces.Colors;
 }
 
 const iconSizes = {

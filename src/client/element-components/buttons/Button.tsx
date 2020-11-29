@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Colors } from '../../site-config';
+import { colors, Interfaces } from '../../../site-config';
 
 interface ButtonProps {
   children: React.ReactNode;
-  background?: Colors;
-  color?: Colors;
+  background?: Interfaces.Colors;
+  color?: Interfaces.Colors;
   onClick: any;
   margin?: string;
   padding?: string;

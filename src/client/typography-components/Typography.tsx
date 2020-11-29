@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Colors, colors, fontFamily, FontFamily } from '../site-config';
+import { colors, fontFamily, Interfaces } from '../../site-config';
 
 interface Props {
   children?: any;
@@ -9,10 +9,10 @@ interface Props {
   style?: object;
   margin?: string;
   padding?: string;
-  color?: Colors;
+  color?: Interfaces.Colors;
   textAlign?: 'left' | 'center' | 'right';
   weight?: 'bold' | 'semi' | 'normal';
-  fontFamily?: FontFamily;
+  fontFamily?: Interfaces.FontFamily;
 }
 
 const h1 = styled.h1`

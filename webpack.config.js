@@ -3,7 +3,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
-const Config = (entry, name, target, path) => {
+const Config = (entry, name, target, path, isPostProcess) => {
   return {
     entry,
     target,
@@ -18,9 +18,13 @@ const Config = (entry, name, target, path) => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.tsx?$/,
+        //   use: 'ts-loader',
+        // },
         {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
+          test: /\.js$/,
+          use: 'babel-loader',
         },
       ],
     },
@@ -35,8 +39,12 @@ const serverEntry = path.resolve(__dirname, 'server.ts');
 const serverPath = __dirname;
 const serverConfig = Config(serverEntry, 'server', 'node', serverPath);
 
+// const postBabelEntry = path.resolve(__dirname, 'bundle.server.js');
+// const postBabelPath = __dirname;
+// const postBabelConversion = Config(postBabelEntry, 'server', 'node', postBabelPath, true);
+
 /**
  * First drawback, we need to transpile our server code when we could
  * have kept it as standard JavaScript.
  */
-module.exports = [serverConfig, clientConfig];
+module.exports = [serverConfig, clientConfig, postBabelConversion];

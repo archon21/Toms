@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Colors, siteConfig } from '../site-config';
+import { colors, Interfaces, siteConfig } from '../../site-config';
 
 interface Props {
-  background?: Colors;
+  background?: Interfaces.Colors;
 }
 
 const Foot = styled.footer<Props>`

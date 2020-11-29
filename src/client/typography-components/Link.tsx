@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Colors, FontFamily } from '../site-config';
+import { Interfaces } from '../../site-config';
 import { Typography } from '../typography-components';
 
 interface Props {
@@ -11,10 +11,10 @@ interface Props {
   style?: object;
   margin?: string;
   padding?: string;
-  color?: Colors;
+  color?: Interfaces.Colors;
   textAlign?: 'left' | 'center' | 'right';
   weight?: 'bold' | 'semi' | 'normal';
-  fontFamily?: FontFamily;
+  fontFamily?: Interfaces.FontFamily;
   external?: boolean;
   to: string;
   openInNewTab?: boolean;

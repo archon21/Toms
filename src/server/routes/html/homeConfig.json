@@ -1,6 +1,7 @@
 {
   "title": "Home",
   "url": "/",
+  "component": "Home",
   "methods": [
     {
       "method": "GET",

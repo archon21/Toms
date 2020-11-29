@@ -13,27 +13,11 @@ import * as htmlRoutesConfig from './html';
 import { getTitle, html } from '../util';
 import App from '../../client/App';
 import { Base } from '../database/schema';
-
-interface Service {
-  action: string;
-  service: string;
-  stateName: string;
-}
-
-interface Method {
-  method: string;
-  services: Array<Service>;
-}
-
-interface Route {
-  url: string;
-  title: string;
-  methods: Array<Method>;
-}
+import { Interfaces } from '../../site-config';
 
 const router = Router();
 
-const handleService = (services: Array<Service>) => {
+const handleService = (services: Array<Interfaces.Service>) => {
   const defaultState = {};
   services.forEach(async ({ service, action, stateName }) => {
     if (action === 'GET') {
@@ -45,8 +29,8 @@ const handleService = (services: Array<Service>) => {
   return defaultState;
 };
 
-const createRoute = ({ methods, url, title }: Route) => {
-  methods.forEach(async ({ method, services }: Method) => {
+const createRoute = ({ methods, url, title }: Interfaces.Route) => {
+  methods.forEach(async ({ method, services }: Interfaces.Method) => {
     const defaultState = await handleService(services);
 
     if (method === 'GET') {

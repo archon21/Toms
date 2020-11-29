@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Colors, colors } from '../site-config';
+import { Interfaces, colors } from '../../site-config';
 import { getFlexAlignment } from '../util/functions';
 
 interface Props {
   column?: boolean;
-  background?: Colors;
+  background?: Interfaces.Colors;
   noWrap?: boolean;
   yAlign?: string;
   xAlign?: string;
