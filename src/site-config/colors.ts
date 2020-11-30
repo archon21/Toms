@@ -33,6 +33,10 @@ const colors = {
     light: '#eee',
     dark: '#eee',
   }),
+  boxShadow: theme('mode', {
+    light: 'rgb(153, 153, 153, .3)',
+    dark: '#eee',
+  }),
 };
 
 export default colors;

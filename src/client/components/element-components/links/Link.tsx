@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { colors, Interfaces } from '../../site-config';
-import { Typography } from '../typography-components';
+import { colors, Interfaces } from '../../../../site-config';
+import { Typography } from '../../typography-components';
 
 interface Props {
   children: React.ReactNode;

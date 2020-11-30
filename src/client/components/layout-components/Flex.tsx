@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Interfaces, colors, siteConfig } from '../../site-config';
-import { getFlexAlignment } from '../util/functions';
+import { Interfaces, colors } from '../../../site-config';
+import { getFlexAlignment } from '../../util/functions';
 
 interface Props {
   column?: boolean;
@@ -11,21 +11,26 @@ interface Props {
   yAlign?: string;
   xAlign?: string;
   alignment?: Array<string>;
-  init? :boolean;
+  width?: string;
+  height?: string;
+  margin?: string;
+  padding?: string;
+  className?: string;
+  id?: string;
 }
 
-const Vessel = styled.section<Props>`
+const Vessel = styled.div<Props>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
-  min-height: ${props => props.init ? `calc(100vh - ${siteConfig.style.navHeight} - ${siteConfig.style.footerHeight})`: '100vh'};
-  width: 100vw;
-  background: ${(props) =>
-    props.background ? colors[props.background] : colors.background};
+  width: ${(props) => props.width || '100%'};
+  height: ${(props) => props.height || 'auto'};
+  margin: ${(props) => props.margin || '0'};
+  padding: ${(props) => props.padding || '0'};
   ${(props) => props.alignment?.map((str) => str)}
 `;
 
-const WindoW: React.FC<Props> = (props) => {
+const Flex: React.FC<Props> = (props) => {
   const alignment = getFlexAlignment({
     column: props.column,
     yAlign: props.yAlign,
@@ -34,4 +39,4 @@ const WindoW: React.FC<Props> = (props) => {
   return <Vessel {...props} alignment={alignment}></Vessel>;
 };
 
-export default WindoW;
+export default Flex;

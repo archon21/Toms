@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Icon } from '../content-components';
-import { Button } from '../element-components';
-import { Flex, Grid, WindoW } from '../layout-components';
-import { Typography } from '../typography-components';
+import { Icon } from '../components/content-components';
+import { Button } from '../components/element-components';
+import { Flex, Grid, WindoW } from '../components/layout-components';
+import { Typography } from '../components/typography-components';
 
 interface DefaultState {
   base: Array<string>;
@@ -15,11 +15,11 @@ interface Props {
 const Home: React.FC<Props> = ({ defaultState }) => {
   // const [defaultState, setDefaultState] = useState({});
 
-  console.log(defaultState);
+
   console.log('asdfasdf');
 
   return (
-    <WindoW init xAlign="center" yAlign="center" column>
+    <WindoW init xAlign="flex-start" yAlign="flex-start" column>
       <Flex margin="100px 0" column>
         <Typography color="safe" variant="h1">
           Typograpas
@@ -36,7 +36,20 @@ const Home: React.FC<Props> = ({ defaultState }) => {
         <Typography margin="20px 0" variant="h5">
           Buttons
         </Typography>
-        <Button background="safe" onClick={() => console.log('click')}>
+        <button
+          onClick={function () {
+
+          }}
+        >
+          Food
+        </button>
+        <Button
+          background="safe"
+          color="background"
+          onClick={function () {
+
+          }}
+        >
           Click Me
         </Button>
         <Icon size="veryLarge" name="send" color="safe"></Icon>

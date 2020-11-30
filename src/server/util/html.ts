@@ -38,10 +38,11 @@ const html = ({
       ${styles}
     </head>
     <body style="margin:0">
-      <div id="app">${body}</div>
+      <div id="root">${body}</div>
     </body>
     <script>window.__STATE__ = ${JSON.stringify(defaultState)};</script>
-    <script src="/bundle.client.js"></script>
+    <script defer src="/bundle.client.js"></script>
+    <script>console.log(document.getElementById('root'))</script>
   </html>
 `;
 

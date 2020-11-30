@@ -1,6 +1,14 @@
 {
-  "style": {
-    "navHeight": "7vh",
-    "footerHeight": "7vh"
+  "nav": {
+    "links": [
+      {
+        "url": "/",
+        "text": "Home"
+      }
+    ],
+    "style": {
+      "navHeight": "7vh",
+      "footerHeight": "7vh"
+    }
   }
 }

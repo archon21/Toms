@@ -22,7 +22,7 @@ const handleService = (services: Array<Interfaces.Service>) => {
   services.forEach(async ({ service, action, stateName }) => {
     if (action === 'GET') {
       const data = await Base.get();
-      console.log(data, 'asdfasdfasdfasdfasd');
+
       defaultState[stateName] = data;
     }
   });
@@ -38,15 +38,14 @@ const createRoute = ({ methods, url, title }: Interfaces.Route) => {
         const context = {};
         const sheet = new ServerStyleSheet();
 
-        const body = ReactDOMServer.renderToString(
+        const body = ReactDOMServer.renderToStaticMarkup(
           <StaticRouter location={req.url} context={context}>
             {sheet.collectStyles(<App defaultState={defaultState} />)}
           </StaticRouter>
         );
         const styles = sheet.getStyleTags();
 
-        const indexFile = path.resolve('./build/index.html');
-        res.send(html({ body, title, styles, defaultState }));
+        res.end(html({ body, title, styles, defaultState }));
       });
     }
   });

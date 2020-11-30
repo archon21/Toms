@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Interfaces } from '../../site-config';
+import { colors, Interfaces } from '../../../site-config';
 
 interface Props {
   size?: 'verySmall' | 'small' | 'normal' | 'large' | 'veryLarge';

@@ -8,7 +8,7 @@ interface Props {
 
 const Foot = styled.footer<Props>`
   width: 100%;
-  height: ${siteConfig.style.footerHeight};
+  height: ${siteConfig.nav.style.footerHeight};
   box-shadow: 1px 1px transparent;
   border-top: 1px solid #dadce0;
   background: ${(props) =>

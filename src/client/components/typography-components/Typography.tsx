@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, fontFamily, Interfaces } from '../../site-config';
+import { colors, fontFamily, Interfaces } from '../../../site-config';
 
 interface Props {
   children?: any;
