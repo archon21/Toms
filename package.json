@@ -88,9 +88,9 @@
     "dev:build-server": "NODE_ENV=development webpack -w --config webpack.config.js --mode=development ",
     "dev:start": "nodemon ./bundle.server.js",
     "dev": "npm-run-all --parallel dev:*",
-    "prod:build-server": "NODE_ENV=production webpack --config webpack.config.js --mode=production ",
-    "prod:start": "node ./bundle.server.js",
-    "prod": "npm-run-all --parallel prod:*"
+    "start:build-server": "NODE_ENV=production webpack --config webpack.config.js --mode=production ",
+    "start:start": "node ./bundle.server.js",
+    "start": "npm-run-all --parallel start:*"
   },
   "eslintConfig": {
     "extends": [
