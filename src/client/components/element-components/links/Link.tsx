@@ -23,11 +23,13 @@ interface Props {
 const a = styled.a``;
 
 const L: React.FC<Props> = (props) => {
+
   const Element: any = props.external ? a : Link;
 
   const StyledElement: any = styled(Element).attrs({
     href: props.to,
     target: props.openInNewTab ? '_blank' : '',
+    to: props.to,
   })`
     transition: all 300ms;
     text-decoration: none;
@@ -38,7 +40,7 @@ const L: React.FC<Props> = (props) => {
   `;
 
   return (
-    <StyledElement {...props}>
+    <StyledElement {...props} color={'background'}>
       <Typography {...props}>{props.children}</Typography>
     </StyledElement>
   );

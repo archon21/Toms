@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
-import { BrowserRouter, Router } from 'react-router-dom';
-import history from './history';
+import { BrowserRouter } from 'react-router-dom';
+
 // import reportWebVitals from './reportWebVitals';
 
 declare global {
@@ -14,12 +14,12 @@ declare global {
   }
 }
 
-ReactDOM.hydrate(
-  <Router history={history}>
+ReactDOM.render(
+  <BrowserRouter>
     <React.Fragment>
       <App defaultState={window.__STATE__} />
     </React.Fragment>
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

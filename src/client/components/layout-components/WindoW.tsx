@@ -38,6 +38,7 @@ const Vessel = styled.section<Props>`
     props.init
       ? `calc(100vh - ${siteConfig.nav.style.navHeight} - ${siteConfig.nav.style.footerHeight})`
       : '100vh'};
+  max-width: ${(props) => (props.fullWidth ? '100%' : '2000px')};
   width: ${(props) => (props.fullWidth ? '100%' : '90%')};
   ${(props) => props.alignment?.map((str) => str)}
 `;

@@ -1,0 +1,17 @@
+{
+  "title": "About",
+  "url": "/about",
+  "component": "About",
+  "methods": [
+    {
+      "method": "GET",
+      "services": [
+        {
+          "action": "GET",
+          "service": "Base",
+          "stateName": "base"
+        }
+      ]
+    }
+  ]
+}

@@ -15,9 +15,6 @@ interface Props {
 const Home: React.FC<Props> = ({ defaultState }) => {
   // const [defaultState, setDefaultState] = useState({});
 
-
-  console.log('asdfasdf');
-
   return (
     <WindoW init xAlign="flex-start" yAlign="flex-start" column>
       <Flex margin="100px 0" column>
@@ -36,20 +33,8 @@ const Home: React.FC<Props> = ({ defaultState }) => {
         <Typography margin="20px 0" variant="h5">
           Buttons
         </Typography>
-        <button
-          onClick={function () {
 
-          }}
-        >
-          Food
-        </button>
-        <Button
-          background="safe"
-          color="background"
-          onClick={function () {
-
-          }}
-        >
+        <Button background="safe" color="background" onClick={function () {}}>
           Click Me
         </Button>
         <Icon size="veryLarge" name="send" color="safe"></Icon>

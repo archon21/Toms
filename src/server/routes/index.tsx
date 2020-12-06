@@ -12,13 +12,18 @@ import * as htmlRoutesConfig from './html';
 // import * as apiRoutsConfig from './api';
 import { getTitle, html } from '../util';
 import App from '../../client/App';
-import { Base } from '../database/schema';
+import { Base, SlateCollectionService } from '../database/services';
 import { Interfaces } from '../../site-config';
 
 const router = Router();
 
 const handleService = (services: Array<Interfaces.Service>) => {
   const defaultState = {};
+  SlateCollectionService.create({
+    title: 'Foo',
+    content: 'foo',
+    lastUpdated: Date.now(),
+  });
   services.forEach(async ({ service, action, stateName }) => {
     if (action === 'GET') {
       const data = await Base.get();
@@ -26,6 +31,7 @@ const handleService = (services: Array<Interfaces.Service>) => {
       defaultState[stateName] = data;
     }
   });
+  
   return defaultState;
 };
 

@@ -1,35 +1,71 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, {
+  Fragment,
+  ReactElement,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  Switch,
+  Route,
+  withRouter,
+  RouteComponentProps,
+  Redirect,
+} from 'react-router-dom';
 
 import * as Pages from './pages';
 import * as htmlRoutesConfig from '../server/routes/html';
 import { Interfaces } from '../site-config';
+import { Location, History } from 'history';
 
-interface Props {
+interface Props extends RouteComponentProps {
   defaultState: object;
+  location: Location;
+  history: History;
 }
 
 const createRoute = (htmlRoutesConfig: object, defaultState: object) => {
-  const routes = Object.entries(htmlRoutesConfig).map(
-    ([key, { component, url }]: [string, Interfaces.Route]) => {
-      const ComponentToRender = Pages[component];
-      return (
-        <Route
-          key={key}
-          exact
-          path={url}
-          render={() => <ComponentToRender defaultState={defaultState} />}
-        ></Route>
-      );
-    }
+  const clientRoutes: Array<ReactElement> = Object.entries(
+    htmlRoutesConfig
+  ).map(([key, { component, url }]: [string, Interfaces.Route]) => {
+    const ComponentToRender = Pages[component];
+    return (
+      <Route
+        key={key}
+        exact
+        path={url}
+        render={() => <ComponentToRender defaultState={defaultState} />}
+      ></Route>
+    );
+  });
+  return clientRoutes;
+};
+
+const Routes: React.FC<Props> = ({ defaultState, location, history }) => {
+  const [clientRoutes, setClientRoutes] = useState<Array<ReactElement>>(
+    createRoute(htmlRoutesConfig, defaultState)
   );
-  return routes;
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // clientRoutes;
+  }, [location.pathname]);
+
+  return mounted ? (
+    <Switch>
+      {clientRoutes}
+      <Route path="/not-found" component={Pages.Home} />
+      <Route path="*">
+        <Redirect to="/not-found" />
+      </Route>
+    </Switch>
+  ) : (
+    <div></div>
+  );
 };
 
-const Routes: React.FC<Props> = ({ defaultState }) => {
-  const routes = createRoute(htmlRoutesConfig, defaultState);
-
-  return <Switch>{routes}</Switch>;
-};
-
-export default Routes;
+export default withRouter(Routes);
