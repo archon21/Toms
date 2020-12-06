@@ -39,7 +39,7 @@ const clientConfig = Config(clientEntry, 'client', 'web', clientPath, [
 ]);
 
 const serverEntry = path.resolve(__dirname, 'server.ts');
-const serverPath = __dirname;
+const serverPath =  path.resolve(__dirname, 'dist');
 const serverConfig = Config(serverEntry, 'server', 'node', serverPath, []);
 
 // const postBabelEntry = path.resolve(__dirname, 'bundle.server.js');
