@@ -13,6 +13,7 @@ const DesktopMenu: React.FC<Props> = () => {
       yAlign="center"
     >
       {siteConfig.nav.links.map(({ url, text }) => {
+        
         return (
           <Links.Link color="safe" key={text} variant="p" to={url}>
             Text

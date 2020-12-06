@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { siteConfig } from '../../../../site-config';
 import { Flex } from '../../layout-components';
 
-import { Button, Menus } from '../../element-components';
+import { Buttons, Menus } from '../../element-components';
 
 interface Props {}
 
@@ -22,9 +22,9 @@ const MobileMenu: React.FC<Props> = () => {
       xAlign="flex-end"
       yAlign="center"
     >
-      <Button background="danger" color="background" onClick={handleMenu}>
+      <Buttons.Button background="danger" color="background" onClick={handleMenu}>
         Menu
-      </Button>
+      </Buttons.Button>
       <Menus.Menu
         isOpen={isMenuOpen}
         links={renderedLinks}

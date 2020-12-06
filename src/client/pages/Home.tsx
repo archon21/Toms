@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from '../components/content-components';
-import { Button } from '../components/element-components';
+import { Buttons, Inputs } from '../components/element-components';
+
 import { Flex, Grid, WindoW } from '../components/layout-components';
 import { Typography } from '../components/typography-components';
 
@@ -34,9 +35,14 @@ const Home: React.FC<Props> = ({ defaultState }) => {
           Buttons
         </Typography>
 
-        <Button background="safe" color="background" onClick={function () {}}>
+        <Buttons.Button
+          background="safe"
+          color="background"
+          onClick={function () {}}
+        >
           Click Me
-        </Button>
+        </Buttons.Button>
+        <Inputs.SlateEditor></Inputs.SlateEditor>
         <Icon size="veryLarge" name="send" color="safe"></Icon>
       </Flex>
     </WindoW>

@@ -64,9 +64,8 @@ const Typography: React.FC<Props> = (props) => {
     : TextComponents.span;
 
   const StyledElement = styled(Element).attrs({})`
-    color: ${props.color ? Styles.Colors[props.color] : Styles.Colors.primary};
-    margin: ${props.margin || '0'};
-    padding: ${props.padding || '0'};
+    ${(props) => Styles.Defaults.Colors({ props })}
+    ${Styles.Defaults.Spacing({ props })}
     line-height: 1.5;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

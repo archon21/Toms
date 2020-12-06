@@ -32,7 +32,11 @@ const L: React.FC<Props> = (props) => {
   })`
     transition: all 300ms;
     text-decoration: none;
-    color: ${props.color ? Styles.Colors[props.color] : Styles.Colors.primary};
+    ${(props) =>
+      Styles.Defaults.Colors({
+        props,
+      })}
+
     &:hover {
       text-decoration: underline;
     }

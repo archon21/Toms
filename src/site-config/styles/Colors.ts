@@ -1,6 +1,6 @@
 import theme from 'styled-theming';
 
-const colors = {
+const Colors = {
   primary: theme('mode', {
     light: 'red',
     dark: '#000',
@@ -37,6 +37,14 @@ const colors = {
     light: 'rgb(153, 153, 153, .3)',
     dark: '#eee',
   }),
+  buttonPrimary: theme('mode', {
+    light: 'black',
+    dark: '#eee',
+  }),
+  buttonSecondary: theme('mode', {
+    light: 'black',
+    dark: '#eee',
+  }),
 };
 
-export default colors;
+export default Colors;
