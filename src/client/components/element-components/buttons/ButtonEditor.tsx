@@ -22,6 +22,7 @@ interface ButtonProps {
 
 const Element = styled.button<ButtonProps>`
   display: inline-flex;
+  position: relative;
   flex-direction: column;
   width: max-content;
   font-size: calc(0.7em + 1vw);
@@ -54,12 +55,16 @@ const Element = styled.button<ButtonProps>`
       padding: 0.3em;
       bottom: 40px;
       color: ${Styles.Colors.buttonSecondary};
-      box-shadow: -10px -10px 30px 4px ${Styles.Colors.boxShadow},
-        10px 10px 30px 4px ${Styles.Colors.boxShadow};
+      box-shadow: var(
+        --devsite-button-primary-box-shadow-hover,
+        0 1px 2px 0 rgba(60, 64, 67, 0.3),
+        0 1px 3px 1px rgba(60, 64, 67, 0.15)
+      );
       border-radius: 5px;
       background: ${Colors.background};
       position: absolute;
-      font-size: 0.75em;
+      font-size: 0.5em;
+      z-index: 11;
     }
   }
 `;

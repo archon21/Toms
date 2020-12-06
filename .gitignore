@@ -1,4 +1,5 @@
 node_modules
 bundle.server.js
 dist
+.env
 pages
