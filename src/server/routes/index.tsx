@@ -19,11 +19,11 @@ const router = Router();
 
 const handleService = (services: Array<Interfaces.Service>) => {
   const defaultState = {};
-  SlateCollectionService.create({
-    title: 'Foo',
-    content: 'foo',
-    lastUpdated: Date.now(),
-  });
+  // SlateCollectionService.create({
+  //   title: 'Foo',
+  //   content: 'foo',
+  //   lastUpdated: Date.now(),
+  // });
   services.forEach(async ({ service, action, stateName }) => {
     if (action === 'GET') {
       const data = await Base.get();

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { colors, Interfaces } from '../../../../site-config';
+import { Styles, Interfaces } from '../../../../site-config';
 import { Typography } from '../../typography-components';
 
 interface Props {
@@ -23,7 +23,6 @@ interface Props {
 const a = styled.a``;
 
 const L: React.FC<Props> = (props) => {
-
   const Element: any = props.external ? a : Link;
 
   const StyledElement: any = styled(Element).attrs({
@@ -33,7 +32,7 @@ const L: React.FC<Props> = (props) => {
   })`
     transition: all 300ms;
     text-decoration: none;
-    color: ${props.color ? colors[props.color] : colors.primary};
+    color: ${props.color ? Styles.Colors[props.color] : Styles.Colors.primary};
     &:hover {
       text-decoration: underline;
     }

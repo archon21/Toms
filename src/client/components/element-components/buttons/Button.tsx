@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Interfaces } from '../../../../site-config';
+import { Styles, Interfaces } from '../../../../site-config';
 import { Typography } from '../../typography-components';
 
 interface ButtonProps {
@@ -20,8 +20,11 @@ const Element = styled.button<ButtonProps>`
   font-size: calc(0.7em + 1vw);
   cursor: pointer;
   background: ${(props) =>
-    props.background ? colors[props.background] : colors.background};
-  color: ${(props) => (props.color ? colors[props.color] : colors.background)};
+    props.background
+      ? Styles.Colors[props.background]
+      : Styles.Colors.background};
+  color: ${(props) =>
+    props.color ? Styles.Colors[props.color] : Styles.Colors.background};
   margin: ${(props) => props.margin || '0'};
   padding: ${(props) => props.padding || '0'};
   border-radius: 3px;
@@ -31,7 +34,7 @@ const Element = styled.button<ButtonProps>`
   z-index: 10;
 
   &:disabled {
-    background: ${colors.disabled};
+    background: ${Styles.Colors.disabled};
     color: #fff;
     opacity: 0.7;
     cursor: not-allowed;

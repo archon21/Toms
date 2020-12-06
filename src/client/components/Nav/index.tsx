@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Image } from '../content-components';
 import { Flex, Grid } from '../layout-components';
-import { colors, Interfaces, siteConfig } from '../../../site-config';
+import { Styles, Interfaces, siteConfig } from '../../../site-config';
 
 import NavMenu from './NavMenus';
 
@@ -15,7 +15,9 @@ const Nav = styled.nav<Props>`
   align-items: center;
   justify-content: center;
   background: ${(props) =>
-    props.background ? colors[props.background] : colors.background};
+    props.background
+      ? Styles.Colors[props.background]
+      : Styles.Colors.background};
   width: 100%;
   height: ${siteConfig.nav.style.navHeight};
   min-height: 60px;

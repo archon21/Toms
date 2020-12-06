@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors, fontFamily, Interfaces } from '../../../site-config';
+import { Styles, fontFamily, Interfaces } from '../../../site-config';
 
 interface Props {
   children?: any;
@@ -40,7 +40,7 @@ const h6 = styled.h6`
 `;
 
 const p = styled.p`
-  font-size: .75em;
+  font-size: 0.75em;
 `;
 
 const span = styled.span`
@@ -64,7 +64,7 @@ const Typography: React.FC<Props> = (props) => {
     : TextComponents.span;
 
   const StyledElement = styled(Element).attrs({})`
-    color: ${props.color ? colors[props.color] : colors.primary};
+    color: ${props.color ? Styles.Colors[props.color] : Styles.Colors.primary};
     margin: ${props.margin || '0'};
     padding: ${props.padding || '0'};
     line-height: 1.5;

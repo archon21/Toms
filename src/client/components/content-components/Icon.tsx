@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, Interfaces } from '../../../site-config';
+import { Styles, Interfaces } from '../../../site-config';
 
 interface Props {
   size?: 'verySmall' | 'small' | 'normal' | 'large' | 'veryLarge';
@@ -19,7 +19,7 @@ const iconSizes = {
 
 const Element = styled.i<Props>`
   font-size: ${(props) => (props.size ? iconSizes[props.size] : iconSizes.normal)};
-  color: ${(props) => (props.color ? colors[props.color] : colors.background)};
+  color: ${(props) => (props.color ? Styles.Colors[props.color] : Styles.Colors.background)};
 `;
 
 const Icon: React.FC<Props> = (props) => {

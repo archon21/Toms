@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Interfaces, colors, siteConfig } from '../../../site-config';
+import { Interfaces,  Styles, siteConfig } from '../../../site-config';
 import { getFlexAlignment } from '../../util/functions';
 
 interface Props {
@@ -25,7 +25,7 @@ const Outer = styled.div<Props>`
       : '100vh'};
   width: 100vw;
   background: ${(props) =>
-    props.background ? colors[props.background] : colors.background};
+    props.background ?  Styles.Colors[props.background] :  Styles.Colors.background};
   ${(props) => props.alignment?.map((str) => str)}
   align-items: center;
 `;

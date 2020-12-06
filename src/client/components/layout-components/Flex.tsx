@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Interfaces, colors } from '../../../site-config';
+import { Interfaces, Styles } from '../../../site-config';
 import { getFlexAlignment } from '../../util/functions';
 
 interface Props {
@@ -23,10 +23,8 @@ const Vessel = styled.div<Props>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
-  width: ${(props) => props.width || '100%'};
-  height: ${(props) => props.height || 'auto'};
-  margin: ${(props) => props.margin || '0'};
-  padding: ${(props) => props.padding || '0'};
+  ${(props) => Styles.Defaults.Spacing({ props })}
+  ${(props) => Styles.Defaults.Dimensions({ props })}
   ${(props) => props.alignment?.map((str) => str)}
 `;
 

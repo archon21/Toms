@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
-import { colors, siteConfig } from '../../../../site-config';
+import { Styles, siteConfig } from '../../../../site-config';
 
 import { Link } from '../links';
 import MenuItem from './MenuItem';
@@ -40,15 +40,15 @@ const MenuVessel = styled.ul<Props>`
     right: .5em;
     top: .5em;
     border-radius: 3px;
-    box-shadow: -10px -10px 30px 4px ${colors.boxShadow},
-    10px 10px 30px 4px ${colors.boxShadow};
+    box-shadow: -10px -10px 30px 4px ${Styles.Colors.boxShadow},
+    10px 10px 30px 4px ${Styles.Colors.boxShadow};
     width: max-content;
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: .5em;
-    background ${colors.background};
+    background ${Styles.Colors.background};
     z-index: 101;
     
     opacity: ${(props) => (props.isOpen ? '1' : '0')};

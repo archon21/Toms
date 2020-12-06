@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../../../site-config';
+import {  Styles } from '../../../../site-config';
 
 import { Link } from '../links';
 
@@ -12,7 +12,7 @@ interface Props {
 const Vessel = styled.li<Props>`
     width: 5em;
     padding: .5em;
-    background ${colors.background};
+    background ${ Styles.Colors.background};
     border-radius: 0;
     @media (max-width: 768px) {
         flex-direction: column;
