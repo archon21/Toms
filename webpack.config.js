@@ -42,10 +42,6 @@ const serverEntry = path.resolve(__dirname, 'server.ts');
 const serverPath =  path.resolve(__dirname, 'dist');
 const serverConfig = Config(serverEntry, 'server', 'node', serverPath, []);
 
-// const postBabelEntry = path.resolve(__dirname, 'bundle.server.js');
-// const postBabelPath = __dirname;
-// const postBabelConversion = Config(postBabelEntry, 'server', 'node', postBabelPath, true);
-
 /**
  * First drawback, we need to transpile our server code when we could
  * have kept it as standard JavaScript.
