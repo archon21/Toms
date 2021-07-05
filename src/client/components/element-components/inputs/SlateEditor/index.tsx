@@ -1,29 +1,29 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import isHotkey from 'is-hotkey';
-import { Editable, withReact, useSlate, Slate } from 'slate-react';
+import React, { useCallback, useMemo, useState } from "react";
+import isHotkey from "is-hotkey";
+import { Editable, withReact, useSlate, Slate } from "slate-react";
 import {
   Editor,
   Transforms,
   createEditor,
   Node,
   Element as SlateElement,
-} from 'slate';
-import { withHistory } from 'slate-history';
-import { Icon } from '../../../content-components';
-import { Buttons } from '../..';
-import { Flex } from '../../../layout-components';
+} from "slate";
+import { withHistory } from "slate-history";
+import { Icon } from "../../../content-components";
+import { Buttons } from "../..";
+import { Flex } from "../../../layout-components";
 
 const HOTKEYS = {
-  'mod+b': 'bold',
-  'mod+i': 'italic',
-  'mod+u': 'underline',
-  'mod+`': 'code',
+  "mod+b": "bold",
+  "mod+i": "italic",
+  "mod+u": "underline",
+  "mod+`": "code",
 };
 
-const LIST_TYPES = ['numbered-list', 'bulleted-list'];
+const LIST_TYPES = ["numbered-list", "bulleted-list"];
 
 const RichTextExample = () => {
-  const [value, setValue] = useState<Node[]>(initialValue);
+  const [value, setValue] = useState<Node[]>(defaultValue);
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
@@ -89,7 +89,7 @@ const toggleBlock = (editor, format) => {
     split: true,
   });
   const newProperties: Partial<SlateElement> = {
-    type: isActive ? 'paragraph' : isList ? 'list-item' : format,
+    type: isActive ? "paragraph" : isList ? "list-item" : format,
   };
   Transforms.setNodes(editor, newProperties);
 
@@ -125,17 +125,17 @@ const isMarkActive = (editor, format) => {
 
 const Element = ({ attributes, children, element }) => {
   switch (element.type) {
-    case 'block-quote':
+    case "block-quote":
       return <blockquote {...attributes}>{children}</blockquote>;
-    case 'bulleted-list':
+    case "bulleted-list":
       return <ul {...attributes}>{children}</ul>;
-    case 'heading-one':
+    case "heading-one":
       return <h1 {...attributes}>{children}</h1>;
-    case 'heading-two':
+    case "heading-two":
       return <h2 {...attributes}>{children}</h2>;
-    case 'list-item':
+    case "list-item":
       return <li {...attributes}>{children}</li>;
-    case 'numbered-list':
+    case "numbered-list":
       return <ol {...attributes}>{children}</ol>;
     default:
       return <p {...attributes}>{children}</p>;
@@ -167,7 +167,7 @@ const BlockButton = ({ format, icon, helperText }) => {
   return (
     <Buttons.Editor
       helperText={helperText}
-      iconConfig={{ name: icon, color: 'disabled' }}
+      iconConfig={{ name: icon, color: "disabled" }}
       active={isBlockActive(editor, format)}
       onMouseDown={(event) => {
         event.preventDefault();
@@ -179,53 +179,26 @@ const BlockButton = ({ format, icon, helperText }) => {
 
 const MarkButton = ({ format, icon, helperText }) => {
   const editor = useSlate();
+  const active = isMarkActive(editor, format)
+  console.log(active);
+  
   return (
     <Buttons.Editor
       helperText={helperText}
-      active={isMarkActive(editor, format)}
+      active={active}
       onMouseDown={(event) => {
         event.preventDefault();
         toggleMark(editor, format);
       }}
-      iconConfig={{ name: icon, color: 'disabled' }}
+      iconConfig={{ name: icon, color: "disabled" }}
     ></Buttons.Editor>
   );
 };
 
-const initialValue = [
+const defaultValue = [
   {
-    type: 'paragraph',
-    children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', code: true },
-      { text: '!' },
-    ],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
-        text:
-          "Since it's rich text, you can do things like turn a selection of text ",
-      },
-      { text: 'bold', bold: true },
-      {
-        text:
-          ', or add a semantically rendered block quote in the middle of the page, like this:',
-      },
-    ],
-  },
-  {
-    type: 'block-quote',
-    children: [{ text: 'A wise quote.' }],
-  },
-  {
-    type: 'paragraph',
-    children: [{ text: 'Try it out for yourself!' }],
+    type: "paragraph",
+    children: [{ text: "" }],
   },
 ];
 

@@ -1,5 +1,8 @@
 import theme from 'styled-theming';
 
+
+
+
 const Colors = {
   primary: theme('mode', {
     light: 'red',
@@ -43,7 +46,7 @@ const Colors = {
   }),
   buttonSecondary: theme('mode', {
     light: 'black',
-    dark: '#eee',
+    dark: 'black',
   }),
 };
 

@@ -74,7 +74,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   return (
     <Element {...props} onMouseDown={onMouseDown}>
-      <Icon {...iconConfig}></Icon>
+      <Icon color={props.active ? 'buttonSecondary' : 'disabled'} {...iconConfig}></Icon>
     </Element>
   );
 };
