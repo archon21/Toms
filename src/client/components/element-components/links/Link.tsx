@@ -10,7 +10,7 @@ interface Props {
   typographyConfig: Interfaces.Typography.Typography;
   externalConfig: {
     isNewTab?: boolean;
-  };
+  } | null;
   children: React.ReactNode;
   style?: object;
   margin?: string;

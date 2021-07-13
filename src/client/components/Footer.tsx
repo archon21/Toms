@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Styles, Interfaces, siteConfig } from '../../site-config';
+import { Styles, Interfaces, siteConfig, Types } from '../../site-config';
 
 interface Props {
-  background?: Interfaces.Colors;
+  background?: Types.Colors;
 }
 
 const Foot = styled.footer<Props>`
   width: 100%;
-  height: ${siteConfig.nav.style.footerHeight};
+  height: ${siteConfig.client.nav.style.footerHeight};
   box-shadow: 1px 1px transparent;
   border-top: 1px solid #dadce0;
   background: ${(props) =>

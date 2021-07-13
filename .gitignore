@@ -2,3 +2,4 @@ node_modules
 bundle.server.js
 dist
 .env
+src/site-config/site-config.json

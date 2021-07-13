@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import styled from 'styled-components';
-import { Styles, siteConfig } from '../../../../site-config';
+import { Styles,  } from '../../../../site-config';
 
-import { Link } from '../links';
+
 import MenuItem from './MenuItem';
 
 interface Links {

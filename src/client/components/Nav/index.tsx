@@ -19,7 +19,7 @@ const Nav = styled.nav<Props>`
   justify-content: center;
   background: ${Styles.Colors.navBackground};
   width: 100%;
-  height: ${siteConfig.nav.style.navHeight};
+  height: ${siteConfig.client.nav.style.navHeight};
   min-height: 60px;
   box-shadow: 1px 1px transparent;
   border-bottom: 1px solid #dadce0;

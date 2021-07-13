@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Interfaces,  Styles, siteConfig } from '../../../site-config';
+import { Interfaces,  Styles, siteConfig, Types } from '../../../site-config';
 import { getFlexAlignment } from '../../util/functions';
 
 interface Props {
   column?: boolean;
-  background?: Interfaces.Colors;
+  background?: Types.Colors;
   fullWidth?: boolean;
   noWrap?: boolean;
   yAlign?: string;
@@ -21,7 +21,7 @@ const Outer = styled.div<Props>`
   flex-wrap: nowrap;
   min-height: ${(props) =>
     props.init
-      ? `calc(100vh - ${siteConfig.nav.style.navHeight} - ${siteConfig.nav.style.footerHeight})`
+      ? `calc(100vh - ${siteConfig.client.nav.style.navHeight} - ${siteConfig.client.nav.style.footerHeight})`
       : '100vh'};
   width: 100vw;
   background: ${(props) =>
@@ -36,7 +36,7 @@ const Vessel = styled.section<Props>`
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
   min-height: ${(props) =>
     props.init
-      ? `calc(100vh - ${siteConfig.nav.style.navHeight} - ${siteConfig.nav.style.footerHeight})`
+      ? `calc(100vh - ${siteConfig.client.nav.style.navHeight} - ${siteConfig.client.nav.style.footerHeight})`
       : '100vh'};
   max-width: ${(props) => (props.fullWidth ? '100%' : '2000px')};
   width: ${(props) => (props.fullWidth ? '100%' : '90%')};
