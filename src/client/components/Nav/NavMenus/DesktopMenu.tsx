@@ -1,26 +1,25 @@
-import React from 'react';
-import { siteConfig } from '../../../../site-config';
-import { Links } from '../../element-components';
-import { Flex } from '../../layout-components';
+import React from "react";
+import { siteConfig } from "../../../../site-config";
+
+import { Layout, Links } from "../../index";
 
 interface Props {}
 
 const DesktopMenu: React.FC<Props> = () => {
   return (
-    <Flex
+    <Layout.Flex
       xAlign="flex-end"
       height={siteConfig.nav.style.navHeight}
       yAlign="center"
     >
       {siteConfig.nav.links.map(({ url, text }) => {
-        
         return (
-          <Links.Link color="safe" key={text} variant="p" to={url}>
-            Text
+          <Links.Link padding='0 0 0 10px' color="textSecondary" key={text} variant="p" to={url}>
+            {text}
           </Links.Link>
         );
       })}
-    </Flex>
+    </Layout.Flex>
   );
 };
 

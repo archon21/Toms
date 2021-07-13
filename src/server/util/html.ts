@@ -28,7 +28,7 @@ const html = ({
     />
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Hind+Madurai"
         rel="stylesheet"
       />
       <link

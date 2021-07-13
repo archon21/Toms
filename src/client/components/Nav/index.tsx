@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Image } from '../content-components';
-import { Flex, Grid } from '../layout-components';
-import { Styles, Interfaces, siteConfig } from '../../../site-config';
+import React from "react";
+import styled from "styled-components";
 
-import NavMenu from './NavMenus';
+import { Layout, Typography } from "../index";
+import { Styles, Interfaces, siteConfig } from "../../../site-config";
+
+import NavMenu from "./NavMenus";
 
 interface Props {
   background?: Interfaces.Colors;
@@ -14,10 +14,7 @@ const Nav = styled.nav<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${(props) =>
-    props.background
-      ? Styles.Colors[props.background]
-      : Styles.Colors.background};
+  background: ${Styles.Colors.navBackground};
   width: 100%;
   height: ${siteConfig.nav.style.navHeight};
   min-height: 60px;
@@ -28,13 +25,21 @@ const Nav = styled.nav<Props>`
 const Navbar: React.FC<Props> = (props) => {
   return (
     <Nav {...props}>
-      <Grid width="90%" layout={[50, 50]}>
-        <Image
+      <Layout.Grid width="90%" layout={[50, 50]}>
+        {/* <Image
           height={siteConfig.nav.style.navHeight}
           src="https://www.logolynx.com/images/logolynx/c7/c7c248a2814b2049d22615ae332559de.jpeg"
-        ></Image>
+        ></Image> */}
+        <Typography.Typography
+          variant="h5"
+          color="textSecondary"
+          displayAlign={{ justifySelf: "flex-start" }}
+          textAlign='left'
+        >
+          Tom's Outdoor Maintenance
+        </Typography.Typography>
         <NavMenu></NavMenu>
-      </Grid>
+      </Layout.Grid>
     </Nav>
   );
 };

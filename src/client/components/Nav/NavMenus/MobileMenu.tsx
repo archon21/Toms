@@ -1,8 +1,7 @@
-import React, { Fragment, useState } from 'react';
-import { siteConfig } from '../../../../site-config';
-import { Flex } from '../../layout-components';
+import React, { Fragment, useState } from "react";
+import { siteConfig } from "../../../../site-config";
 
-import { Buttons, Menus } from '../../element-components';
+import { Layout, Links, Buttons, Menus } from "../../index";
 
 interface Props {}
 
@@ -16,13 +15,17 @@ const MobileMenu: React.FC<Props> = () => {
   };
 
   return (
-    <Flex
+    <Layout.Flex
       height={siteConfig.nav.style.navHeight}
       id="mobile-menu"
       xAlign="flex-end"
       yAlign="center"
     >
-      <Buttons.Button background="danger" color="background" onClick={handleMenu}>
+      <Buttons.Button
+        background="danger"
+        color="background"
+        onClick={handleMenu}
+      >
         Menu
       </Buttons.Button>
       <Menus.Menu
@@ -30,7 +33,7 @@ const MobileMenu: React.FC<Props> = () => {
         links={renderedLinks}
         handleMenu={handleMenu}
       ></Menus.Menu>
-    </Flex>
+    </Layout.Flex>
   );
 };
 

@@ -23,6 +23,7 @@ const Vessel = styled.div<Props>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
+  
   ${(props) => Styles.Defaults.Spacing({ props })}
   ${(props) => Styles.Defaults.Dimensions({ props })}
   ${(props) => props.alignment?.map((str) => str)}
