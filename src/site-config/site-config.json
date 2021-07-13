@@ -1,4 +1,9 @@
 {
+  "required": {
+    "styles": {
+      "c": "c"
+    }
+  },
   "nav": {
     "links": [
       {

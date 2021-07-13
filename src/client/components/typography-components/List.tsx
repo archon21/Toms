@@ -21,7 +21,7 @@ interface Props {
   style?: object;
   margin?: string;
   padding?: string;
-  color?: Interfaces.Colors;
+
   textAlign?: "left" | "center" | "right";
   weight?: "bold" | "semi" | "normal";
   fontFamily?: Interfaces.FontFamily;
@@ -31,8 +31,9 @@ interface Props {
 const Element = (props) => React.createElement(props.variant || "ul", props);
 
 const StyledElement = styled(Element).attrs({})`
-list-style-position: ${(props) => (props.position ? props.position : "inside")};
-  ${props => Styles.Defaults.Spacing({ props })}
+  list-style-position: ${(props) =>
+    props.position ? props.position : "inside"};
+  ${(props) => Styles.Defaults.Spacing({ props })}
 `;
 
 const List: React.FC<Props> = (props) => {
@@ -40,7 +41,11 @@ const List: React.FC<Props> = (props) => {
     <StyledElement {...props}>
       {props.items.map((item, index) => {
         return typeof item === "string" ? (
-          <Typography key={index} {...props.typographyConfig} variant='li'>
+          <Typography
+            key={index}
+            {...props.listItemConfig.typographyConfig}
+            variant="li"
+          >
             {item}
           </Typography>
         ) : (

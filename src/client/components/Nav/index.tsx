@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import { Layout, Typography } from "../index";
-import { Styles, Interfaces, siteConfig } from "../../../site-config";
+import { Styles, Interfaces, siteConfig, Types } from "../../../site-config";
 
 import NavMenu from "./NavMenus";
 
 interface Props {
-  background?: Interfaces.Colors;
+  background?: Types.Colors;
 }
+
+
+
 
 const Nav = styled.nav<Props>`
   display: flex;

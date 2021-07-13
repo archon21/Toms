@@ -36,7 +36,7 @@ const Home: React.FC<Props> = ({ defaultState }) => {
               "Lawn and Garden",
               "Leaf Removal",
             ]}
-            textConfig={{ variant: "h5" }}
+            listItemConfig={{ typographyConfig: { variant: "h5" } }}
           ></Typography.List>
         </Layout.Flex>
 

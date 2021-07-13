@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Styles, fontFamily, Interfaces } from "../../../site-config";
+import { Styles, fontFamily, Interfaces, Types } from "../../../site-config";
 
 interface Props {
   variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "li";
@@ -9,7 +9,7 @@ interface Props {
   style?: object;
   margin?: string;
   padding?: string;
-  color?: Interfaces.Colors;
+  color: Types.Colors;
   textAlign?: "left" | "center" | "right";
   weight?: "bold" | "semi" | "normal";
   fontFamily?: Interfaces.FontFamily;
