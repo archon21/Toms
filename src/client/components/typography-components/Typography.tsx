@@ -1,24 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Styles, fontFamily, Interfaces, Types } from "../../../site-config";
-
-interface Props {
-  variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "li";
-  children: any;
-  style?: object;
-  margin?: string;
-  padding?: string;
-  color: Types.Colors;
-  textAlign?: "left" | "center" | "right";
-  weight?: "bold" | "semi" | "normal";
-  fontFamily?: Interfaces.FontFamily;
-  displayAlign?: Interfaces.DisplayAlign;
-}
+import { Styles, Interfaces, Types } from "../../../site-config";
 
 const Element = (props) => React.createElement(props.variant || "span", props);
 
-const Typography: React.FC<Props> = (props) => {
+const Typography: React.FC<Interfaces.Typography.Typography> = (props) => {
   const StyledElement = styled(Element).attrs({})`
     color: ${(props) =>
       props.color ? Styles.Colors[props.color] : Styles.Colors.textPrimary};
@@ -31,8 +18,8 @@ const Typography: React.FC<Props> = (props) => {
     -webkit-font-smoothing: antialiased;
     transition: all 300ms;
     font-family: ${props.fontFamily
-      ? fontFamily[props.fontFamily]
-      : fontFamily.primary};
+      ? Styles.FontFamily[props.fontFamily]
+      : Styles.FontFamily.primary};
   `;
 
   return <StyledElement {...props}></StyledElement>;

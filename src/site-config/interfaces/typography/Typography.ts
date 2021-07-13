@@ -1,9 +1,17 @@
-import { Types } from "../..";
+import { Interfaces, Types } from "../..";
 
 interface Typography {
-    fontFamily: 'primary' | 'secondary';
-    variant: Types.TypographyVariant;
-    color: Types.Colors;
+  variant: Types.TypographyVariant;
+  children?: any;
+
+  fontFamily?: Types.FontFamily;
+  weight?: "bold" | "semi" | "normal";
+  textAlign?: "left" | "center" | "right";
+  color?: Types.Colors;
+  style?: object;
+  margin?: string;
+  padding?: string;
+  displayAlign?: Interfaces.DisplayAlign;
 }
 
-export default Typography 
+export default Typography;

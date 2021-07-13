@@ -3,28 +3,22 @@ import styled from "styled-components";
 
 import { Typography } from "./index";
 
-import { Styles, fontFamily, Interfaces } from "../../../site-config";
+import { Styles, Interfaces, Types } from "../../../site-config";
 
 interface ListItemProps {
-  typographyConfig: {
-    variant: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
-    fontFamily?: "primary" | "secondary";
-  };
+  typographyConfig: Interfaces.Typography.Typography;
 }
 
 interface Props {
   items: Array<any>;
+  listItemConfig: ListItemProps;
+
   children?: any;
   variant?: "ol" | "ul";
-  listItemConfig: ListItemProps;
   position?: "inside" | "outside";
   style?: object;
   margin?: string;
   padding?: string;
-
-  textAlign?: "left" | "center" | "right";
-  weight?: "bold" | "semi" | "normal";
-  fontFamily?: Interfaces.FontFamily;
   displayAlign?: Interfaces.DisplayAlign;
 }
 

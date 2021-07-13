@@ -11,5 +11,6 @@ export type TypographyVariant =
   | "span"
   | "li";
 
+export type Colors = keyof typeof Styles.Colors;
 
-export type Colors = keyof typeof Styles.Colors
+export type FontFamily = "primary" | "secondary";

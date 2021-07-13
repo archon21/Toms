@@ -13,7 +13,6 @@ interface Props {
   };
   children: React.ReactNode;
   style?: object;
-  color?: Interfaces.Colors;
   margin?: string;
   padding?: string;
 }
