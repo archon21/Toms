@@ -12,7 +12,7 @@ const Foot = styled.footer<Props>`
   box-shadow: 1px 1px transparent;
   border-top: 1px solid #dadce0;
   background: ${(props) =>
-    props.background ? Styles.Colors[props.background] : Styles.Colors.background};
+    props.background ? Styles.Colors[props.background] : Styles.Colors.backgroundPrimary};
 `;
 
 const Footer: React.FC<Props> = (props) => {

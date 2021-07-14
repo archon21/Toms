@@ -48,7 +48,7 @@ const MenuVessel = styled.ul<Props>`
     flex-direction: column;
     align-items: flex-start;
     padding: .5em;
-    background ${Styles.Colors.background};
+    background ${Styles.Colors.backgroundSecondary};
     z-index: 101;
     
     opacity: ${(props) => (props.isOpen ? '1' : '0')};

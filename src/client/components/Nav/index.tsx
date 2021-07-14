@@ -21,8 +21,8 @@ const Nav = styled.nav<Props>`
   width: 100%;
   height: ${siteConfig.client.nav.style.navHeight};
   min-height: 60px;
-  box-shadow: 1px 1px transparent;
-  border-bottom: 1px solid #dadce0;
+  // box-shadow: 1px 1px transparent;
+  // border-bottom: 1px solid #dadce0;
 `;
 
 const Navbar: React.FC<Props> = (props) => {
@@ -35,7 +35,7 @@ const Navbar: React.FC<Props> = (props) => {
         ></Image> */}
         <Typography.Typography
           variant="h5"
-          color="textSecondary"
+          color="textPrimary"
           displayAlign={{ justifySelf: "flex-start" }}
           textAlign='left'
         >

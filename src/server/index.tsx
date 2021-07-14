@@ -1,11 +1,16 @@
-import express from 'express';
-import path from 'path';
-import routes from './routes';
+import express from "express";
+import path from "path";
+import mongoose from "mongoose";
+
+import { siteConfig } from "../site-config";
+import routes from "./routes";
+
+
 
 const app = express();
 
 app.use(express.json());
-app.use(express.static('./dist'));
+app.use(express.static("./dist"));
 
 app.use(routes);
 

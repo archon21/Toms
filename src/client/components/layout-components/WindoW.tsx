@@ -21,11 +21,11 @@ const Outer = styled.div<Props>`
   flex-wrap: nowrap;
   min-height: ${(props) =>
     props.init
-      ? `calc(100vh - ${siteConfig.client.nav.style.navHeight} - ${siteConfig.client.nav.style.footerHeight})`
+      ? `calc(100vh - ${siteConfig.client.nav.style.navHeight})`
       : '100vh'};
   width: 100vw;
   background: ${(props) =>
-    props.background ?  Styles.Colors[props.background] :  Styles.Colors.background};
+    props.background ?  Styles.Colors[props.background] :  Styles.Colors.backgroundPrimary};
   ${(props) => props.alignment?.map((str) => str)}
   align-items: center;
 `;
@@ -34,10 +34,7 @@ const Vessel = styled.section<Props>`
   display: flex;
   flex-direction: ${(props) => (props.column ? 'column' : 'row')};
   flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
-  min-height: ${(props) =>
-    props.init
-      ? `calc(100vh - ${siteConfig.client.nav.style.navHeight} - ${siteConfig.client.nav.style.footerHeight})`
-      : '100vh'};
+
   max-width: ${(props) => (props.fullWidth ? '100%' : '2000px')};
   width: ${(props) => (props.fullWidth ? '100%' : '90%')};
   ${(props) => props.alignment?.map((str) => str)}
@@ -50,7 +47,7 @@ const WindoW: React.FC<Props> = (props) => {
     xAlign: props.xAlign,
   });
   return (
-    <Outer>
+    <Outer {...props} alignment={alignment}>
       <Vessel {...props} alignment={alignment}></Vessel>
     </Outer>
   );

@@ -16,7 +16,7 @@ const DesktopMenu: React.FC<Props> = () => {
         return (
           <Links.Link
             padding="0 0 0 10px"
-            typographyConfig={{ color: "textSecondary", variant: "p" }}
+            typographyConfig={{ color: "textPrimary", variant: "p" }}
             key={text}
             to={url}
             externalConfig={null}

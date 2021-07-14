@@ -1,9 +1,15 @@
-import { Client } from 'faunadb';
+import mongoose from "mongoose";
 
-const clientKey = process.env.ADMIN_KEY ? process.env.ADMIN_KEY : '';
+import { siteConfig } from "../../site-config";
 
-const faunaClient = new Client({
-  secret: clientKey,
-});
 
-export default faunaClient;
+const database = mongoose.connect(
+  siteConfig.server.database.connection.development,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  }
+);
+
+export default database;

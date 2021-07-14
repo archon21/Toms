@@ -40,7 +40,12 @@ const Home: React.FC<Props> = ({ defaultState }) => {
           </Layout.Flex>
         </Layout.Flex>
       </Layout.WindoW>
-      <Layout.WindoW init xAlign="flex-start" yAlign="flex-start" column>
+      <Layout.WindoW
+        xAlign="flex-start"
+        yAlign="flex-start"
+        column
+        background="backgroundSecondary"
+      >
         <Layout.Flex margin="50px 0" column>
           <Typography.Typography
             color="textPrimary"
