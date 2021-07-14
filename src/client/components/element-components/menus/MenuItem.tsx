@@ -12,7 +12,7 @@ interface Props {
 const Vessel = styled.li<Props>`
     width: 5em;
     padding: .5em;
-    background ${Styles.Colors.background};
+    background ${Styles.Colors.backgroundSecondary};
     border-radius: 0;
     @media (max-width: 768px) {
         flex-direction: column;

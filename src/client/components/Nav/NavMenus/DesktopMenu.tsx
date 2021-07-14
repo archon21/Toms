@@ -15,8 +15,12 @@ const DesktopMenu: React.FC<Props> = () => {
       {siteConfig.client.nav.links.map(({ url, text }) => {
         return (
           <Links.Link
-            padding="0 0 0 10px"
+            margin="0 0 0 10px"
             typographyConfig={{ color: "textPrimary", variant: "p" }}
+            transitionConfig={{
+              underline: true,
+
+            }}
             key={text}
             to={url}
             externalConfig={null}

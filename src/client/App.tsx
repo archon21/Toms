@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Router } from 'react-router-dom';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import { Router } from "react-router-dom";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 
-import { Nav, Footer } from './components';
+import { Nav, Footer } from "./components";
 
-import { WindoW } from './components/layout-components';
-import Routes from './Routes';
-import { BrowserContext } from './context';
+import { WindoW } from "./components/layout-components";
+import Routes from "./Routes";
+import { BrowserContext } from "./context";
+import { siteConfig } from "../site-config";
 
 const GlobalStyle = createGlobalStyle`
 html {
@@ -34,17 +35,22 @@ const App: React.FC<Props> = ({ defaultState }) => {
     browser: { browserWidth: 0 },
   });
 
-
   return (
-    <ThemeProvider theme={{ mode: 'light' }}>
+    <ThemeProvider theme={{ mode: "light" }}>
       <GlobalStyle />
       <BrowserContext.Provider value={providersValues?.browser}>
-        <WindoW fullWidth init column>
-          <Nav></Nav>
+        <Nav></Nav>
+        <WindoW
+          fullWidth
+          init
+          column
+          margin={siteConfig.client.nav.style.navHeight + " 0 0 0"}
+        >
           <Routes defaultState={defaultState}></Routes>
           <Footer></Footer>
         </WindoW>
       </BrowserContext.Provider>
+      
     </ThemeProvider>
   );
 };

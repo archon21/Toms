@@ -8,6 +8,12 @@ import { Typography } from "../../typography-components";
 interface Props {
   to: string;
   typographyConfig: Interfaces.Typography.Typography;
+  transitionConfig?: {
+    underline: boolean;
+    color?: {
+      color: Types.Colors;
+    };
+  };
   externalConfig: {
     isNewTab?: boolean;
   } | null;
@@ -29,10 +35,23 @@ const L: React.FC<Props> = (props) => {
   })`
     transition: all 300ms;
     text-decoration: none;
+    margin: ${(props) => props.margin || ""};
+    border-bottom: 0.1em solid transparent;
+    color: ${props => Styles.Colors[props.typographyConfig?.color]}; 
 
-    &:hover {
-      text-decoration: underline;
-    }
+    ${(props) =>
+      props.transitionConfig &&
+      `
+      &:hover {
+        color: ${
+          props.transitionConfig?.color
+            ? Styles.Colors[props.transitionConfig?.color?.color] || ""
+            : "none"
+        };
+        border-bottom: ${props.transitionConfig?.underline ? "0.1em solid" : ""};
+       
+      }
+      `}
   `;
 
   return (

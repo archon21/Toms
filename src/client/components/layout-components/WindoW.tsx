@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { Interfaces,  Styles, siteConfig, Types } from '../../../site-config';
-import { getFlexAlignment } from '../../util/functions';
+import { Interfaces, Styles, siteConfig, Types } from "../../../site-config";
+import { getFlexAlignment } from "../../util/functions";
 
 interface Props {
   column?: boolean;
@@ -13,6 +13,7 @@ interface Props {
   xAlign?: string;
   alignment?: Array<string>;
   init?: boolean;
+  margin?: string;
 }
 
 const Outer = styled.div<Props>`
@@ -22,21 +23,24 @@ const Outer = styled.div<Props>`
   min-height: ${(props) =>
     props.init
       ? `calc(100vh - ${siteConfig.client.nav.style.navHeight})`
-      : '100vh'};
+      : "100vh"};
   width: 100vw;
   background: ${(props) =>
-    props.background ?  Styles.Colors[props.background] :  Styles.Colors.backgroundPrimary};
+    props.background
+      ? Styles.Colors[props.background]
+      : Styles.Colors.backgroundPrimary};
   ${(props) => props.alignment?.map((str) => str)}
   align-items: center;
+  ${(props) => Styles.Defaults.Spacing({ props })}
 `;
 
 const Vessel = styled.section<Props>`
   display: flex;
-  flex-direction: ${(props) => (props.column ? 'column' : 'row')};
-  flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
+  flex-direction: ${(props) => (props.column ? "column" : "row")};
+  flex-wrap: ${(props) => (props.noWrap ? "nowrap" : "wrap")};
 
-  max-width: ${(props) => (props.fullWidth ? '100%' : '2000px')};
-  width: ${(props) => (props.fullWidth ? '100%' : '90%')};
+  max-width: 100%;
+  width: ${(props) => (props.fullWidth ? "100%" : "90%")};
   ${(props) => props.alignment?.map((str) => str)}
 `;
 

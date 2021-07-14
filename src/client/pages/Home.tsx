@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Layout, Typography, Content, Inputs } from "../components";
+import { Layout, Typography, Content, Inputs, Editable } from "../components";
 
 interface DefaultState {
   base: Array<string>;
@@ -16,16 +16,17 @@ const Home: React.FC<Props> = ({ defaultState }) => {
   return (
     <React.Fragment>
       <Layout.WindoW init xAlign="flex-start" yAlign="flex-start" column>
-        <Layout.Flex margin="50px 0" column>
-          <Typography.Typography
-            color="textPrimary"
-            variant="h1"
-            textAlign="center"
-          >
-            Services
-          </Typography.Typography>
-          <Layout.Flex>
-            <Content.Image src="/assets/images/services.jpeg"></Content.Image>
+        <Layout.Grid centerMobile margin="50px 0" layout={[50, 50]}>
+          <Layout.Flex column xAlign="flex-start" yAlign="flex-start">
+            <Typography.Typography
+              color="textPrimary"
+              variant="h5"
+              displayAlign={{ alignSelf: "flex-start" }}
+              textAlign="left"
+              margin="0 0 15px"
+            >
+              Services
+            </Typography.Typography>
             <Typography.List
               items={[
                 "Dumpster Rentals",
@@ -38,7 +39,14 @@ const Home: React.FC<Props> = ({ defaultState }) => {
               listItemConfig={{ typographyConfig: { variant: "h5" } }}
             ></Typography.List>
           </Layout.Flex>
-        </Layout.Flex>
+          <Layout.Flex xAlign="flex-end" yAlign="flex-end">
+            <Content.Image
+              boxShadow={true}
+              width="25em"
+              src="/assets/images/services.jpeg"
+            ></Content.Image>
+          </Layout.Flex>
+        </Layout.Grid>
       </Layout.WindoW>
       <Layout.WindoW
         xAlign="flex-start"
@@ -48,37 +56,33 @@ const Home: React.FC<Props> = ({ defaultState }) => {
       >
         <Layout.Flex margin="50px 0" column>
           <Typography.Typography
-            color="textPrimary"
+            color="textSecondary"
             variant="h1"
             textAlign="center"
+            margin="0 0 .5em"
           >
             Dumpster Rentals
           </Typography.Typography>
-          <Layout.Flex>
-            <Content.Image src="/assets/images/services.jpeg"></Content.Image>
-            <Typography.List
-              items={[
-                "Dumpster Rentals",
-                "Deliveries",
-                "Tractor Services",
-                "Forest Maintenance",
-                "Lawn and Garden",
-                "Leaf Removal",
-              ]}
-              listItemConfig={{ typographyConfig: { variant: "h5" } }}
-            ></Typography.List>
-          </Layout.Flex>
-
-          {/* <Icon size="veryLarge" name="send" color="safe"></Icon> */}
-
-          {/* <Buttons.Button
-          background="safe"
-          color="background"
-          onClick={function () {}}
-        >
-          Click Me
-        </Buttons.Button> */}
           <Inputs.SlateEditor></Inputs.SlateEditor>
+          <Editable.ImageDisplay
+            imageConfig={{
+              items: [
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+                { src: "/assets/images/services.jpeg", boxShadow: false },
+              ],
+              itemSpacing:"1em",
+
+              dimensionsConfig: {
+                width: "10em",
+                
+              },
+            }}
+          ></Editable.ImageDisplay>
         </Layout.Flex>
       </Layout.WindoW>
     </React.Fragment>

@@ -12,7 +12,7 @@ interface ListItemProps {
 interface Props {
   items: Array<any>;
   listItemConfig: ListItemProps;
-
+  direction?: "rtl";
   children?: any;
   variant?: "ol" | "ul";
   position?: "inside" | "outside";
@@ -27,7 +27,7 @@ const Element = (props) => React.createElement(props.variant || "ul", props);
 const StyledElement = styled(Element).attrs({})`
   list-style-position: ${(props) =>
     props.position ? props.position : "inside"};
-  ${(props) => Styles.Defaults.Spacing({ props })}
+  direction: ${(props) => props.direction || "ltr"};
 `;
 
 const List: React.FC<Props> = (props) => {

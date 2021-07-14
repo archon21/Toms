@@ -1,24 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { Styles } from "../../../site-config";
 
 interface Props {
   src: string;
-  width?: string;
+  width: string;
+  boxShadow: boolean;
+  objectFit?: "cover" | "contain";
+  maxWidth?: string;
   height?: string;
   margin?: string;
   padding?: string;
-  objectFit?: 'cover' | 'contain';
 }
 
 const Img = styled.img<Props>`
-  width: ${(props) => props.width || 'auto'};
-  height: ${(props) => props.height || 'auto'};
-  margin: ${(props) => props.margin || '0'};
-  padding: ${(props) => props.padding || '0'};
-  object-fit: ${(props) => props.objectFit || 'contain'};
+  max-width: ${(props) => props.maxWidth || "100%"};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height || "auto"};
+  margin: ${(props) => props.margin || "0"};
+  padding: ${(props) => props.padding || "0"};
+  object-fit: ${(props) => props.objectFit || "contain"};
+  box-shadow: ${(props) =>
+    props.boxShadow ? Styles.Colors.boxShadow : "none"};
 `;
 
 const Image: React.FC<Props> = (props) => {
+  const handleChangeImage = () => {};
+
   return <Img {...props}></Img>;
 };
 

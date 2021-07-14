@@ -4,11 +4,13 @@ const DARK = "#3B7A57";
 const LIGHT = "#ffe55a";
 const WHITE = "#fff";
 
+
 const Colors = {
   primary: DARK,
   secondary: LIGHT,
   textPrimary: LIGHT,
   textSecondary: DARK,
+  textTertiary: WHITE,
   tertiary: "gray",
   quaternary: "yellow",
   danger: "red",
@@ -17,7 +19,7 @@ const Colors = {
   backgroundSecondary: WHITE,
   navBackground: DARK,
   disabled: "#eee",
-  boxShadow: "rgb(153, 153, 153, .3)",
+  boxShadow:  'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
   buttonPrimary: DARK,
   buttonSecondary: LIGHT,
 };
