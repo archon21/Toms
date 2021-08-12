@@ -1,6 +1,8 @@
 import React from "react";
-
 import styled from "styled-components";
+import { useLocalStore, observer } from "mobx-react";
+import Draggable from "react-draggable";
+
 import { Content } from "..";
 import { siteConfig } from "../../../site-config";
 
@@ -35,12 +37,28 @@ const Vessel = styled.div<Props>`
   }
 `;
 
-const Grid: React.FC<Props> = (props) => {
+const Grid: React.FC<Props> = observer((props) => {
+    const store = useLocalStore(
+        // don't ever destructure source, it won't work
+        source => ({
+          count: props.initialCount,
+          get multiplied() {
+            // you shouldn't ever refer to props directly here, it won't see a change
+            return source.multiplier * store.count
+          },
+          inc() {
+            store.count += 1
+          },
+        }),
+        props, // note props passed here
+      )
+
   return (
     <Vessel {...props}>
       {props.imageConfig.items.map((item, index) => {
         return (
           <Content.Image
+            // onClick={to}
             key={index}
             {...item}
             {...props.imageConfig.dimensionsConfig}
@@ -49,6 +67,6 @@ const Grid: React.FC<Props> = (props) => {
       })}
     </Vessel>
   );
-};
+});
 
 export default Grid;

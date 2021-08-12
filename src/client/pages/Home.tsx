@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
+import store from "../store";
 
 import { Layout, Typography, Content, Inputs, Editable } from "../components";
 
@@ -10,7 +12,9 @@ interface Props {
   defaultState: DefaultState;
 }
 
-const Home: React.FC<Props> = ({ defaultState }) => {
+const Home: React.FC<Props> = (props) => {
+  console.log(store.defaultState, props);
+
   // const [defaultState, setDefaultState] = useState({});
 
   return (
@@ -24,18 +28,9 @@ const Home: React.FC<Props> = ({ defaultState }) => {
               displayAlign={{ alignSelf: "flex-start" }}
               textAlign="left"
               margin="0 0 15px"
-            >
-              Services
-            </Typography.Typography>
+            ></Typography.Typography>
             <Typography.List
-              items={[
-                "Dumpster Rentals",
-                "Deliveries",
-                "Tractor Services",
-                "Forest Maintenance",
-                "Lawn and Garden",
-                "Leaf Removal",
-              ]}
+              items={[]}
               listItemConfig={{ typographyConfig: { variant: "h5" } }}
             ></Typography.List>
           </Layout.Flex>
@@ -66,20 +61,12 @@ const Home: React.FC<Props> = ({ defaultState }) => {
           <Inputs.SlateEditor></Inputs.SlateEditor>
           <Editable.ImageDisplay
             imageConfig={{
-              items: [
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-                { src: "/assets/images/services.jpeg", boxShadow: false },
-              ],
-              itemSpacing:"1em",
+              items: store.defaultState.content.dumpsterRentals,
+
+              itemSpacing: "1em",
 
               dimensionsConfig: {
                 width: "10em",
-                
               },
             }}
           ></Editable.ImageDisplay>
@@ -89,4 +76,4 @@ const Home: React.FC<Props> = ({ defaultState }) => {
   );
 };
 
-export default Home;
+export default observer(Home);
