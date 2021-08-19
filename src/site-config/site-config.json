@@ -1,0 +1,29 @@
+{
+  "client": {
+    "required": {
+      "window": {
+        "title": { "prefix": "Lily's", "logo": "/assets/images/logo.png" }
+      },
+      "layouts": {
+        "tablet": "850",
+        "mobile": "400"
+      }
+    },
+    "nav": {
+      "links": [
+        { "id": "home", "text": "Home", "url": "/" },
+        { "id": "menu", "text": "Menu", "url": "/" },
+        { "id": "cocktails", "text": "Cocktails", "url": "/" },
+        { "id": "gallery", "text": "Gallery", "url": "/" },
+        { "id": "aboutUs", "text": "About Us", "url": "/" },
+        { "id": "diningGuidelines", "text": "Dining Guidelines", "url": "/" }
+      ],
+      "style": {
+        "navHeight": "2.7em",
+        "footerHeight": "auto",
+        "position": "fixed"
+      }
+    }
+  },
+  "server": {}
+}
