@@ -16,43 +16,41 @@ interface Props {
       height?: string;
     };
   };
+  layoutConfig: {
+    desktop: number;
+    mobile: number;
+    tablet: number;
+  };
 }
 
 const Vessel = styled.div<Props>`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fill, 19%);
+  grid-template-columns: repeat(
+    auto-fill,
+    ${(props) => props.layoutConfig.desktop}%
+  );
   grid-gap: ${(props) => props.imageConfig.itemSpacing || "auto"};
   justify-content: center;
 
   @media screen and (max-width: ${siteConfig.client.required.layouts
       .tablet}px) {
-    grid-template-columns: repeat(auto-fill, 23%);
+    grid-template-columns: repeat(
+      auto-fill,
+      ${(props) => props.layoutConfig.tablet}%
+    );
   }
 
   @media screen and (max-width: ${siteConfig.client.required.layouts
       .mobile}px) {
-    grid-template-columns: repeat(auto-fill, 45%);
-    grid-gap: 5px;
+    grid-template-columns: repeat(
+      auto-fill,
+      ${(props) => props.layoutConfig.mobile}%
+    );
   }
 `;
 
-const Grid: React.FC<Props> = observer((props) => {
-    const store = useLocalStore(
-        // don't ever destructure source, it won't work
-        source => ({
-          count: props.initialCount,
-          get multiplied() {
-            // you shouldn't ever refer to props directly here, it won't see a change
-            return source.multiplier * store.count
-          },
-          inc() {
-            store.count += 1
-          },
-        }),
-        props, // note props passed here
-      )
-
+const Grid: React.FC<Props> = (props) => {
   return (
     <Vessel {...props}>
       {props.imageConfig.items.map((item, index) => {
@@ -67,6 +65,6 @@ const Grid: React.FC<Props> = observer((props) => {
       })}
     </Vessel>
   );
-});
+};
 
 export default Grid;

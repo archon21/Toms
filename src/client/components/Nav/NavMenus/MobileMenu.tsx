@@ -8,7 +8,9 @@ interface Props {}
 const MobileMenu: React.FC<Props> = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [renderedLinks, setRenderedLinks] = useState(siteConfig.client.nav.links);
+  const [renderedLinks, setRenderedLinks] = useState(
+    siteConfig.client.nav.links
+  );
 
   const handleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +18,7 @@ const MobileMenu: React.FC<Props> = () => {
 
   return (
     <Layout.Flex
+      noWrap
       height={siteConfig.client.nav.style.navHeight}
       id="mobile-menu"
       xAlign="flex-end"

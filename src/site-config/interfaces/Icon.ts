@@ -5,6 +5,8 @@ interface Icon {
   provider?: "material-icons";
   name: string;
   color?: Colors;
+  type: "svg" | "icon";
 }
 
 export default Icon;
+ 

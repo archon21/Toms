@@ -1,5 +1,5 @@
 const fontFamily = {
-  primary: "'Hind Madurai', sans-serif;",
+  primary: "'Montserrat', sans-serif;",
 };
 
 export default fontFamily;

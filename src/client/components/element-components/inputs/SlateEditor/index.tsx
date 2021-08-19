@@ -180,7 +180,7 @@ const BlockButton = ({ format, icon, helperText }) => {
 const MarkButton = ({ format, icon, helperText }) => {
   const editor = useSlate();
   const active = isMarkActive(editor, format)
-  console.log(active);
+
   
   return (
     <Buttons.Editor

@@ -5,5 +5,6 @@ export * as Typography from "./typography-components";
 export * as Content from "./content-components";
 export * as Layout from "./layout-components";
 export * as Editable from "./editable-components";
+export * as Element from './element-components'
 
 export * from "./element-components";

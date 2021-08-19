@@ -16,8 +16,8 @@ const NavMenu: React.FC<Props> = () => {
 
   const MenuContainer = styled.div`
     display: flex;
-    align-self: flex-end;
-    align-items: flex-end;
+    align-self: center;
+    align-items: center;
     flex-direction: column;
     & > div#mobile-menu {
       display: none;

@@ -1,9 +1,8 @@
 import theme from "styled-theming";
 
-const DARK = "#3B7A57";
-const LIGHT = "#ffe55a";
+const DARK = "#5E8F72";
+const LIGHT = "goldenrod";
 const WHITE = "#fff";
-
 
 const Colors = {
   primary: DARK,
@@ -18,10 +17,13 @@ const Colors = {
   backgroundPrimary: DARK,
   backgroundSecondary: WHITE,
   navBackground: DARK,
+  footerBackground: DARK,
   disabled: "#eee",
-  boxShadow:  'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+  boxShadow:
+    "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
   buttonPrimary: DARK,
   buttonSecondary: LIGHT,
+  transparent: "transparent",
 };
 
 Object.entries(Colors).forEach(([colorKey, colorTone]) => {
