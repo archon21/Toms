@@ -42,7 +42,7 @@ const App: React.FC<Props> = ({ defaultState }) => {
   const [scrollY, setScrollY] = useState(0);
 
   global?.window?.addEventListener("scroll", () =>
-    setScrollY(global?.window?.scrollY)
+    setScrollY(Number(global?.window?.scrollY))
   );
 
   useEffect(() => {

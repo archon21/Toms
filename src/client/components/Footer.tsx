@@ -34,9 +34,9 @@ const Footer: React.FC<Props> = (props) => {
             ​​Friday - Saturday: 5pm - 9pm
           </Typography.Typography>
         </Layout.Flex>
-        <Layout.Flex margin=".5em 0" column width="auto">
+        {/* <Layout.Flex margin=".5em 0" column width="auto">
           <Content.Icon type="svg" name="facebook"></Content.Icon>
-        </Layout.Flex>
+        </Layout.Flex> */}
 
         <Layout.Flex margin=".5em 0" column width="auto">
           <Typography.Typography color="textTertiary" variant="p">

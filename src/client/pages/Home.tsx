@@ -13,6 +13,7 @@ import {
 import { siteConfig } from "../../site-config";
 import NavMenu from "../components/Nav/NavMenus";
 import NavLogo from "../components/Nav/NavLogo";
+import DesktopMenu from "../components/Nav/NavMenus/DesktopMenu";
 
 interface DefaultState {
   base: Array<string>;
@@ -44,7 +45,12 @@ const Home: React.FC<Props> = (props) => {
           yAlign="flex-start"
         >
           <NavLogo></NavLogo>
-          <NavMenu></NavMenu>
+          {store.window.clientWidth >
+            siteConfig.client.required.layouts.tablet && (
+            <Layout.Flex xAlign="center" yAlign="center">
+              <DesktopMenu></DesktopMenu>
+            </Layout.Flex>
+          )}
           <Typography.Typography
             color="textTertiary"
             variant="h3"
@@ -207,7 +213,12 @@ const Home: React.FC<Props> = (props) => {
           ></Editable.ImageDisplay>
         </Layout.Flex>
       </Layout.WindoW>
-      <Layout.WindoW id='aboutUs' xAlign="flex-start" yAlign="flex-start" column>
+      <Layout.WindoW
+        id="aboutUs"
+        xAlign="flex-start"
+        yAlign="flex-start"
+        column
+      >
         <Typography.Typography
           color="textTertiary"
           variant="h3"
@@ -216,19 +227,23 @@ const Home: React.FC<Props> = (props) => {
         >
           About
         </Typography.Typography>
-        <Layout.Grid margin='2.5em 0 ' layout={[50, 50]}>
+        <Layout.Grid
+          gridGap="1.5em"
+          centerMobile
+          margin="2.5em 0 "
+          layout={[50, 50]}
+        >
           <Content.Image
             boxShadow={true}
-            maxWidth="800px"
-            width="15em"
+            maxWidth="14em"
+            width="100%"
             src="/assets/images/family.jpeg"
           ></Content.Image>
           <Typography.Typography
             color="textTertiary"
-            variant="h6"
+            variant="p"
             displayAlign={{ alignSelf: "flex-start" }}
             textAlign="left"
-            
           >
             Born in the Carolinas, Lily made her way to Connecticut at a young
             age. Tough as nails, and soft as silk; one would never know the
@@ -240,10 +255,15 @@ const Home: React.FC<Props> = (props) => {
             first restaurant after our beloved dog, Lily.
           </Typography.Typography>
         </Layout.Grid>
-        <Layout.Grid margin="2.5em 0 " layout={[50, 50]}>
+        <Layout.Grid
+          gridGap="1.5em"
+          centerMobile
+          margin="2.5em 0 "
+          layout={[50, 50]}
+        >
           <Typography.Typography
             color="textTertiary"
-            variant="h6"
+            variant="p"
             displayAlign={{ alignSelf: "flex-start" }}
             textAlign="left"
           >
@@ -254,21 +274,26 @@ const Home: React.FC<Props> = (props) => {
           </Typography.Typography>
           <Content.Image
             boxShadow={true}
-            maxWidth="800px"
-            width="15em"
+            maxWidth="14em"
+            width="100%"
             src="/assets/images/building.jpeg"
           ></Content.Image>
         </Layout.Grid>
-        <Layout.Grid margin="2.5em 0 " layout={[50, 50]}>
+        <Layout.Grid
+          gridGap="1.5em"
+          centerMobile
+          margin="2.5em 0 "
+          layout={[50, 50]}
+        >
           <Content.Image
             boxShadow={true}
-            maxWidth="800px"
-            width="15em"
+            maxWidth="14em"
+            width="100%"
             src="/assets/images/dining.jpeg"
           ></Content.Image>
           <Typography.Typography
             color="textTertiary"
-            variant="h6"
+            variant="p"
             displayAlign={{ alignSelf: "flex-start" }}
             textAlign="left"
           >
@@ -286,7 +311,7 @@ const Home: React.FC<Props> = (props) => {
         </Layout.Grid>
       </Layout.WindoW>
       <Layout.WindoW
-        id='diningGuidelines'
+        id="diningGuidelines"
         xAlign="flex-start"
         yAlign="flex-start"
         column

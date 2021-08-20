@@ -1,18 +1,18 @@
-import React, { Fragment, useContext } from 'react';
-import styled from 'styled-components';
-import { siteConfig } from '../../../../site-config';
-import { BrowserContext } from '../../../context';
+import React, { Fragment, useContext } from "react";
+import styled from "styled-components";
+import { siteConfig } from "../../../../site-config";
+import { BrowserContext } from "../../../context";
+import store from "../../../store";
 
-import { Flex } from '../../layout-components';
+import DesktopMenu from "./DesktopMenu";
+import MobileMenu from "./MobileMenu";
 
-import DesktopMenu from './DesktopMenu';
-import MobileMenu from './MobileMenu';
+interface Props {
+  disableMobileRender: boolean;
+}
 
-interface Props {}
-
-const NavMenu: React.FC<Props> = () => {
+const NavMenu: React.FC<Props> = ({ disableMobileRender }) => {
   const browserContext = useContext(BrowserContext);
-
 
   const MenuContainer = styled.div`
     display: flex;

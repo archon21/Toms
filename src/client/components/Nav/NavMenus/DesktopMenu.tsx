@@ -12,7 +12,7 @@ const DesktopMenu: React.FC<Props> = () => {
     global.document?.getElementById("navigation")?.clientHeight || 0;
 
   return (
-    <Layout.Flex yAlign="center">
+    <Layout.Flex yAlign="center" xAlign='center'>
       {siteConfig.client.nav.links.map(({ url, text, id }) => {
         return (
           <Links.Link

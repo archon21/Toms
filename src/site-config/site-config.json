@@ -5,8 +5,8 @@
         "title": { "prefix": "Lily's", "logo": "/assets/images/logo.png" }
       },
       "layouts": {
-        "tablet": "850",
-        "mobile": "400"
+        "tablet": 850,
+        "mobile": 400
       }
     },
     "nav": {

@@ -5,6 +5,7 @@ import { siteConfig } from "../../../site-config";
 
 interface Props {
   layout: Array<number>;
+  gridGap: string;
   centerMobile?: boolean;
   children: React.ReactNode;
   formattedLayout?: string;
@@ -19,8 +20,10 @@ const Vessel = styled.div<Props>`
   width: ${(props) => props.width || "100%"};
   margin: ${(props) => props.margin || "0"};
   padding: ${(props) => props.padding || "0"};
+  grid-gap: ${(props) => props.gridGap || "0"};
 
-  @media screen and (max-width: ${siteConfig.client.required.layouts.tablet}px) {
+  @media screen and (max-width: ${siteConfig.client.required.layouts
+      .tablet}px) {
     ${(props) =>
       props.centerMobile && "grid-template-columns: repeat(auto-fill, 100%);"}
   }

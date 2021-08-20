@@ -9,11 +9,12 @@ import NavLogo from "./NavLogo";
 import { observer } from "mobx-react";
 import store from "../../store";
 
-interface Props {
+interface NavProps {
   scrollY: number;
+  clientWidth: number;
 }
 
-const Nav = styled.nav<Props>`
+const Nav = styled.nav<NavProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,20 +26,40 @@ const Nav = styled.nav<Props>`
   position: ${siteConfig.client.nav.style.position};
   top: 0;
   left: 0;
-  background: ${(props) => Styles.Colors.navBackground};
+  background: ${(props) =>
+    props.clientWidth > siteConfig.client.required.layouts.mobile
+      ? Styles.Colors.navBackground
+      : "transparent"};
   z-index: 100;
   transition: all 300ms ease-in-out;
 
-  transform: translateY(${(props) => (props.scrollY > 800 ? 0 : -100)}%);
+  transform: translateY(
+    ${(props) =>
+      props.scrollY > 800 ||
+      store.window.clientWidth <= siteConfig.client.required.layouts.tablet
+        ? 0
+        : -100}%
+  );
   height: ${(props) => siteConfig.client.nav.style.navHeight};
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 `;
 
+interface Props {}
+
 const Navbar: React.FC<Props> = (props) => {
-  console.log("render");
+  console.log(
+    store.window.clientWidth,
+    siteConfig.client.required.layouts.mobile,
+    store.window.clientWidth > siteConfig.client.required.layouts.mobile
+  );
 
   return (
-    <Nav id="navigation" {...props} scrollY={store.window.scrollY}>
+    <Nav
+      id="navigation"
+      {...props}
+      clientWidth={store.window.clientWidth}
+      scrollY={store.window.scrollY}
+    >
       <NavMenu></NavMenu>
     </Nav>
   );

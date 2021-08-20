@@ -89,8 +89,9 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
                       }}
                       textAlign="right"
                       variant="p"
+                      style={{whiteSpace: 'nowrap', }}
                     >
-                      {price}
+                      {Math.round(price / 100)}
                       {unit && `- ${unit}`}
                     </Typography.Typography>
                   </Layout.Grid>

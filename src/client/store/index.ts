@@ -351,6 +351,7 @@ class Store {
   window = {
     scrollY: 0,
     lastScrollY: 0,
+    clientWidth: global?.window?.innerWidth || 0,
   };
 
   constructor() {

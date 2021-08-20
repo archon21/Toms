@@ -17,6 +17,7 @@ const Colors = {
   backgroundPrimary: DARK,
   backgroundSecondary: WHITE,
   navBackground: DARK,
+  navMobileBackground: "rgba(94, 143, 114, .9)",
   footerBackground: DARK,
   disabled: "#eee",
   boxShadow:
