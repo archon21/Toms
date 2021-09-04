@@ -13,6 +13,7 @@ const NavButton = styled.button`
   top: 15px;
   left: 15px;
   outline: none;
+  z-index: 1000;
   border: none;
 `;
 
@@ -54,7 +55,7 @@ const MobileMenu: React.FC<Props> = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log(isMenuOpen);
+
 
   return (
     <Layout.Flex
