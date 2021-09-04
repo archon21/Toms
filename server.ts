@@ -1,6 +1,6 @@
 import app from './src/server';
 
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 3006;
 
 
 
