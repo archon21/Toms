@@ -45,38 +45,42 @@ const Home: React.FC<Props> = (props) => {
           yAlign="flex-start"
         >
           <NavLogo></NavLogo>
+
           {store.window.clientWidth >
             siteConfig.client.required.layouts.tablet && (
-            <Layout.Flex xAlign="center" yAlign="center">
+            <Layout.Flex margin='1em 0 0' xAlign="center" yAlign="center">
               <DesktopMenu></DesktopMenu>
             </Layout.Flex>
           )}
           <Typography.Typography
-            color="textTertiary"
+            color="textQuinary"
             variant="h3"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
             margin="1em 0 0 0"
+            weight="bold"
           >
             Lily's is now open and we look forward to seeing you!{" "}
           </Typography.Typography>
           <Typography.Typography
-            color="textTertiary"
+            color="textQuinary"
             variant="p"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
             margin="2em 0 0"
+            weight="500"
           >
             Lily's is now open and we look forward to seeing you! Come in to
             enjoy a concise menu of premium steaks, seafood, sandwiches, and
             salads along with a selection of daily specials.
           </Typography.Typography>
           <Typography.Typography
-            color="textTertiary"
+            color="textQuinary"
             variant="p"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
             margin="2em 0 0"
+            weight="500"
           >
             The space is intimate with 8 tables in the main dining room, and 5
             tables on the patio. There are 2 high tops on the patio considered
@@ -84,38 +88,38 @@ const Home: React.FC<Props> = (props) => {
             between the kitchen and patio.
           </Typography.Typography>
           <Typography.Typography
-            color="textTertiary"
+            color="textQuinary"
             variant="p"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
             margin="2em 0 0"
+            weight="500"
           >
             Friendly, knowledgeable bartenders craft classic cocktails alongside
             a chef chosen wine and beer selection to complement the menu. We
             recommend making reservations and walk-ins are always welcome.
           </Typography.Typography>
-          <Typography.Typography
-            color="textTertiary"
-            variant="h3"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
+
+          <Element.Buttons.Button
+            color='textQuinary'
+            background='backgroundPrimary'
+            variant='h5'
+            margin="2em 0"
+            onClick={() => {
+              const calculatedNavHeight =
+                global.document?.getElementById("navigation")?.clientHeight ||
+                0;
+              const content =
+                global.document.getElementById("diningGuidelines");
+              if (content) {
+                const { x, y } = content.getBoundingClientRect();
+                console.log(y, store.window.scrollY);
+                const scrollTo = content.offsetTop - calculatedNavHeight;
+
+                global.window.scroll({ top: scrollTo, behavior: "smooth" });
+              }
+            }}
           >
-            ON OUR DRESS CODE:
-          </Typography.Typography>
-          <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-          >
-            We consider flip flops, tank tops, and team athletic attire too
-            casual for our restaurant. We ask that hats be worn in the
-            traditional manner. Before your visit, view our other Dining
-            Guidelines.
-          </Typography.Typography>
-          <Element.Buttons.Button margin="2em 0" onClick={() => {}}>
             {" "}
             Dining Guidelines
           </Element.Buttons.Button>
@@ -135,35 +139,37 @@ const Home: React.FC<Props> = (props) => {
           xAlign="center"
         >
           <Typography.Typography
-            color="textSecondary"
+            color="textTertiary"
             variant="h3"
             textAlign="center"
-            margin="0 0 .5em"
+            margin="0 0 1em"
           >
             Menu
           </Typography.Typography>
           <Editable.MenuDisplay items={store.defaultState.content.menu.menu}>
             {" "}
-            <Typography.Typography
-              color="textPrimary"
-              variant="span"
-              displayAlign={{ alignSelf: "center" }}
-              textAlign="center"
-              margin="1em 0 0"
-            >
-              * CONSUMING RAW OR UNDERCOOKED MEATS, POULTRY, SEAFOOD, SHELLFISH
-              OR EGGS MAY INCREASE YOUR RISK OF FOODBORNE ILLNESS, ESPECIALLY IF
-              YOU HAVE CERTAIN MEDICAL CONDITIONS.
-            </Typography.Typography>
-            <Typography.Typography
-              color="textPrimary"
-              variant="span"
-              displayAlign={{ alignSelf: "center" }}
-              textAlign="center"
-              margin="1em 0 0"
-            >
-              Menu subject to change
-            </Typography.Typography>
+            <Layout.Flex yAlign="center" xAlign="center" width="80%">
+              <Typography.Typography
+                color="textTertiary"
+                variant="span"
+                displayAlign={{ alignSelf: "center" }}
+                textAlign="center"
+                margin="1em 0 0"
+              >
+                * CONSUMING RAW OR UNDERCOOKED MEATS, POULTRY, SEAFOOD,
+                SHELLFISH OR EGGS MAY INCREASE YOUR RISK OF FOODBORNE ILLNESS,
+                ESPECIALLY IF YOU HAVE CERTAIN MEDICAL CONDITIONS.
+              </Typography.Typography>
+              <Typography.Typography
+                color="textTertiary"
+                variant="span"
+                displayAlign={{ alignSelf: "center" }}
+                textAlign="center"
+                margin="1em 0 0"
+              >
+                Menu subject to change
+              </Typography.Typography>
+            </Layout.Flex>
           </Editable.MenuDisplay>
 
           {/* <Inputs.SlateEditor></Inputs.SlateEditor>
@@ -213,111 +219,108 @@ const Home: React.FC<Props> = (props) => {
           ></Editable.ImageDisplay>
         </Layout.Flex>
       </Layout.WindoW>
-      <Layout.WindoW
-        id="aboutUs"
-        xAlign="flex-start"
-        yAlign="flex-start"
-        column
-      >
-        <Typography.Typography
-          color="textTertiary"
-          variant="h3"
-          textAlign="center"
-          margin="1.5em 0 .5em"
-        >
-          About
-        </Typography.Typography>
-        <Layout.Grid
-          gridGap="1.5em"
-          centerMobile
-          margin="2.5em 0 "
-          layout={[50, 50]}
-        >
-          <Content.Image
-            boxShadow={true}
-            maxWidth="14em"
-            width="100%"
-            src="/assets/images/family.jpeg"
-          ></Content.Image>
-          <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "flex-start" }}
-            textAlign="left"
+      <Layout.WindoW id="aboutUs" xAlign="center" yAlign="flex-start" column>
+        <Layout.Flex maxWidth="45em">
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="2.5em 0 "
+            layout={[50, 50]}
           >
-            Born in the Carolinas, Lily made her way to Connecticut at a young
-            age. Tough as nails, and soft as silk; one would never know the
-            hardships she’d endured by the sparkle in her eyes and smile across
-            her face. Seeing people happy and healthy has always been a vigilant
-            endeavor for her, and she’s as quick to hug and kiss as she is to
-            selflessly protect those in need. She’s been the soul of our family
-            since the beginning. And so, it’s only fitting that we name our
-            first restaurant after our beloved dog, Lily.
-          </Typography.Typography>
-        </Layout.Grid>
-        <Layout.Grid
-          gridGap="1.5em"
-          centerMobile
-          margin="2.5em 0 "
-          layout={[50, 50]}
-        >
-          <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "flex-start" }}
-            textAlign="left"
+            <Content.Image
+              boxShadow={true}
+              maxWidth="14em"
+              width="100%"
+              src="/assets/images/family.jpeg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Born in the Carolinas, Lily made her way to Connecticut at a young
+              age. Tough as nails, and soft as silk; one would never know the
+              hardships she’d endured by the sparkle in her eyes and smile
+              across her face. Seeing people happy and healthy has always been a
+              vigilant endeavor for her, and she’s as quick to hug and kiss as
+              she is to selflessly protect those in need. She’s been the soul of
+              our family since the beginning. And so, it’s only fitting that we
+              name our first restaurant after our beloved dog, Lily.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="2.5em 0 "
+            layout={[40, 60]}
           >
-            Chef Michael and Emily Alfeld’s menu is simple, and focused on using
-            the freshest ingredients possible. With a love for local food, wine,
-            and beer the cuisine highlights the best that Connecticut has to
-            offer, and much more.
-          </Typography.Typography>
-          <Content.Image
-            boxShadow={true}
-            maxWidth="14em"
-            width="100%"
-            src="/assets/images/building.jpeg"
-          ></Content.Image>
-        </Layout.Grid>
-        <Layout.Grid
-          gridGap="1.5em"
-          centerMobile
-          margin="2.5em 0 "
-          layout={[50, 50]}
-        >
-          <Content.Image
-            boxShadow={true}
-            maxWidth="14em"
-            width="100%"
-            src="/assets/images/dining.jpeg"
-          ></Content.Image>
-          <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "flex-start" }}
-            textAlign="left"
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Chef Michael and Emily Alfeld’s menu is simple, and focused on
+              using the freshest ingredients possible. With a love for local
+              food, wine, and beer the cuisine highlights the best that
+              Connecticut has to offer, and much more.
+            </Typography.Typography>
+            <Content.Image
+              boxShadow={true}
+              maxWidth="14em"
+              width="100%"
+              src="/assets/images/building.jpeg"
+            ></Content.Image>
+          </Layout.Grid>
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="2.5em 0 "
+            layout={[50, 50]}
           >
-            A simple and elegant dining room and bar, along with a beautiful
-            wrap around porch, is a quaint and quiet setting in the uniquely
-            historical and lively town of Colchester. With a full bar, and
-            generous beer and wine menus, Lily’s is the perfect spot for a
-            sumptuous dinner of the finest steaks and seafood, or just a
-            cocktail and some laughs with friends. With more than 40 years of
-            experience, Michael and Emily have brought their repertoires from
-            around the country back to our home here in one of the most
-            beautiful parts of New England. A fertile cornucopia with
-            incomparable farm land and food products.
-          </Typography.Typography>
-        </Layout.Grid>
+            <Content.Image
+              boxShadow={true}
+              maxWidth="14em"
+              width="100%"
+              src="/assets/images/dining.jpeg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              A simple and elegant dining room and bar, along with a beautiful
+              wrap around porch, is a quaint and quiet setting in the uniquely
+              historical and lively town of Colchester. With a full bar, and
+              generous beer and wine menus, Lily’s is the perfect spot for a
+              sumptuous dinner of the finest steaks and seafood, or just a
+              cocktail and some laughs with friends. With more than 40 years of
+              experience, Michael and Emily have brought their repertoires from
+              around the country back to our home here in one of the most
+              beautiful parts of New England. A fertile cornucopia with
+              incomparable farm land and food products.
+            </Typography.Typography>
+          </Layout.Grid>
+        </Layout.Flex>
       </Layout.WindoW>
       <Layout.WindoW
         id="diningGuidelines"
-        xAlign="flex-start"
+        xAlign="center"
         yAlign="flex-start"
         column
+        background="backgroundSecondary"
+
         // backgroundUrl="/assets/"
       >
-        <Layout.Flex margin="2em 0" column yAlign="center" xAlign="center">
+        <Layout.Flex
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
+          maxWidth="30em"
+        >
           <Typography.Typography
             color="textTertiary"
             variant="h3"

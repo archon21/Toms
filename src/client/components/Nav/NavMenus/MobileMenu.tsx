@@ -26,6 +26,7 @@ const NavMenu = styled.div<{ isMenuOpen: boolean }>`
   bottom: 0;
   width: 100vw;
   height: 100vh;
+
   background: ${Styles.Colors.navMobileBackground};
   display: ${(props) => (props.isMenuOpen ? "flex" : "none")};
   transition: opacity 300ms ease-in-out;
@@ -70,9 +71,9 @@ const MobileMenu: React.FC<Props> = () => {
 
               margin="30px 0"
               typographyConfig={{
-                color: "textTertiary",
+                color: "textQuinary",
                 variant: "h5",
-                weight: "semi",
+                weight: "500",
               }}
               transitionConfig={{
                 underline: true,

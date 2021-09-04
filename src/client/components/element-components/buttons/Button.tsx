@@ -17,14 +17,12 @@ const Element = styled.button<ButtonProps>`
   display: inline-flex;
   flex-direction: column;
   width: max-content;
-  font-size: ${Styles.FontSizes.h5};
+
   cursor: pointer;
   background: ${(props) =>
     props.background
       ? Styles.Colors[props.background]
       : Styles.Colors.background};
-  color: ${(props) =>
-    props.color ? Styles.Colors[props.color] : Styles.Colors.background};
 
   border-radius: 3px;
   outline: none;
@@ -55,7 +53,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   return (
     <Element {...props} onClick={onClick}>
-      <Typography {...props} margin='0' padding='0' variant="p">
+      <Typography {...props} margin="0" padding="0" variant={props.variant || "p"}>
         {props.children}
       </Typography>
     </Element>

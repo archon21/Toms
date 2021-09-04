@@ -28,17 +28,25 @@ const Vessel = styled.div<Props>`
   padding: 1.5em 0;
 
   justify-content: center;
-  max-width: 800px;
+  max-width: 30em;
   border-radius: 3px;
 `;
 
-const MenuDisplayItem = styled.div<Props>`
+const MenuDisplayItem = styled.div`
   display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, 100%);
+  grid-template-columns: 80% 20%;
 
-  justify-content: center;
+  padding: 0 0 0.5em 0;
+  margin: 0 0 0.75em 0;
+  width: 100%;
 `;
+
+const Line = styled.div`
+  height: ${(props) => (props.height ? props.height : "1em")};
+  background: ${(props) =>
+    props.color ? Styles.Colors[props.color] : Styles.Colors.primary};
+`;
+
 //   @media screen and (max-width: ${siteConfig.client.required.layouts
 //       .tablet}px) {
 //     grid-template-columns: repeat(auto-fill, 23%);
@@ -58,24 +66,29 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
       {Object.entries(items).map(
         ([key, { name, description, items }], index) => {
           return (
-            <Layout.Flex width="85%" margin="0 0 2em" column yAlign="center">
-              <Typography.Typography variant="h4">{name}</Typography.Typography>
+            <Layout.Flex width="85%" margin="0 0 2em" column yAlign="flex-start">
+              <Typography.Typography margin='0 0 1em' textAlign='left' color='textTertiary' fontFamily="secondary" variant="h4">
+                {name}
+              </Typography.Typography>
+
               {items.map(({ name, price, description, unit }) => {
                 return (
-                  <Layout.Grid layout={[90, 10]}>
+                  <MenuDisplayItem>
                     <Layout.Flex yAlign="flex-start">
                       <Typography.Typography
                         weight="bold"
                         textAlign="left"
                         variant="p"
+                        color="textTertiary"
                       >
                         {name}
                       </Typography.Typography>
-                      {description && (
+                      {Boolean(description) && (
                         <Typography.Typography
                           margin="0 0 0 .4em"
                           textAlign="left"
                           variant="p"
+                          color="textTertiary"
                         >
                           {" "}
                           - {description}
@@ -84,17 +97,19 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
                     </Layout.Flex>
                     <Typography.Typography
                       displayAlign={{
-                        alignSelf: "flex-end",
+                        alignSelf: "center",
                         justifySelf: "flex-end",
                       }}
                       textAlign="right"
                       variant="p"
-                      style={{whiteSpace: 'nowrap', }}
+                      color="textTertiary"
+                      style={{ whiteSpace: "nowrap" }}
                     >
-                      {Math.round(price / 100)}
+                      {Number.isNaN(Number(price)) ? price : Math.round(price / 100)}
+
                       {unit && `- ${unit}`}
                     </Typography.Typography>
-                  </Layout.Grid>
+                  </MenuDisplayItem>
                 );
               })}
             </Layout.Flex>

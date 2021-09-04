@@ -24,13 +24,13 @@ const Footer: React.FC<Props> = (props) => {
     <Foot>
       <Layout.Flex column>
         <Layout.Flex margin=".5em 0" column width="auto">
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             ​Sunday - Tuesday: Closed
           </Typography.Typography>
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             Wednesday - Thursday: 5pm - 9pm
           </Typography.Typography>
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             ​​Friday - Saturday: 5pm - 9pm
           </Typography.Typography>
         </Layout.Flex>
@@ -39,13 +39,13 @@ const Footer: React.FC<Props> = (props) => {
         </Layout.Flex> */}
 
         <Layout.Flex margin=".5em 0" column width="auto">
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             68 Linwood Ave
           </Typography.Typography>
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             Colchester, CT 06415
           </Typography.Typography>
-          <Typography.Typography color="textTertiary" variant="p">
+          <Typography.Typography color="textQuinary" variant="p">
             (860)603-6948
           </Typography.Typography>
         </Layout.Flex>

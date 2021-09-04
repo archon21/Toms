@@ -2,20 +2,24 @@ import theme from "styled-theming";
 
 const DARK = "#5E8F72";
 const LIGHT = "goldenrod";
-const WHITE = "#fff";
+const WHITE = "#E1D9D1";
+const QUATERNARY = "##F0BF59";
 
 const Colors = {
   primary: DARK,
   secondary: LIGHT,
+  tertiary: "#9C1B31",
   textPrimary: LIGHT,
   textSecondary: DARK,
-  textTertiary: WHITE,
-  tertiary: "gray",
+  textTertiary: '#333',
+  textQuaternary: "#F0BF59",
+  textQuinary: WHITE,
+
   quaternary: "yellow",
   danger: "red",
   safe: "forestgreen",
   backgroundPrimary: DARK,
-  backgroundSecondary: WHITE,
+  backgroundSecondary: '#fff',
   navBackground: DARK,
   navMobileBackground: "rgba(94, 143, 114, .9)",
   footerBackground: DARK,

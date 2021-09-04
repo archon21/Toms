@@ -14,7 +14,9 @@ const html = ({
   <!DOCTYPE html>
   <html>
     <head>
-      <title>${siteConfig.client.required.window.title.prefix} - ${title}</title>
+      <title>${
+        siteConfig.client.required.window.title.prefix
+      } - ${title}</title>
       <meta charset="utf-8" />
       <link rel="icon" href=${siteConfig.client.required.window.title.logo} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,7 +32,7 @@ const html = ({
     />
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Great+Vibes&display=swap"
         rel="stylesheet"
       />
       <link

@@ -16,11 +16,12 @@ const DesktopMenu: React.FC<Props> = () => {
       {siteConfig.client.nav.links.map(({ url, text, id }) => {
         return (
           <Links.Link
+
             margin="0 20px"
             typographyConfig={{
-              color: "textTertiary",
+              color: "textQuinary",
               variant: "p",
-              weight: "semi",
+              weight: "500",
             }}
             transitionConfig={{
               underline: true,

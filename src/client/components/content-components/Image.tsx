@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Styles } from "../../../site-config";
+import { Interfaces, Styles } from "../../../site-config";
 
 interface Props {
   src: string;
@@ -11,6 +11,7 @@ interface Props {
   height?: string;
   margin?: string;
   padding?: string;
+  displayAlign?: Interfaces.DisplayAlign;
 }
 
 const Img = styled.img<Props>`
@@ -22,6 +23,7 @@ const Img = styled.img<Props>`
   object-fit: ${(props) => props.objectFit || "contain"};
   box-shadow: ${(props) =>
     props.boxShadow ? Styles.Colors.boxShadow : "none"};
+  ${(props) => Styles.Defaults.DisplayAlign({ props })}
 `;
 
 const Image: React.FC<Props> = (props) => {

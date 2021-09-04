@@ -34,8 +34,8 @@ const StyledElement = styled(Element).attrs({})`
     props.position ? props.position : "inside"};
   direction: ${(props) => props.direction || "ltr"};
   color: ${(props) =>
-    props.color
-      ? Styles.Colors[props.listItem?.typographyConfig?.color]
+    props.listItemConfig?.typographyConfig?.color
+      ? Styles.Colors[props.listItemConfig?.typographyConfig?.color]
       : Styles.Colors.textPrimary};
   ${(props) => Styles.Defaults.Spacing({ props })}
 

@@ -15,7 +15,7 @@
         { "id": "menu", "text": "Menu", "url": "/" },
         { "id": "cocktails", "text": "Cocktails", "url": "/" },
         { "id": "gallery", "text": "Gallery", "url": "/" },
-        { "id": "aboutUs", "text": "About Us", "url": "/" },
+        { "id": "aboutUs", "text": "About", "url": "/" },
         { "id": "diningGuidelines", "text": "Dining Guidelines", "url": "/" }
       ],
       "style": {

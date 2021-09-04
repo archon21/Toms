@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-import { siteConfig } from "../../../site-config";
+import { siteConfig, Styles } from "../../../site-config";
 
 interface Props {
   layout: Array<number>;
@@ -12,6 +12,7 @@ interface Props {
   width?: string;
   margin?: string;
   padding?: string;
+  maxWidth?: string;
 }
 
 const Vessel = styled.div<Props>`
@@ -22,8 +23,10 @@ const Vessel = styled.div<Props>`
   padding: ${(props) => props.padding || "0"};
   grid-gap: ${(props) => props.gridGap || "0"};
 
+  ${(props) => Styles.Defaults.Dimensions({ props })}
+
   @media screen and (max-width: ${siteConfig.client.required.layouts
-      .tablet}px) {
+    .tablet}px) {
     ${(props) =>
       props.centerMobile && "grid-template-columns: repeat(auto-fill, 100%);"}
   }

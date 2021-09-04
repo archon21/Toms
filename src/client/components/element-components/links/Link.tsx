@@ -23,37 +23,38 @@ interface Props {
   padding?: string;
 }
 
-const a = styled.a``;
+const Element = (props) =>
+  props.externalConfig ? <a {...props}></a> : <Link {...props} />;
 
-const L: React.FC<Props> = (props) => {
-  const Element: any = Boolean(props.externalConfig) ? a : Link;
+const StyledElement: any = styled(Element).attrs((props) => ({
+  href: props.to,
+  target: props.externalConfig?.isNewTab ? "_blank" : "",
+  to: props.to,
+}))`
+  transition: all 300ms;
+  text-decoration: none;
+  margin: ${(props) => props.margin || ""};
+  border-bottom: 0.1em solid transparent;
+  color: ${(props) => Styles.Colors[props.typographyConfig?.color]};
 
-  const StyledElement: any = styled(Element).attrs({
-    href: props.to,
-    target: props.externalConfig?.isNewTab ? "_blank" : "",
-    to: props.to,
-  })`
-    transition: all 300ms;
-    text-decoration: none;
-    margin: ${(props) => props.margin || ""};
-    border-bottom: 0.1em solid transparent;
-    color: ${props => Styles.Colors[props.typographyConfig?.color]}; 
-
-    ${(props) =>
-      props.transitionConfig &&
-      `
+  ${(props) =>
+    props.transitionConfig &&
+    `
       &:hover {
         color: ${
           props.transitionConfig?.color
             ? Styles.Colors[props.transitionConfig?.color?.color] || ""
             : "none"
         };
-        border-bottom: ${props.transitionConfig?.underline ? "0.1em solid" : ""};
+        border-bottom: ${
+          props.transitionConfig?.underline ? "0.1em solid" : ""
+        };
        
       }
       `}
-  `;
+`;
 
+const L: React.FC<Props> = (props) => {
   return (
     <StyledElement {...props} color={"background"}>
       <Typography {...props.typographyConfig}>{props.children}</Typography>
