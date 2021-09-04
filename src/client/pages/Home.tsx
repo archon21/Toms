@@ -113,7 +113,7 @@ const Home: React.FC<Props> = (props) => {
                 global.document.getElementById("diningGuidelines");
               if (content) {
                 const { x, y } = content.getBoundingClientRect();
-                console.log(y, store.window.scrollY);
+
                 const scrollTo = content.offsetTop - calculatedNavHeight;
 
                 global.window.scroll({ top: scrollTo, behavior: "smooth" });

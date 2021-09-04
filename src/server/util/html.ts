@@ -47,7 +47,7 @@ const html = ({
     <script>window.__STATE__ = ${JSON.stringify(defaultState)};</script>
 
     <script defer src="/bundle.client.js"></script>
-    <script>console.log(document.getElementById('root'))</script>
+
   </html>
 `;
 

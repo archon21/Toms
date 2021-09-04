@@ -47,12 +47,6 @@ const Nav = styled.nav<NavProps>`
 interface Props {}
 
 const Navbar: React.FC<Props> = (props) => {
-  console.log(
-    store.window.clientWidth,
-    siteConfig.client.required.layouts.mobile,
-    store.window.clientWidth > siteConfig.client.required.layouts.mobile
-  );
-
   return (
     <Nav
       id="navigation"

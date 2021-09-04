@@ -23,12 +23,6 @@ const StyledElement = styled(Element).attrs({})`
       : Styles.FontFamily.primary};
   text-align: ${(props) => props.textAlign || "center"};
   -webkit-text-stroke: ${(props) => {
-    
-    props.textBorder && console.log(
-      props?.textBorder
-        ? `${props.textBorder.size} ${Styles.Colors[props.textBorder.color]}`
-        : ""
-    );
     return props?.textBorder
       ? `${props.textBorder.size} ${Styles.Colors[props.textBorder.color]}`
       : "";

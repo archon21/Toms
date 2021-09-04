@@ -34,7 +34,7 @@ const DesktopMenu: React.FC<Props> = () => {
                 const content = global.document.getElementById(id);
                 if (content) {
                   const { x, y } = content.getBoundingClientRect();
-                  console.log(y, store.window.scrollY);
+
                   const scrollTo = content.offsetTop - calculatedNavHeight;
 
                   global.window.scroll({ top: scrollTo, behavior: "smooth" });
