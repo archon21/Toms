@@ -9,6 +9,7 @@ import {
   Inputs,
   Editable,
   Element,
+  Composed,
 } from "../components";
 import { siteConfig } from "../../site-config";
 import NavMenu from "../components/Nav/NavMenus";
@@ -48,10 +49,11 @@ const Home: React.FC<Props> = (props) => {
 
           {store.window.clientWidth >
             siteConfig.client.required.layouts.tablet && (
-            <Layout.Flex margin='1em 0 0' xAlign="center" yAlign="center">
+            <Layout.Flex margin="1em 0 0" xAlign="center" yAlign="center">
               <DesktopMenu></DesktopMenu>
             </Layout.Flex>
           )}
+          <Composed.Text accessor="home.landing.text"></Composed.Text>
           <Typography.Typography
             color="textQuinary"
             variant="h3"
@@ -101,9 +103,9 @@ const Home: React.FC<Props> = (props) => {
           </Typography.Typography>
 
           <Element.Buttons.Button
-            color='textQuinary'
-            background='backgroundPrimary'
-            variant='h5'
+            color="textQuinary"
+            background="backgroundPrimary"
+            variant="h5"
             margin="2em 0"
             onClick={() => {
               const calculatedNavHeight =

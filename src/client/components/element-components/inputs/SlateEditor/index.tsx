@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import isHotkey from "is-hotkey";
 import { Editable, withReact, useSlate, Slate } from "slate-react";
+import styled from "styled-components";
 import {
   Editor,
   Transforms,
@@ -12,6 +13,15 @@ import { withHistory } from "slate-history";
 import { Icon } from "../../../content-components";
 import { Buttons } from "../..";
 import { Flex } from "../../../layout-components";
+import { Styles } from "../../../../../site-config";
+
+
+const Container = styled.div`
+  width: 100%;
+  height: auto;
+  resize: vertical;
+  background: ${Styles.Colors.backgroundSecondary};
+`
 
 const HOTKEYS = {
   "mod+b": "bold",

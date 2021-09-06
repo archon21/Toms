@@ -1,12 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
+import { observer } from "mobx-react";
 
 import { Layout, Typography } from "../index";
 import { Styles, Interfaces, siteConfig, Types } from "../../../site-config";
-
 import NavMenu from "./NavMenus";
 import NavLogo from "./NavLogo";
-import { observer } from "mobx-react";
 import store from "../../store";
 
 interface NavProps {

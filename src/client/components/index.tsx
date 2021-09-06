@@ -6,5 +6,6 @@ export * as Content from "./content-components";
 export * as Layout from "./layout-components";
 export * as Editable from "./editable-components";
 export * as Element from './element-components'
+export * as Composed from './composed-components'
 
 export * from "./element-components";
