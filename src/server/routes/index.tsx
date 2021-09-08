@@ -9,11 +9,10 @@ import { StaticRouter } from "react-router-dom";
 import { ServerStyleSheet } from "styled-components"; // <-- importing ServerStyleSheet
 
 import * as htmlRoutesConfig from "./html";
-// import * as apiRoutsConfig from './api';
 import { html } from "../util";
 import App from "../../client/App";
-import { Services } from "../database";
 import { Interfaces } from "../../site-config";
+import { Services } from "../database";
 
 const router = Router();
 
@@ -24,12 +23,19 @@ const handleService = (services: Array<Interfaces.Service>) => {
   //   content: 'foo',
   //   lastUpdated: Date.now(),
   // });
-  services.forEach(async ({ service, action, stateName }) => {
-    if (action === "GET") {
-      // const data = await Services[service]();
 
-      // defaultState[stateName] = data;
-    }
+  console.log(Services);
+
+  services.forEach(async ({ service, action, stateName, accessorName }) => {
+    if (typeof Services[service][action] === "function")
+      if (action === "GET") {
+        const data = await Services[service][action]({
+          request: { params: { page: accessorName } },
+        });
+        console.log("data");
+
+        defaultState[stateName] = data;
+      }
   });
 
   return defaultState;
@@ -60,5 +66,15 @@ const createRoute = ({ methods, url, title }: Interfaces.Route) => {
 Object.entries(htmlRoutesConfig).forEach(([key, route]) => {
   createRoute(route);
 });
+
+Object.entries(Services).forEach(([serviceName, service]) => {
+  Object.entries(service).forEach(([methodType, method]) => {
+    router[methodType.toLowerCase()](`/api/${serviceName}`, (req, res) =>
+      method({ request: req, response: res })
+    );
+  });
+});
+
+console.log(router);
 
 export default router;

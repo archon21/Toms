@@ -8,8 +8,9 @@
       "services": [
         {
           "action": "GET",
-          "service": "Base",
-          "stateName": "base"
+          "service": "Content",
+          "stateName": "content",
+          "accessorName": "home"
         }
       ]
     }

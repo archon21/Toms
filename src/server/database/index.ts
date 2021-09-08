@@ -1,3 +1,3 @@
-export { default as faunaClient } from "./database";
+export { default as Database } from "./database";
 export * as Schemas from "./schemas";
-export * as Services from "./services";
+export { default as Services } from "./services";

@@ -1,23 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Styles, Interfaces } from '../../../../site-config';
-import { Colors } from '../../../../site-config/styles';
-import { Icon } from '../../content-components';
-import { Typography } from '../../typography-components';
+import React from "react";
+import styled from "styled-components";
+import { Styles, Interfaces } from "../../../../site-config";
+import { Colors } from "../../../../site-config/styles";
+import { Icon } from "../../content-components";
+import { Typography } from "../../typography-components";
 
 interface ButtonProps {
   iconConfig: Interfaces.Icon;
   active: boolean;
   helperText: string;
-
   onMouseDown: any;
-
   background?: Interfaces.Colors;
   color?: Interfaces.Colors;
-
   margin?: string;
   padding?: string;
   disabled?: boolean;
+  typographyConfig?: Interfaces.Typography.Typography;
 }
 
 const Element = styled.button<ButtonProps>`
@@ -31,8 +29,6 @@ const Element = styled.button<ButtonProps>`
     props.background
       ? Styles.Colors[props.background]
       : Styles.Colors.background};
-  color: ${(props) =>
-    props.active ? Styles.Colors.buttonSecondary : Styles.Colors.disabled};
 
   border-radius: 999px;
   outline: none;
@@ -70,11 +66,17 @@ const Element = styled.button<ButtonProps>`
 `;
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { onMouseDown, iconConfig } = props;
+  const { onMouseDown, iconConfig, typographyConfig } = props;
 
   return (
     <Element {...props} onMouseDown={onMouseDown}>
-      <Icon color={props.active ? 'buttonSecondary' : 'disabled'} {...iconConfig}></Icon>
+      {Boolean(iconConfig?.name) ? (
+        <Icon {...iconConfig}></Icon>
+      ) : (
+        <Typography {...typographyConfig} textAlign="center" variant="p">
+          {typographyConfig?.children}
+        </Typography>
+      )}
     </Element>
   );
 };

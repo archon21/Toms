@@ -60,6 +60,8 @@ const WindoW: React.FC<Props> = (props) => {
     yAlign: props.yAlign,
     xAlign: props.xAlign,
   });
+
+
   return (
     <Outer {...props} alignment={alignment}>
       <Vessel {...props} alignment={alignment}></Vessel>

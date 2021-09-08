@@ -26,7 +26,7 @@ const Nav = styled.nav<NavProps>`
   top: 0;
   left: 0;
   background: ${(props) =>
-    props.clientWidth > siteConfig.client.required.layouts.mobile
+    props.clientWidth > siteConfig.client.required.layouts.tablet
       ? Styles.Colors.navBackground
       : "transparent"};
   z-index: 100;
@@ -40,12 +40,15 @@ const Nav = styled.nav<NavProps>`
         : -100}%
   );
   height: ${(props) => siteConfig.client.nav.style.navHeight};
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  box-shadow: ${props => props.clientWidth <= siteConfig.client.required.layouts.tablet ? 'none' : 'rgba(33, 35, 38, 0.1) 0px 10px 10px -10px'};
 `;
 
 interface Props {}
 
 const Navbar: React.FC<Props> = (props) => {
+
+
+
   return (
     <Nav
       id="navigation"

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Styles, Interfaces } from '../../../../site-config';
-import { Icon } from '../../content-components';
-import { Typography } from '../../typography-components';
+import React from "react";
+import styled from "styled-components";
+import { Styles, Interfaces } from "../../../../site-config";
+import { Icon } from "../../content-components";
+import { Typography } from "../../typography-components";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -13,6 +13,7 @@ interface ButtonProps {
   padding?: string;
   disabled?: boolean;
   iconConfig: Interfaces.Icon;
+  typographyConfig?: Interfaces.Typography.Typography;
 }
 
 const Element = styled.button<ButtonProps>`
@@ -48,17 +49,25 @@ const Element = styled.button<ButtonProps>`
       0 1px 3px 1px rgba(60, 64, 67, 0.15)
     );
     &:before {
-      content: 'Yo';
+      content: "Yo";
     }
   }
 `;
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { onClick, iconConfig } = props;
+  const { onClick, iconConfig, typographyConfig } = props;
+  console.log(typographyConfig, 'PE');
+  
 
   return (
     <Element {...props} onClick={onClick}>
-      <Icon {...iconConfig}></Icon>
+      {Boolean(iconConfig?.name) ? (
+        <Icon {...iconConfig}></Icon>
+      ) : (
+        <Typography color={typographyConfig?.color} textAlign="center" variant="p">
+          {typographyConfig?.children}
+        </Typography>
+      )}
     </Element>
   );
 };

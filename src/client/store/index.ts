@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import Util from "../util";
 
 const defaultMenu = {
   starters: {
@@ -353,6 +354,8 @@ class Store {
     lastScrollY: 0,
     clientWidth: global?.window?.innerWidth || 0,
   };
+  user = { roles: [""] };
+  content = {};
 
   constructor() {
     makeAutoObservable(this);
@@ -368,6 +371,25 @@ class Store {
   }
   defaultScrollHandler({ scrollY, lastScrollY }) {
     this.window = { ...this.window, lastScrollY: lastScrollY, scrollY };
+  }
+
+  async defaultContentHandler({ content, action, accessor, page }) {
+    try {
+      if (action === "GET") {
+      } else if (action === "SET") {
+        
+        await Util.Request({
+          method: "POST",
+          url: "/api/content",
+          data: { items: content, page, accessor },
+        });
+        this.content = content;
+      } else if(action === 'INITIAL') {
+        this.content = content.content
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 

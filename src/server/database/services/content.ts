@@ -1,16 +1,43 @@
-class Content {
-  GET = async ({ request, response, database }) => {
-    database.READ({})
-    return "HERE";
-  };
+import { Content } from "../schemas";
 
-  POST = async ({ request, response, database }) => {
-    return "HERE";
-  };
+const ContentService = {
+  GET: async ({ request, response }) => {
+    const page = request?.params?.page;
+    console.log(page, "{AGE");
 
-  DELETE = async ({ request, response, database }) => {
-    return "HERE";
-  };
-}
+    const content = await Content.findOne({ name: page });
+    // console.log(items);
 
-export default Content;
+    return response?.send
+      ? response.send({ [content.name]: content?.items }).status(200)
+      : { [content.name]: content?.items };
+  },
+
+  POST: async ({ request, response }) => {
+    const { page, accessor, items } = request.body;
+
+    const itemsFromDb = await Content.find({});
+
+    if (!Boolean(`${page}` in itemsFromDb)) {
+      await Content.create({
+        name: page,
+        items: { [accessor]: items },
+      });
+    }
+
+    return response.send(items).status(200);
+  },
+  PATCH: async ({ request, response }) => {
+    const items = await Content.updateOne({
+      name: "pages",
+      items: request.body.items,
+    });
+    return response.send(items).status(200);
+  },
+
+  DELETE: async ({ request, response }) => {
+    return "HERE";
+  },
+};
+
+export default ContentService;

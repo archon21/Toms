@@ -15,6 +15,7 @@ import { siteConfig } from "../../site-config";
 import NavMenu from "../components/Nav/NavMenus";
 import NavLogo from "../components/Nav/NavLogo";
 import DesktopMenu from "../components/Nav/NavMenus/DesktopMenu";
+import Util from "../util";
 
 interface DefaultState {
   base: Array<string>;
@@ -26,6 +27,8 @@ interface Props {
 
 const Home: React.FC<Props> = (props) => {
   // const [defaultState, setDefaultState] = useState({});
+
+  
 
   return (
     <React.Fragment>
@@ -53,7 +56,7 @@ const Home: React.FC<Props> = (props) => {
               <DesktopMenu></DesktopMenu>
             </Layout.Flex>
           )}
-          <Composed.Text accessor="home.landing.text"></Composed.Text>
+          {/* <Composed.Text accessor="homeLandingText" page='home'></Composed.Text> */}
           <Typography.Typography
             color="textQuinary"
             variant="h3"

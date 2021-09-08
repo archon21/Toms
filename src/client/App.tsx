@@ -7,7 +7,7 @@ import { Nav, Footer } from "./components";
 import { WindoW } from "./components/layout-components";
 import Routes from "./Routes";
 import { BrowserContext } from "./context";
-import { siteConfig } from "../site-config";
+import { siteConfig, Styles } from "../site-config";
 import store from "./store";
 
 const GlobalStyle = createGlobalStyle`
@@ -25,6 +25,46 @@ li, ul {
   background-origin: none;
 }
 
+h1{
+  font-size: 3em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+h2{
+  font-size: 2.5em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+h3{
+  font-size: 2em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+h4{
+  font-size: 1.5em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+h5{
+  font-size: 1.25em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+h6{
+  font-size: 1em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+p{
+  font-size: 0.75em;
+  color: #333;
+  font-family: ${Styles.FontFamily.primary};
+}
+span{
+ 
+  font-family: ${Styles.FontFamily.primary};
+}
+
 nav {
   transition: all 300ms;
 }
@@ -40,13 +80,22 @@ const App: React.FC<Props> = ({ defaultState }) => {
     browser: { browserWidth: 0 },
   });
   const [scrollY, setScrollY] = useState(0);
+  const [mounted, setMounted] = useState(false)
 
   global?.window?.addEventListener("scroll", () =>
     setScrollY(Number(global?.window?.scrollY))
   );
 
   useEffect(() => {
+    console.log("app", defaultState);
+    
+    store.defaultContentHandler({ content: defaultState, action: "INITIAL" });
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
     store.defaultScrollHandler({ scrollY, lastScrollY: store.window.scrollY });
+    
   }, [scrollY]);
 
   return (
@@ -65,9 +114,9 @@ const App: React.FC<Props> = ({ defaultState }) => {
           //     ? siteConfig.client.nav.style.navHeight + " 0 0 0"
           //     : "0"
           // }
-        
         >
-          <Routes defaultState={defaultState}></Routes>
+          {mounted &&  <Routes defaultState={defaultState}></Routes>}
+         
         </WindoW>
         <Footer></Footer>
       </BrowserContext.Provider>

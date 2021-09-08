@@ -29,6 +29,9 @@ const Colors = {
   buttonPrimary: DARK,
   buttonSecondary: LIGHT,
   transparent: "transparent",
+
+  lightGray: '#999',
+  black: "#333"
 };
 
 Object.entries(Colors).forEach(([colorKey, colorTone]) => {
