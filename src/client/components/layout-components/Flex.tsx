@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import styled from "styled-components";
 
-import { Interfaces, Styles, Types } from '../../../site-config';
-import { getFlexAlignment } from '../../util/functions';
+import { Interfaces, Styles, Types } from "../../../site-config";
+import { getFlexAlignment } from "../../util/functions";
 
 interface Props {
   column?: boolean;
@@ -16,26 +16,30 @@ interface Props {
   margin?: string;
   padding?: string;
   className?: string;
+  maxWidth?: string;
   id?: string;
 }
 
 const Vessel = styled.div<Props>`
   display: flex;
-  flex-direction: ${(props) => (props.column ? 'column' : 'row')};
-  flex-wrap: ${(props) => (props.noWrap ? 'nowrap' : 'wrap')};
-  
+  flex-direction: ${(props) => (props.column ? "column" : "row")};
+  flex-wrap: ${(props) => (props.noWrap ? "nowrap" : "wrap")};
+
   ${(props) => Styles.Defaults.Spacing({ props })}
   ${(props) => Styles.Defaults.Dimensions({ props })}
   ${(props) => props.alignment?.map((str) => str)}
 `;
 
 const Flex: React.FC<Props> = (props) => {
+
+  const sectionRef = useRef(null)
+
   const alignment = getFlexAlignment({
     column: props.column,
     yAlign: props.yAlign,
     xAlign: props.xAlign,
   });
-  return <Vessel {...props} alignment={alignment}></Vessel>;
+  return <Vessel ref={sectionRef} {...props} alignment={alignment}></Vessel>;
 };
 
 export default Flex;

@@ -1,6 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Styles, Interfaces, siteConfig, Types } from '../../site-config';
+import React from "react";
+import styled from "styled-components";
+import { Layout, Typography, Content } from ".";
+
+import { Styles, Interfaces, siteConfig, Types } from "../../site-config";
+import { SVG } from "../assets";
+
 
 interface Props {
   background?: Types.Colors;
@@ -11,12 +15,43 @@ const Foot = styled.footer<Props>`
   height: ${siteConfig.client.nav.style.footerHeight};
   box-shadow: 1px 1px transparent;
   border-top: 1px solid #dadce0;
-  background: ${(props) =>
-    props.background ? Styles.Colors[props.background] : Styles.Colors.backgroundPrimary};
+  background: ${(props) => Styles.Colors.footerBackground};
+  padding: 1em 0;
 `;
 
 const Footer: React.FC<Props> = (props) => {
-  return <Foot></Foot>;
+  return (
+    <Foot>
+      <Layout.Flex column>
+        <Layout.Flex margin=".5em 0" column width="auto">
+          <Typography.Typography color="textQuinary" variant="p">
+            ​Sunday - Tuesday: Closed
+          </Typography.Typography>
+          <Typography.Typography color="textQuinary" variant="p">
+            Wednesday - Thursday: 5pm - 9pm
+          </Typography.Typography>
+          <Typography.Typography color="textQuinary" variant="p">
+            ​​Friday - Saturday: 5pm - 9pm
+          </Typography.Typography>
+        </Layout.Flex>
+        {/* <Layout.Flex margin=".5em 0" column width="auto">
+          <Content.Icon type="svg" name="facebook"></Content.Icon>
+        </Layout.Flex> */}
+
+        <Layout.Flex margin=".5em 0" column width="auto">
+          <Typography.Typography color="textQuinary" variant="p">
+            68 Linwood Ave
+          </Typography.Typography>
+          <Typography.Typography color="textQuinary" variant="p">
+            Colchester, CT 06415
+          </Typography.Typography>
+          <Typography.Typography color="textQuinary" variant="p">
+            (860)603-6948
+          </Typography.Typography>
+        </Layout.Flex>
+      </Layout.Flex>
+    </Foot>
+  );
 };
 
 export default Footer;

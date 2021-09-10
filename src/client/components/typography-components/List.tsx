@@ -9,6 +9,11 @@ interface ListItemProps {
   typographyConfig: Interfaces.Typography.Typography;
 }
 
+const ListItem = styled.li`
+  font-size: ${(props) =>
+    props.variant ? Styles.FontSizes[props.variant] : Styles.FontSizes.p};
+`;
+
 interface Props {
   items: Array<any>;
   listItemConfig: ListItemProps;
@@ -28,6 +33,15 @@ const StyledElement = styled(Element).attrs({})`
   list-style-position: ${(props) =>
     props.position ? props.position : "inside"};
   direction: ${(props) => props.direction || "ltr"};
+  color: ${(props) =>
+    props.listItemConfig?.typographyConfig?.color
+      ? Styles.Colors[props.listItemConfig?.typographyConfig?.color]
+      : Styles.Colors.textPrimary};
+  ${(props) => Styles.Defaults.Spacing({ props })}
+
+  & * {
+    display: list-item;
+  }
 `;
 
 const List: React.FC<Props> = (props) => {
@@ -38,7 +52,7 @@ const List: React.FC<Props> = (props) => {
           <Typography
             key={index}
             {...props.listItemConfig.typographyConfig}
-            variant="li"
+            variant={props.listItemConfig?.typographyConfig?.variant || "p"}
           >
             {item}
           </Typography>

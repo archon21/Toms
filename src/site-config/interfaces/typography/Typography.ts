@@ -1,10 +1,11 @@
 import { Interfaces, Types } from "../..";
+import { FontFamily } from "../../types";
 
 interface Typography {
   variant: Types.TypographyVariant;
   children?: any;
 
-  fontFamily?: Types.FontFamily;
+  fontFamily?: FontFamily;
   weight?: "bold" | "semi" | "normal";
   textAlign?: "left" | "center" | "right";
   color?: Types.Colors;
@@ -12,6 +13,7 @@ interface Typography {
   margin?: string;
   padding?: string;
   displayAlign?: Interfaces.DisplayAlign;
+  textBorder?: { size: string; color: Types.Colors };
 }
 
 export default Typography;

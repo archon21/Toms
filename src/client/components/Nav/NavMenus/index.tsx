@@ -1,36 +1,36 @@
-import React, { Fragment, useContext } from 'react';
-import styled from 'styled-components';
-import { siteConfig } from '../../../../site-config';
-import { BrowserContext } from '../../../context';
+import React, { Fragment, useContext } from "react";
+import styled from "styled-components";
+import { siteConfig } from "../../../../site-config";
+import { BrowserContext } from "../../../context";
+import store from "../../../store";
 
-import { Flex } from '../../layout-components';
+import DesktopMenu from "./DesktopMenu";
+import MobileMenu from "./MobileMenu";
 
-import DesktopMenu from './DesktopMenu';
-import MobileMenu from './MobileMenu';
-
-interface Props {}
-
-const NavMenu: React.FC<Props> = () => {
-  const browserContext = useContext(BrowserContext);
-
-
-  const MenuContainer = styled.div`
-    display: flex;
-    align-self: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
+const MenuContainer = styled.div`
+  display: flex;
+  align-self: center;
+  align-items: center;
+  flex-direction: column;
+  & > div#mobile-menu {
+    display: none;
+  }
+  @media (max-width: 800px) {
+    & > div {
+      display: none !important;
+    }
     & > div#mobile-menu {
-      display: none;
+      display: flex !important;
     }
-    @media (max-width: 800px) {
-      & > div {
-        display: none !important;
-      }
-      & > div#mobile-menu {
-        display: flex !important;
-      }
-    }
-  `;
+  }
+`;
+
+interface Props {
+  disableMobileRender: boolean;
+}
+
+const NavMenu: React.FC<Props> = ({ disableMobileRender }) => {
+  const browserContext = useContext(BrowserContext);
 
   return (
     <MenuContainer>

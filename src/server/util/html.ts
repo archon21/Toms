@@ -14,9 +14,11 @@ const html = ({
   <!DOCTYPE html>
   <html>
     <head>
-      <title>${siteConfig.client.required.window.title.prefix} - ${title}</title>
+      <title>${
+        siteConfig.client.required.window.title.prefix
+      } - ${title}</title>
       <meta charset="utf-8" />
-      <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      <link rel="icon" href=${siteConfig.client.required.window.title.logo} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content="#000000" />
       <meta
@@ -30,7 +32,7 @@ const html = ({
     />
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Hind+Madurai"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Great+Vibes&display=swap"
         rel="stylesheet"
       />
       <link
@@ -43,8 +45,9 @@ const html = ({
       <div id="root">${body}</div>
     </body>
     <script>window.__STATE__ = ${JSON.stringify(defaultState)};</script>
+
     <script defer src="/bundle.client.js"></script>
-    <script>console.log(document.getElementById('root'))</script>
+
   </html>
 `;
 

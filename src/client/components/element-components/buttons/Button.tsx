@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Styles, Interfaces } from '../../../../site-config';
-import { Typography } from '../../typography-components';
+import React from "react";
+import styled from "styled-components";
+import { Styles, Interfaces } from "../../../../site-config";
+import { Typography } from "../../typography-components";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -17,19 +17,16 @@ const Element = styled.button<ButtonProps>`
   display: inline-flex;
   flex-direction: column;
   width: max-content;
-  font-size: calc(0.7em + 1vw);
+
   cursor: pointer;
   background: ${(props) =>
     props.background
       ? Styles.Colors[props.background]
       : Styles.Colors.background};
-  color: ${(props) =>
-    props.color ? Styles.Colors[props.color] : Styles.Colors.background};
-  margin: ${(props) => props.margin || '0'};
-  padding: ${(props) => props.padding || '0'};
+
   border-radius: 3px;
   outline: none;
-  padding: 0.2em 0.3em;
+
   border: none;
   z-index: 10;
 
@@ -47,6 +44,8 @@ const Element = styled.button<ButtonProps>`
       0 1px 3px 1px rgba(60, 64, 67, 0.15)
     );
   }
+  ${(props) => Styles.Defaults.Spacing({ props })}
+  padding: 1em 2em;
 `;
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -54,7 +53,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   return (
     <Element {...props} onClick={onClick}>
-      <Typography {...props} variant="span">
+      <Typography {...props} margin="0" padding="0" variant={props.variant || "p"}>
         {props.children}
       </Typography>
     </Element>

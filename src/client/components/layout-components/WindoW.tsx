@@ -7,6 +7,9 @@ import { getFlexAlignment } from "../../util/functions";
 interface Props {
   column?: boolean;
   background?: Types.Colors;
+  backgroundUrl?: {
+    url: string;
+  };
   fullWidth?: boolean;
   noWrap?: boolean;
   yAlign?: string;
@@ -25,10 +28,17 @@ const Outer = styled.div<Props>`
       ? `calc(100vh - ${siteConfig.client.nav.style.navHeight})`
       : "100vh"};
   width: 100vw;
-  background: ${(props) =>
-    props.background
-      ? Styles.Colors[props.background]
-      : Styles.Colors.backgroundPrimary};
+
+  background: ${(props) => {
+    if (props.backgroundUrl) {
+      return `url(${props.backgroundUrl.url})`;
+    } else
+      return props.background
+        ? Styles.Colors[props.background]
+        : Styles.Colors.backgroundPrimary;
+  }};
+  background-repeat: none;
+  background-size: cover;
   ${(props) => props.alignment?.map((str) => str)}
   align-items: center;
   ${(props) => Styles.Defaults.Spacing({ props })}
@@ -50,6 +60,8 @@ const WindoW: React.FC<Props> = (props) => {
     yAlign: props.yAlign,
     xAlign: props.xAlign,
   });
+
+
   return (
     <Outer {...props} alignment={alignment}>
       <Vessel {...props} alignment={alignment}></Vessel>

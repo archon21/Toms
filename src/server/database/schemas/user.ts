@@ -12,6 +12,10 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
   },
+  roles: {
+    type: Array,
+    required: true,
+  },
 });
 
 export default mongoose.model("users", UserSchema);
