@@ -1,0 +1,16 @@
+{
+  "client": {
+    "required": {
+      "layouts": {
+        "tablet": "850px",
+        "mobile": "360px"
+      }
+    },
+    "nav": {
+      "style": {
+        "navHeight": "7vh",
+        "footerHeight": "10vh"
+      }
+    }
+  }
+}

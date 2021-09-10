@@ -30,7 +30,14 @@ const Home: React.FC<Props> = (props) => {
               margin="0 0 15px"
             ></Typography.Typography>
             <Typography.List
-              items={[]}
+              items={[
+                "Dumpster Rentals",
+                "Deliveries",
+                "Tractor Services",
+                "Forest Maintenance",
+                "Lawn and Garden",
+                "Leaf Removal",
+              ]}
               listItemConfig={{ typographyConfig: { variant: "h5" } }}
             ></Typography.List>
           </Layout.Flex>
@@ -49,7 +56,7 @@ const Home: React.FC<Props> = (props) => {
         column
         background="backgroundSecondary"
       >
-        <Layout.Flex margin="50px 0" column>
+        <Layout.Flex id="dumpster" margin="50px 0" column>
           <Typography.Typography
             color="textSecondary"
             variant="h1"
