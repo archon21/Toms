@@ -30,6 +30,7 @@ const StyledElement = styled(Element).attrs({})`
 `;
 
 const Typography: React.FC<Interfaces.Typography.Typography> = (props) => {
+  
   return <StyledElement {...props}></StyledElement>;
 };
 export default Typography;
