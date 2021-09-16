@@ -86,7 +86,7 @@ const RenderedText: React.FC<RenderedTextProps> = memo(
       arr: [],
     });
 
-    console.log(Components);
+
 
     return Components ? <Fragment>{Components}</Fragment> : <div />;
   },
@@ -107,7 +107,7 @@ const Text: React.FC<TextProps> = (props) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    console.log(store, "TEXT");
+
 
     const newContentObjects = Util.Object.stringAccessor({
       object: store.content,

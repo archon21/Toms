@@ -24,7 +24,7 @@ const handleService = (services: Array<Interfaces.Service>) => {
   //   lastUpdated: Date.now(),
   // });
 
-  console.log(Services);
+
 
   services.forEach(async ({ service, action, stateName, accessorName }) => {
     if (typeof Services[service][action] === "function")
@@ -32,7 +32,7 @@ const handleService = (services: Array<Interfaces.Service>) => {
         const data = await Services[service][action]({
           request: { params: { page: accessorName } },
         });
-        console.log("data");
+
 
         defaultState[stateName] = data;
       }
@@ -75,6 +75,6 @@ Object.entries(Services).forEach(([serviceName, service]) => {
   });
 });
 
-console.log(router);
+
 
 export default router;

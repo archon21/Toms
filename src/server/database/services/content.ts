@@ -3,7 +3,7 @@ import { Content } from "../schemas";
 const ContentService = {
   GET: async ({ request, response }) => {
     const page = request?.params?.page;
-    console.log(page, "{AGE");
+
 
     const content = await Content.findOne({ name: page });
     // console.log(items);
