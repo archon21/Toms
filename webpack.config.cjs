@@ -5,6 +5,8 @@ const path = require("path");
 const webpack = require("webpack");
 const nodeExternals = require("webpack-node-externals");
 
+
+
 function copyFileSync(source, target) {
   var targetFile = target;
   if (fs.existsSync(target)) {
@@ -41,7 +43,7 @@ const Config = (entry, name, target, path, isPostProcess, plugins) => {
   return {
     entry,
     target,
-    externals: name === "server" ? [nodeExternals()] : [],
+    externals: name === "server" ? [nodeExternals()] : { React: "react" },
     output: {
       path,
       filename: `bundle.${name}.js`,
