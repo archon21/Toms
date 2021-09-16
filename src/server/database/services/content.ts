@@ -5,7 +5,8 @@ const ContentService = {
     const page = request?.params?.page;
 
 
-    const content = await Content.findOne({ name: page });
+    // const content = await Content.findOne({ name: page });
+    const content = {}
     // console.log(items);
 
     return response?.send

@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 import { siteConfig } from "../site-config";
 
