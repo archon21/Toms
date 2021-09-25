@@ -1,5 +1,5 @@
 const fontFamily = {
-  primary: "'Montserrat', sans-serif;",
+  primary: "'Lato', sans-serif;",
   secondary: "'Great Vibes', cursive;",
 };
 

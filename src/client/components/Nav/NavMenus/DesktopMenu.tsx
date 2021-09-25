@@ -17,7 +17,7 @@ const DesktopMenu: React.FC<Props> = () => {
         return (
           <Links.Link
 
-            margin="0 20px"
+            margin=".25em .5em"
             typographyConfig={{
               color: "textQuinary",
               variant: "p",

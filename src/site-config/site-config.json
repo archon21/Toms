@@ -2,7 +2,10 @@
   "client": {
     "required": {
       "window": {
-        "title": { "prefix": "Lily's", "logo": "/assets/images/logo.png" }
+        "title": {
+          "prefix": "Tom's Outdoor Maintenance",
+          "logo": "/assets/images/services.png"
+        }
       },
       "layouts": {
         "tablet": 850,
@@ -11,12 +14,12 @@
     },
     "nav": {
       "links": [
-        { "id": "home", "text": "Home", "url": "/" },
-        { "id": "menu", "text": "Menu", "url": "/" },
-        { "id": "cocktails", "text": "Cocktails", "url": "/" },
-        { "id": "gallery", "text": "Gallery", "url": "/" },
-        { "id": "aboutUs", "text": "About", "url": "/" },
-        { "id": "diningGuidelines", "text": "Dining Guidelines", "url": "/" }
+        { "id": "dumpster", "text": "Dumpster Rentals", "url": "/" },
+        { "id": "deliveries", "text": "Deliveries", "url": "/" },
+        { "id": "tractor", "text": "Tractor Services", "url": "/" },
+        { "id": "forest", "text": "Forest Maintenance", "url": "/" },
+        { "id": "lawn", "text": "Lawn and Garden", "url": "/" },
+        { "id": "leaf", "text": "Leaf Removal", "url": "/" }
       ],
       "style": {
         "navHeight": "2.7em",

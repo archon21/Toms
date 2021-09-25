@@ -1,8 +1,8 @@
 import theme from "styled-theming";
 
-const DARK = "#5E8F72";
+const DARK = "#006b3c";
 const LIGHT = "goldenrod";
-const WHITE = "#E1D9D1";
+const WHITE = "#FFF";
 const QUATERNARY = "##F0BF59";
 
 const Colors = {

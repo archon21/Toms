@@ -28,15 +28,10 @@ interface Props {
 const Home: React.FC<Props> = (props) => {
   // const [defaultState, setDefaultState] = useState({});
 
-  
-
   return (
     <React.Fragment>
       <Layout.WindoW
         id="home"
-        backgroundUrl={{
-          url: store.defaultState.content.home.images.backgroundImage,
-        }}
         init
         xAlign="flex-start"
         yAlign="flex-start"
@@ -48,8 +43,6 @@ const Home: React.FC<Props> = (props) => {
           xAlign="center"
           yAlign="flex-start"
         >
-          <NavLogo></NavLogo>
-
           {store.window.clientWidth >
             siteConfig.client.required.layouts.tablet && (
             <Layout.Flex margin="1em 0 0" xAlign="center" yAlign="center">
@@ -62,72 +55,34 @@ const Home: React.FC<Props> = (props) => {
             variant="h3"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
-            margin="1em 0 0 0"
+            margin=".5em 0 0"
             weight="bold"
           >
-            Lily's is now open and we look forward to seeing you!{" "}
+            Tom's Outdoor Maintenance
           </Typography.Typography>
+          <Typography.Typography margin='0 0 1em' color="textQuinary" variant="h6">
+            (860) 830-3865
+          </Typography.Typography>
+          <Content.Image
+            boxShadow
+            src="/assets/images/services.jpeg"
+          ></Content.Image>
           <Typography.Typography
             color="textQuinary"
             variant="p"
             displayAlign={{ alignSelf: "center" }}
             textAlign="center"
-            margin="2em 0 0"
-            weight="500"
-          >
-            Lily's is now open and we look forward to seeing you! Come in to
-            enjoy a concise menu of premium steaks, seafood, sandwiches, and
-            salads along with a selection of daily specials.
-          </Typography.Typography>
-          <Typography.Typography
-            color="textQuinary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-            weight="500"
-          >
-            The space is intimate with 8 tables in the main dining room, and 5
-            tables on the patio. There are 2 high tops on the patio considered
-            our bar dining that has a high level of energy from the bar situated
-            between the kitchen and patio.
-          </Typography.Typography>
-          <Typography.Typography
-            color="textQuinary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-            weight="500"
-          >
-            Friendly, knowledgeable bartenders craft classic cocktails alongside
-            a chef chosen wine and beer selection to complement the menu. We
-            recommend making reservations and walk-ins are always welcome.
-          </Typography.Typography>
-
-          <Element.Buttons.Button
-            color="textQuinary"
-            background="backgroundPrimary"
-            variant="h5"
             margin="2em 0"
-            onClick={() => {
-              const calculatedNavHeight =
-                global.document?.getElementById("navigation")?.clientHeight ||
-                0;
-              const content =
-                global.document.getElementById("diningGuidelines");
-              if (content) {
-                const { x, y } = content.getBoundingClientRect();
-
-                const scrollTo = content.offsetTop - calculatedNavHeight;
-
-                global.window.scroll({ top: scrollTo, behavior: "smooth" });
-              }
-            }}
+            weight="500"
           >
-            {" "}
-            Dining Guidelines
-          </Element.Buttons.Button>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </Typography.Typography>
         </Layout.Flex>
       </Layout.WindoW>
       <Layout.WindoW
@@ -137,7 +92,7 @@ const Home: React.FC<Props> = (props) => {
         background="backgroundSecondary"
       >
         <Layout.Flex
-          id="menu"
+          id="dumpster"
           margin="2em 0"
           column
           yAlign="center"
@@ -149,222 +104,377 @@ const Home: React.FC<Props> = (props) => {
             textAlign="center"
             margin="0 0 1em"
           >
-            Menu
-          </Typography.Typography>
-          <Editable.MenuDisplay items={store.defaultState.content.menu.menu}>
-            {" "}
-            <Layout.Flex yAlign="center" xAlign="center" width="80%">
+            Dumpster Rentals
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/dump.jpg"
+            ></Content.Image>
+            <Layout.Flex column yAlign='center' xAlign="center">
               <Typography.Typography
                 color="textTertiary"
-                variant="span"
-                displayAlign={{ alignSelf: "center" }}
-                textAlign="center"
-                margin="1em 0 0"
+                variant="p"
+                displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+                textAlign="left"
               >
-                * CONSUMING RAW OR UNDERCOOKED MEATS, POULTRY, SEAFOOD,
-                SHELLFISH OR EGGS MAY INCREASE YOUR RISK OF FOODBORNE ILLNESS,
-                ESPECIALLY IF YOU HAVE CERTAIN MEDICAL CONDITIONS.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Typography.Typography>
-              <Typography.Typography
-                color="textTertiary"
-                variant="span"
-                displayAlign={{ alignSelf: "center" }}
-                textAlign="center"
-                margin="1em 0 0"
+
+              <Element.Buttons.Button
+                color="textQuinary"
+                background="backgroundPrimary"
+                variant="h5"
+                margin="2em 0"
+                onClick={() => {
+                  Util.Download.downloadFileFromPath({
+                    fileName:
+                      "Toms Outdoor Maintenance Dumpster Rental Contract.pdf",
+                    path: "/assets/pdfs/contract.pdf",
+                  });
+                }}
               >
-                Menu subject to change
-              </Typography.Typography>
+                {" "}
+                Dumpster Rental Contract
+              </Element.Buttons.Button>
             </Layout.Flex>
-          </Editable.MenuDisplay>
-
-          {/* <Inputs.SlateEditor></Inputs.SlateEditor>
-          <Editable.ImageDisplay
-            imageConfig={{
-              items: store.defaultState.content.dumpsterRentals,
-
-              itemSpacing: "1em",
-
-              dimensionsConfig: {
-                width: "10em",
-              },
-            }}
-          ></Editable.ImageDisplay> */}
-        </Layout.Flex>
-        <Layout.Flex
-          id="cocktails"
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center"
-        >
-          <Editable.MenuDisplay
-            items={store.defaultState.content.menu.drinks}
-          ></Editable.MenuDisplay>
-        </Layout.Flex>
-        <Layout.Flex
-          id="gallery"
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center"
-        >
+          </Layout.Grid>
           <Editable.ImageDisplay
             layoutConfig={{
               mobile: 50,
-              desktop: 33,
+              desktop: 25,
               tablet: 33,
             }}
             imageConfig={{
-              items: store.defaultState.content.gallery.images,
+              items: store.defaultState.content.home.dumpsterRentalImages,
               itemSpacing: "0",
               dimensionsConfig: {
-                width: "30em",
+                width: "10em",
               },
             }}
           ></Editable.ImageDisplay>
         </Layout.Flex>
       </Layout.WindoW>
-      <Layout.WindoW id="aboutUs" xAlign="center" yAlign="flex-start" column>
-        <Layout.Flex maxWidth="45em">
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[50, 50]}
-          >
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/family.jpeg"
-            ></Content.Image>
-            <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left"
-            >
-              Born in the Carolinas, Lily made her way to Connecticut at a young
-              age. Tough as nails, and soft as silk; one would never know the
-              hardships she’d endured by the sparkle in her eyes and smile
-              across her face. Seeing people happy and healthy has always been a
-              vigilant endeavor for her, and she’s as quick to hug and kiss as
-              she is to selflessly protect those in need. She’s been the soul of
-              our family since the beginning. And so, it’s only fitting that we
-              name our first restaurant after our beloved dog, Lily.
-            </Typography.Typography>
-          </Layout.Grid>
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[40, 60]}
-          >
-            <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left"
-            >
-              Chef Michael and Emily Alfeld’s menu is simple, and focused on
-              using the freshest ingredients possible. With a love for local
-              food, wine, and beer the cuisine highlights the best that
-              Connecticut has to offer, and much more.
-            </Typography.Typography>
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/building.jpeg"
-            ></Content.Image>
-          </Layout.Grid>
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[50, 50]}
-          >
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/dining.jpeg"
-            ></Content.Image>
-            <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left"
-            >
-              A simple and elegant dining room and bar, along with a beautiful
-              wrap around porch, is a quaint and quiet setting in the uniquely
-              historical and lively town of Colchester. With a full bar, and
-              generous beer and wine menus, Lily’s is the perfect spot for a
-              sumptuous dinner of the finest steaks and seafood, or just a
-              cocktail and some laughs with friends. With more than 40 years of
-              experience, Michael and Emily have brought their repertoires from
-              around the country back to our home here in one of the most
-              beautiful parts of New England. A fertile cornucopia with
-              incomparable farm land and food products.
-            </Typography.Typography>
-          </Layout.Grid>
-        </Layout.Flex>
-      </Layout.WindoW>
-      <Layout.WindoW
-        id="diningGuidelines"
-        xAlign="center"
-        yAlign="flex-start"
-        column
-        background="backgroundSecondary"
-
-        // backgroundUrl="/assets/"
-      >
+      <Layout.WindoW xAlign="center" yAlign="center" column>
         <Layout.Flex
+          id="deliveries"
           margin="2em 0"
           column
           yAlign="center"
           xAlign="center"
-          maxWidth="30em"
+        >
+          <Typography.Typography
+            color="textQuinary"
+            variant="h3"
+            textAlign="center"
+            margin="0 0 1em"
+          >
+            Deliveries
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/dump.jpg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Editable.ImageDisplay
+            layoutConfig={{
+              mobile: 50,
+              desktop: 25,
+              tablet: 33,
+            }}
+            imageConfig={{
+              items: store.defaultState.content.home.deliveryImages,
+              itemSpacing: "0",
+              dimensionsConfig: {
+                width: "10em",
+              },
+            }}
+          ></Editable.ImageDisplay>
+        </Layout.Flex>
+      </Layout.WindoW>
+      <Layout.WindoW
+        xAlign="center"
+        yAlign="center"
+        column
+        background="backgroundSecondary"
+      >
+        <Layout.Flex
+          id="tractor"
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
         >
           <Typography.Typography
             color="textTertiary"
             variant="h3"
             textAlign="center"
-            margin="0 0 .5em"
+            margin="0 0 1em"
           >
-            Dining Guidelines & Dress Code
-          </Typography.Typography>
+            Tractor Services
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/tractor10.jpg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textTertiary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Editable.ImageDisplay
+            layoutConfig={{
+              mobile: 50,
+              desktop: 25,
+              tablet: 33,
+            }}
+            imageConfig={{
+              items: store.defaultState.content.home.tractorServicesImages,
+              itemSpacing: "0",
+              dimensionsConfig: {
+                width: "10em",
+              },
+            }}
+          ></Editable.ImageDisplay>
+        </Layout.Flex>
+      </Layout.WindoW>
+      <Layout.WindoW xAlign="center" yAlign="center" column>
+        <Layout.Flex
+          id="forest"
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
+        >
+          <Typography.Typography
+            color="textQuinary"
+            variant="h3"
+            textAlign="center"
+            margin="0 0 1em"
+          >
+            Forest Maintenance
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/forest2.jpg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Editable.ImageDisplay
+            layoutConfig={{
+              mobile: 50,
+              desktop: 25,
+              tablet: 33,
+            }}
+            imageConfig={{
+              items: store.defaultState.content.home.forestMaintenanceImages,
+              itemSpacing: "0",
+              dimensionsConfig: {
+                width: "10em",
+              },
+            }}
+          ></Editable.ImageDisplay>
+        </Layout.Flex>
+      </Layout.WindoW>
+      <Layout.WindoW
+        xAlign="center"
+        yAlign="center"
+        column
+        background="backgroundSecondary"
+      >
+        <Layout.Flex
+          id="lawn"
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
+        >
           <Typography.Typography
             color="textTertiary"
-            variant="h5"
-            displayAlign={{ alignSelf: "center" }}
+            variant="h3"
             textAlign="center"
-            margin="2em 0 0 0"
+            margin="0 0 1em"
           >
-            Dress Code
-          </Typography.Typography>
+            Lawn and Garden
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/brush2.jpg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textTertiary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Editable.ImageDisplay
+            layoutConfig={{
+              mobile: 50,
+              desktop: 25,
+              tablet: 33,
+            }}
+            imageConfig={{
+              items: store.defaultState.content.home.lawnAndGardenImages,
+              itemSpacing: "0",
+              dimensionsConfig: {
+                width: "10em",
+              },
+            }}
+          ></Editable.ImageDisplay>
+        </Layout.Flex>
+      </Layout.WindoW>
+      <Layout.WindoW xAlign="center" yAlign="center" column>
+        <Layout.Flex
+          id="leaf"
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
+        >
           <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
+            color="textQuinary"
+            variant="h3"
             textAlign="center"
-            margin="1em 0 0"
+            margin="0 0 1em"
           >
-            Guest attire can elevate or diminish the experience of others. We
-            consider tank tops, hats, flip flops, and team athletic attire too
-            casual for our restaurants. Our staff takes pride in their
-            appearance and we ask our guests to respect our attire guidelines.
-          </Typography.Typography>
+            Leaf Removal
+          </Typography.Typography>{" "}
+          <Layout.Grid
+            gridGap="1.5em"
+            centerMobile
+            margin="1em 0 3.5em"
+            layout={[50, 50]}
+          >
+            <Content.Image
+              boxShadow={true}
+              maxWidth="20em"
+              width="100%"
+              src="/assets/images/leaf6.jpg"
+            ></Content.Image>
+            <Typography.Typography
+              color="textQuinary"
+              variant="p"
+              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
+              textAlign="left"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Typography.Typography>
+          </Layout.Grid>
+          <Editable.ImageDisplay
+            layoutConfig={{
+              mobile: 50,
+              desktop: 25,
+              tablet: 33,
+            }}
+            imageConfig={{
+              items: store.defaultState.content.home.leafRemovalImages,
+              itemSpacing: "0",
+              dimensionsConfig: {
+                width: "10em",
+              },
+            }}
+          ></Editable.ImageDisplay>
+        </Layout.Flex>
+      </Layout.WindoW>
 
-          <Typography.Typography
-            color="textTertiary"
-            variant="h5"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0 0"
-          >
-            Dinging Guidelines
-          </Typography.Typography>
+      {/*       
           <Typography.List
             margin="1em 0 0"
             listItemConfig={{
@@ -384,9 +494,7 @@ const Home: React.FC<Props> = (props) => {
               "To minimize distractions to other guests, please take cell phone conversations out of seated areas, set devices to silent, and limit the use of laptops or tablets.        ",
               "Out of consideration for other guests who are waiting, we may ask for your table if a significant amount of time has passed. We typically never make this request short of 90 minutes after you are seated.      ",
             ]}
-          ></Typography.List>
-        </Layout.Flex>
-      </Layout.WindoW>
+          ></Typography.List> */}
     </React.Fragment>
   );
 };

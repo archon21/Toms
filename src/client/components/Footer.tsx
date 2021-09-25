@@ -5,7 +5,6 @@ import { Layout, Typography, Content } from ".";
 import { Styles, Interfaces, siteConfig, Types } from "../../site-config";
 import { SVG } from "../assets";
 
-
 interface Props {
   background?: Types.Colors;
 }
@@ -24,29 +23,8 @@ const Footer: React.FC<Props> = (props) => {
     <Foot>
       <Layout.Flex column>
         <Layout.Flex margin=".5em 0" column width="auto">
-          <Typography.Typography color="textQuinary" variant="p">
-            ​Sunday - Tuesday: Closed
-          </Typography.Typography>
-          <Typography.Typography color="textQuinary" variant="p">
-            Wednesday - Thursday: 5pm - 9pm
-          </Typography.Typography>
-          <Typography.Typography color="textQuinary" variant="p">
-            ​​Friday - Saturday: 5pm - 9pm
-          </Typography.Typography>
-        </Layout.Flex>
-        {/* <Layout.Flex margin=".5em 0" column width="auto">
-          <Content.Icon type="svg" name="facebook"></Content.Icon>
-        </Layout.Flex> */}
-
-        <Layout.Flex margin=".5em 0" column width="auto">
-          <Typography.Typography color="textQuinary" variant="p">
-            68 Linwood Ave
-          </Typography.Typography>
-          <Typography.Typography color="textQuinary" variant="p">
-            Colchester, CT 06415
-          </Typography.Typography>
-          <Typography.Typography color="textQuinary" variant="p">
-            (860)603-6948
+          <Typography.Typography color="textQuinary" variant="h5">
+            (860) 830-3865
           </Typography.Typography>
         </Layout.Flex>
       </Layout.Flex>
