@@ -28,8 +28,6 @@ interface Props {
 const Home: React.FC<Props> = (props) => {
   // const [defaultState, setDefaultState] = useState({});
 
-  
-
   return (
     <React.Fragment>
       <Layout.WindoW
@@ -176,6 +174,9 @@ const Home: React.FC<Props> = (props) => {
               </Typography.Typography>
             </Layout.Flex>
           </Editable.MenuDisplay>
+          {/* <Editable.MenuDisplay items={store.defaultState.content.menu.menu}>
+
+          </Editable.MenuDisplay> */}
 
           {/* <Inputs.SlateEditor></Inputs.SlateEditor>
           <Editable.ImageDisplay

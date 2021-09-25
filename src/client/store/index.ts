@@ -208,6 +208,13 @@ const defaultMenu = {
   },
 };
 
+const brunchMenu = {
+  theBenedicts: {
+    name: 'The Benedicts',
+    description: ['Choose any two 14', 'Choose any three 20', '-Served with hashbrowns']
+  }
+}
+
 const drinkMenu = {
   cocktails: {
     name: "Cocktails",

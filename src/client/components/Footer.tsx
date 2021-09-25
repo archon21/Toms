@@ -25,7 +25,7 @@ const Footer: React.FC<Props> = (props) => {
       <Layout.Flex column>
         <Layout.Flex margin=".5em 0" column width="auto">
         <Typography.Typography color="textQuinary" variant="p">
-            Sunday: Brunch 11am-3pm
+            Sunday: Brunch 11am - 3pm
           </Typography.Typography>
           <Typography.Typography color="textQuinary" variant="p">
             Monday - Tuesday: Closed
