@@ -51,7 +51,7 @@ const RichTextExample = ({ accessor, page, defaultValue }) => {
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
-  console.log(value);
+
 
   return (
     <Container>
@@ -128,7 +128,7 @@ const RichTextExample = ({ accessor, page, defaultValue }) => {
       </Slate>
       <Buttons.Button
         onClick={async () => {
-          console.log(page, accessor, value);
+
 
           await store.defaultContentHandler({
             content: value,
@@ -179,7 +179,7 @@ const toggleAlignment = (editor, format) => {
 
 const toggleMark = (editor, format) => {
   const isActive = isMarkActive(editor, format);
-  console.log(isActive, "IS ACTIVE");
+
 
   if (isActive) {
     Editor.removeMark(editor, format);
@@ -337,7 +337,7 @@ const BlockButton = ({ format, icon, number, helperText }) => {
         },
       };
 
-  console.log(buttonTypeConfig);
+
 
   return (
     <Buttons.Editor

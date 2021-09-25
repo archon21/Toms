@@ -23,7 +23,7 @@ const html = ({
       <meta name="theme-color" content="#000000" />
       <meta
         name="description"
-        content="Web site created using create-react-app"
+        content="Steaks, Seafood, and cocktails with the finest ingredients Connecticut has to offer."
       />
       <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
       <link

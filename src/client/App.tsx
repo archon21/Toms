@@ -87,7 +87,7 @@ const App: React.FC<Props> = ({ defaultState }) => {
   );
 
   useEffect(() => {
-    console.log("app", defaultState);
+
     
     store.defaultContentHandler({ content: defaultState, action: "INITIAL" });
     setMounted(true)

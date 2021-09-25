@@ -44,7 +44,7 @@ const Config = (entry, name, target, path, isPostProcess, plugins) => {
     externals: name === "server" ? [nodeExternals()] : [],
     output: {
       path,
-      filename: `bundle.${name}.js`,
+      filename: `bundle.${name}.${name === "server" ? "cjs" : "js"}`,
     },
     mode: "development",
     resolve: {

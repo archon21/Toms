@@ -56,7 +56,7 @@ const Element = styled.button<ButtonProps>`
 
 const Button: React.FC<ButtonProps> = (props) => {
   const { onClick, iconConfig, typographyConfig } = props;
-  console.log(typographyConfig, 'PE');
+
   
 
   return (
