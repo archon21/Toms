@@ -91,7 +91,11 @@
     "dev": "npm-run-all --parallel dev:*",
     "start:build-server": "NODE_ENV=production webpack --config webpack.config.cjs --mode=production ",
     "start:start": "node ./dist/bundle.server.cjs",
-    "start": "npm-run-all  start:*"
+    "start": "npm-run-all  start:*",
+    "pre:build-server": "NODE_ENV=production webpack --config webpack.config.cjs --mode=production ",
+    "pre:start": "node ./dist/bundle.server.cjs",
+    "pre": "npm-run-all  start:*"
+    
   },
   "eslintConfig": {
     "extends": [
