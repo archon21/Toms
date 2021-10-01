@@ -15,7 +15,7 @@ const MenuContainer = styled.div`
   & > div#mobile-menu {
     display: none;
   }
-  @media (max-width: 800px) {
+  @media (max-width: ${siteConfig.client.required.layouts.tablet}px) {
     & > div {
       display: none !important;
     }

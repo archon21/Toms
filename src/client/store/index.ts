@@ -210,10 +210,196 @@ const defaultMenu = {
 
 const brunchMenu = {
   theBenedicts: {
-    name: 'The Benedicts',
-    description: ['Choose any two 14', 'Choose any three 20', '-Served with hashbrowns']
-  }
-}
+    name: "The Benedicts",
+    description: [
+      "Choose any two - 14",
+      "Choose any three - 20",
+      "Served with hashbrowns",
+    ],
+    items: [
+      {
+        name: "The Classic",
+        description: "Nodine’s Canadian bacon",
+        price: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Blackstone",
+        description: "candied slab bacon and tomato",
+        price: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Florentine",
+        description: "sautéed “dirty’ spinach",
+        price: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Salmon",
+        description: "house smoked salmon and grilled onions",
+        price: "+2",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Oscar",
+        description: "crab cake and asparagus",
+        price: "+3",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Steak*",
+        description: "sliced USDA Prime filet",
+        price: "+4",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Lobster",
+        description: "hand-picked ½ Maine lobster",
+        price: "+6",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+    ],
+  },
+  breakfastClassics: {
+    name: "Breakfast Classics",
+    items: [
+      {
+        name: "2 Eggs Any Style",
+        description: "ham or bacon, hashbrowns, and your choice of toast",
+        price: 1400,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Hash ‘n Eggs",
+        description: "USDA Prime hash with two sunny side up eggs",
+        price: 1600,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Chicken and Waffles",
+        description: "fried chicken with honey butter and spicy jam",
+        price: 1800,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Steak and Eggs*",
+        description: "4oz. USDA Prime filet with two eggs and hash browns",
+        price: 2800,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Belgian Waffle",
+        description: "served with whipped cream and fresh berries",
+        price: 1400,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "the Burger*",
+        description:
+          "local ground beef and cheese, kale-slaw, tomato, and a sesame bun",
+        price: 1700,
+        unit: "",
+        includes: [],
+        info: [],
+      },
+    ],
+  },
+  sides: {
+    name: "Sides",
+    description: "",
+    items: [
+      {
+        name: "One Egg",
+        price: 500,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Canadian Bacon",
+        price: 600,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Candied Bacon",
+        price: 1000,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Hashbrowns",
+        price: 800,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Fresh Fruit Salad",
+        price: 1200,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Toast",
+        price: 400,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Yogurt and Granola",
+        price: 800,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+      {
+        name: "Mini Brioche Loaf",
+        price: 800,
+        description: "",
+        unit: "",
+        includes: [],
+        info: [],
+      },
+    ],
+  },
+};
 
 const drinkMenu = {
   cocktails: {
@@ -321,6 +507,7 @@ class Store {
       menu: {
         menu: defaultMenu,
         drinks: drinkMenu,
+        brunch: brunchMenu,
       },
       gallery: {
         images: [
@@ -384,15 +571,14 @@ class Store {
     try {
       if (action === "GET") {
       } else if (action === "SET") {
-        
         await Util.Request({
           method: "POST",
           url: "/api/content",
           data: { items: content, page, accessor },
         });
         this.content = content;
-      } else if(action === 'INITIAL') {
-        this.content = content.content
+      } else if (action === "INITIAL") {
+        this.content = content.content;
       }
     } catch (err) {
       console.error(err);

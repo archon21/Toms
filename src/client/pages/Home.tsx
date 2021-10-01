@@ -147,7 +147,7 @@ const Home: React.FC<Props> = (props) => {
             textAlign="center"
             margin="0 0 1em"
           >
-            Menu
+            Dinner 
           </Typography.Typography>
           <Editable.MenuDisplay items={store.defaultState.content.menu.menu}>
             {" "}
@@ -174,23 +174,8 @@ const Home: React.FC<Props> = (props) => {
               </Typography.Typography>
             </Layout.Flex>
           </Editable.MenuDisplay>
-          {/* <Editable.MenuDisplay items={store.defaultState.content.menu.menu}>
-
-          </Editable.MenuDisplay> */}
-
-          {/* <Inputs.SlateEditor></Inputs.SlateEditor>
-          <Editable.ImageDisplay
-            imageConfig={{
-              items: store.defaultState.content.dumpsterRentals,
-
-              itemSpacing: "1em",
-
-              dimensionsConfig: {
-                width: "10em",
-              },
-            }}
-          ></Editable.ImageDisplay> */}
         </Layout.Flex>
+
         <Layout.Flex
           id="cocktails"
           margin="2em 0"
@@ -202,6 +187,26 @@ const Home: React.FC<Props> = (props) => {
             items={store.defaultState.content.menu.drinks}
           ></Editable.MenuDisplay>
         </Layout.Flex>
+        <Typography.Typography
+            color="textTertiary"
+            variant="h3"
+            textAlign="center"
+
+          >
+            Brunch 
+          </Typography.Typography>
+        <Layout.Flex
+          id="brunch"
+          margin="2em 0"
+          column
+          yAlign="center"
+          xAlign="center"
+        >
+          <Editable.MenuDisplay
+            items={store.defaultState.content.menu.brunch}
+          ></Editable.MenuDisplay>
+        </Layout.Flex>
+
         <Layout.Flex
           id="gallery"
           margin="2em 0"

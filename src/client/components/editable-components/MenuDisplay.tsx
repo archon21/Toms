@@ -66,10 +66,39 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
       {Object.entries(items).map(
         ([key, { name, description, items }], index) => {
           return (
-            <Layout.Flex width="85%" margin="0 0 2em" column yAlign="flex-start">
-              <Typography.Typography margin='0 0 1em' textAlign='left' color='textTertiary' fontFamily="secondary" variant="h4">
+            <Layout.Flex
+              width="85%"
+              margin="0 0 2em"
+              column
+              yAlign="flex-start"
+            >
+              <Typography.Typography
+                margin="0 0 1em"
+                textAlign="left"
+                color="textTertiary"
+                fontFamily="secondary"
+                variant="h4"
+              >
                 {name}
               </Typography.Typography>
+              {description && (
+                <Layout.Flex margin='0 0 1em' column>
+                  {description.map((d) => {
+                    return (
+                      <Typography.Typography
+                        margin="0 0 .2em"
+                        textAlign="left"
+                        color="textTertiary"
+                        variant="p"
+                      >
+                        {d}
+                      </Typography.Typography>
+                    );
+                  })}
+                </Layout.Flex>
+              )}
+
+              <Layout.Flex></Layout.Flex>
 
               {items.map(({ name, price, description, unit }) => {
                 return (
@@ -105,7 +134,9 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
                       color="textTertiary"
                       style={{ whiteSpace: "nowrap" }}
                     >
-                      {Number.isNaN(Number(price)) ? price : Math.round(price / 100)}
+                      {typeof price === "string"
+                        ? price
+                        : Math.round(price / 100)}
 
                       {unit && `- ${unit}`}
                     </Typography.Typography>
