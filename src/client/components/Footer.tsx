@@ -5,7 +5,6 @@ import { Layout, Typography, Content } from ".";
 import { Styles, Interfaces, siteConfig, Types } from "../../site-config";
 import { SVG } from "../assets";
 
-
 interface Props {
   background?: Types.Colors;
 }
@@ -24,11 +23,8 @@ const Footer: React.FC<Props> = (props) => {
     <Foot>
       <Layout.Flex column>
         <Layout.Flex margin=".5em 0" column width="auto">
-        <Typography.Typography color="textQuinary" variant="p">
-            Sunday: Brunch 11am - 3pm
-          </Typography.Typography>
           <Typography.Typography color="textQuinary" variant="p">
-            Monday - Tuesday: Closed
+            Sunday - Tuesday: Closed
           </Typography.Typography>
           <Typography.Typography color="textQuinary" variant="p">
             Wednesday - Thursday: 5pm - 9pm

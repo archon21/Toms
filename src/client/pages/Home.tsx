@@ -187,7 +187,7 @@ const Home: React.FC<Props> = (props) => {
             items={store.defaultState.content.menu.drinks}
           ></Editable.MenuDisplay>
         </Layout.Flex>
-        <Typography.Typography
+        {/* <Typography.Typography
             color="textTertiary"
             variant="h3"
             textAlign="center"
@@ -205,7 +205,7 @@ const Home: React.FC<Props> = (props) => {
           <Editable.MenuDisplay
             items={store.defaultState.content.menu.brunch}
           ></Editable.MenuDisplay>
-        </Layout.Flex>
+        </Layout.Flex> */}
 
         <Layout.Flex
           id="gallery"
