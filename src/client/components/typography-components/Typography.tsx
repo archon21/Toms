@@ -27,10 +27,12 @@ const StyledElement = styled(Element).attrs({})`
       ? `${props.textBorder.size} ${Styles.Colors[props.textBorder.color]}`
       : "";
   }};
+  font-style: ${(props) => {
+    return props?.fontStyle || "unset";
+  }};
 `;
 
 const Typography: React.FC<Interfaces.Typography.Typography> = (props) => {
-  
   return <StyledElement {...props}></StyledElement>;
 };
 export default Typography;

@@ -18,6 +18,7 @@ interface Props {
   className?: string;
   maxWidth?: string;
   id?: string;
+  style?: any;
 }
 
 const Vessel = styled.div<Props>`

@@ -14,6 +14,7 @@ interface Typography {
   padding?: string;
   displayAlign?: Interfaces.DisplayAlign;
   textBorder?: { size: string; color: Types.Colors };
+  fontStyle?: 'italic';
 }
 
 export default Typography;

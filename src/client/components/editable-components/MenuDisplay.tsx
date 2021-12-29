@@ -7,6 +7,20 @@ import { Content, Layout, Typography } from "..";
 import { siteConfig, Styles } from "../../../site-config";
 import store from "../../store";
 
+const _getPriceDisplay = ({ price }) => {
+  if (Array.isArray(price)) {
+    return price
+      .reduce((acc, curr) => {
+        acc.push(_getPriceDisplay({ price: curr }));
+        return acc;
+      }, [])
+      .join(" / ");
+  } else if (typeof price === "number") {
+    return Math.round(price / 100);
+  }
+  return price;
+};
+
 interface Props {
   //   padding?: string;
   //   imageConfig: {
@@ -81,8 +95,9 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
               >
                 {name}
               </Typography.Typography>
+
               {description && (
-                <Layout.Flex margin='0 0 1em' column>
+                <Layout.Flex margin="0 0 1em" column>
                   {description.map((d) => {
                     return (
                       <Typography.Typography
@@ -100,7 +115,7 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
 
               <Layout.Flex></Layout.Flex>
 
-              {items.map(({ name, price, description, unit }) => {
+              {items.map(({ name, price, description, unit, options, add , }) => {
                 return (
                   <MenuDisplayItem>
                     <Layout.Flex yAlign="flex-start">
@@ -118,28 +133,101 @@ const MenuDisplay: React.FC<Props> = observer((props) => {
                           textAlign="left"
                           variant="p"
                           color="textTertiary"
+                          fontStyle="italic"
                         >
                           {" "}
-                          - {description}
+                           {description}
                         </Typography.Typography>
                       )}
                     </Layout.Flex>
-                    <Typography.Typography
-                      displayAlign={{
-                        alignSelf: "center",
-                        justifySelf: "flex-end",
-                      }}
-                      textAlign="right"
-                      variant="p"
-                      color="textTertiary"
-                      style={{ whiteSpace: "nowrap" }}
-                    >
-                      {typeof price === "string"
-                        ? price
-                        : Math.round(price / 100)}
+                    <Layout.Flex xAlign="flex-end" yAlign="flex-end" column style={{alignSelf: 'flex-start'}}>
+                      <Typography.Typography
+                        displayAlign={{
+                          alignSelf: "center",
+                          justifySelf: "flex-end",
+                        }}
+                        textAlign="right"
+                        variant="p"
+                        color="textTertiary"
+                        style={{ whiteSpace: "nowrap" }}
+                      >
+                        {_getPriceDisplay({ price })} {unit && `- ${unit}`}
+                      </Typography.Typography>
+                    </Layout.Flex>
+                    {options &&
+                      options.map(({ price, name, unit }) => {
+                        return (
+                          <Fragment>
+                            <Layout.Flex yAlign="flex-start">
+                              <Typography.Typography
+                                margin="0 0 0 .4em"
+                                textAlign="left"
+                                variant="p"
+                                color="textTertiary"
+                              >
+                                - {name}
+                              </Typography.Typography>
+                            </Layout.Flex>
 
-                      {unit && `- ${unit}`}
-                    </Typography.Typography>
+                            <Layout.Flex
+                              xAlign="flex-end"
+                              yAlign="flex-end"
+                              column
+                            >
+                              <Typography.Typography
+                                displayAlign={{
+                                  alignSelf: "center",
+                                  justifySelf: "flex-end",
+                                }}
+                                textAlign="right"
+                                variant="p"
+                                color="textTertiary"
+                                style={{ whiteSpace: "nowrap" }}
+                              >
+                                {_getPriceDisplay({ price })}{" "}
+                                {unit && `- ${unit}`}
+                              </Typography.Typography>
+                            </Layout.Flex>
+                          </Fragment>
+                        );
+                      })}
+                      {add &&
+                      add.map(({ price, name, unit }) => {
+                        return (
+                          <Fragment>
+                            <Layout.Flex yAlign="flex-end">
+                              <Typography.Typography
+                                margin="0 0 0 .4em"
+                                textAlign="right"
+                                variant="p"
+                                color="textTertiary"
+                              >
+                                - {name}
+                              </Typography.Typography>
+                            </Layout.Flex>
+
+                            <Layout.Flex
+                              xAlign="flex-end"
+                              yAlign="flex-end"
+                              column
+                            >
+                              <Typography.Typography
+                                displayAlign={{
+                                  alignSelf: "center",
+                                  justifySelf: "flex-end",
+                                }}
+                                textAlign="right"
+                                variant="p"
+                                color="textTertiary"
+                                style={{ whiteSpace: "nowrap" }}
+                              >
+                                +{_getPriceDisplay({ price })}{" "}
+                                {unit && `- ${unit}`}
+                              </Typography.Typography>
+                            </Layout.Flex>
+                          </Fragment>
+                        );
+                      })}
                   </MenuDisplayItem>
                 );
               })}
