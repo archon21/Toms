@@ -2,6 +2,7 @@ import { Storage } from "@google-cloud/storage";
 import { uniqueId } from "lodash";
 import path from "path";
 import stream from "stream";
+import fs from "fs";
 
 import { siteConfig } from "../../../site-config";
 
@@ -50,12 +51,15 @@ const StorageService = {
                 photoTwoId: resultTwo?.id,
                 photoOneName: resultOne?.name,
                 photoTwoName: resultTwo?.name,
-                
               },
             });
           }
         }
-
+        Promise.all(
+          request.files?.map((file) => {
+            return fs.unlink(file.path, (err) => console.error(err));
+          })
+        );
         return response.status(204).send(result);
       }
       return response.status(200).send();
