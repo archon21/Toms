@@ -489,10 +489,14 @@ const Home: React.FC<Props> = (props) => {
                     <tr>
                       <td>
                         {" "}
-                        <SmallImage src={item?.items?.photoOne}></SmallImage>
+                        <SmallImage onClick={() => {
+                          window.open(item?.items?.photoOne, '_blank')
+                        }} src={item?.items?.photoOne}></SmallImage>
                       </td>
                       <td>
-                        <SmallImage src={item?.items?.photoTwo}></SmallImage>
+                        <SmallImage onClick={() => {
+                          window.open(item?.items?.photoTwo, '_blank')
+                        }} src={item?.items?.photoTwo}></SmallImage>
                       </td>
                       <td>
                         <Typography.Typography variant="span">
@@ -525,6 +529,7 @@ const Home: React.FC<Props> = (props) => {
 export default observer(Home);
 
 const SmallImage = styled.img`
-  width: 1em;
-  height: 1em;
+  width: 4em;
+  height: 4em;
+  cursor: pointer;
 `;
