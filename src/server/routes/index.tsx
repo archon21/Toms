@@ -1,6 +1,34 @@
 // Server
 import { Router } from "express";
 import path from "path";
+import fs from "fs";
+import multer from "multer";
+import MulterGoogleStorage from "multer-google-storage";
+
+console.log(
+  path.join(
+    __dirname,
+    "..",
+
+    siteConfig.server.storage.keyFile
+  )
+);
+
+const fileStorageEngine = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const pathToUse = path.join(__dirname, "temp-images");
+    if (!fs.existsSync(pathToUse)) fs.mkdirSync(pathToUse);
+
+    cb(null, pathToUse);
+  },
+  fileName: (req, file, cb) => {
+    cb(null, Date.now() + "--" + file.originalName);
+  },
+});
+
+const upload = multer({ storage: fileStorageEngine });
+
+console.log(multer.diskStorage, "MULTER");
 
 // Client
 import React from "react";
@@ -40,7 +68,6 @@ const createRoute = ({ methods, url, title }: Interfaces.Route) => {
         const context = {};
         const sheet = new ServerStyleSheet();
 
-        
         const body = ReactDOMServer.renderToStaticMarkup(
           <StaticRouter location={req.url} context={context}>
             {sheet.collectStyles(<App defaultState={defaultState} />)}
@@ -55,17 +82,22 @@ const createRoute = ({ methods, url, title }: Interfaces.Route) => {
 };
 
 Object.entries(siteConfig.server.htmlRoutes).forEach(([key, route]) => {
-
-  
   createRoute(route);
 });
 
-Object.entries(Services).forEach(([serviceName, service]) => {
+Object.entries(Services).forEach(([serviceName, service]) => {  
   Object.entries(service).forEach(([methodType, method]) => {
-    router[methodType.toLowerCase()](
-      `/api/${serviceName.toLowerCase()}`,
-      (req, res) => method({ request: req, response: res })
-    );
+    if (serviceName.toLowerCase() === "storage") {
+      router[methodType.toLowerCase()](
+        `/api/${serviceName.toLowerCase()}`,
+        upload.array("files", 100),
+        (req, res) => method({ request: req, response: res })
+      );
+    } else
+      router[methodType.toLowerCase()](
+        `/api/${serviceName.toLowerCase()}`,
+        (req, res) => method({ request: req, response: res })
+      );
   });
 });
 

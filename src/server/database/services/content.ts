@@ -4,14 +4,10 @@ const ContentService = {
   GET: async ({ request, response }) => {
     const page = request?.params?.page;
 
+    const content = await Content.find({});
+    console.log(content);
 
-    // const content = await Content.findOne({ name: page });
-    const content = {}
-  
-
-    return response?.send
-      ? response.send({ [content.name]: content?.items }).status(200)
-      : { [content.name]: content?.items };
+    return response?.json ? response.json(content).status(200) : content;
   },
 
   POST: async ({ request, response }) => {
@@ -37,7 +33,8 @@ const ContentService = {
   },
 
   DELETE: async ({ request, response }) => {
-    return "HERE";
+    await Content.deleteMany({});
+    return response.send().status(200);
   },
 };
 

@@ -4,14 +4,23 @@ const Request = ({
   url,
   method,
   data,
+  files,
 }: {
   method: "GET" | "POST" | "PATCH" | "DELETE";
   url: string;
   data?: any;
+  files?: any;
 }) => {
   try {
-    const config: any = { url, method };
-    if (data) config.data = data;
+    const config: any = { url, method, headers: {} };
+    if (files) {
+      config.headers["Content-Type"] = files[0]?.type;
+      const formData = new FormData();
+      console.log(files);
+      
+      formData.append("files", files);
+      config.data = formData;
+    } else if (data) config.data = data;
 
     return axios(config);
   } catch (err) {

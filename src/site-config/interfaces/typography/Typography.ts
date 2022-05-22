@@ -15,6 +15,7 @@ interface Typography {
   displayAlign?: Interfaces.DisplayAlign;
   textBorder?: { size: string; color: Types.Colors };
   fontStyle?: 'italic';
+  whiteSpace?: 'nowrap'
 }
 
 export default Typography;

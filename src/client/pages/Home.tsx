@@ -1,5 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { observer } from "mobx-react";
+let xlsx = require("json-as-xlsx");
+import styled from "styled-components";
+
 import store from "../store";
 
 import {
@@ -7,9 +10,9 @@ import {
   Typography,
   Content,
   Inputs,
-  
   Element,
   Composed,
+  Buttons,
 } from "../components";
 import { siteConfig } from "../../site-config";
 import NavMenu from "../components/Nav/NavMenus";
@@ -27,31 +30,337 @@ interface Props {
 }
 
 const Home: React.FC<Props> = (props) => {
-  // const [defaultState, setDefaultState] = useState({});
   const [pageConfig, setPageConfig] = useState({ mounted: false });
 
   const handleMount = async () => {
     await store.defaultStateGetter({ htmlRouteAccess: "Home" });
-    
 
     setPageConfig({ ...pageConfig, mounted: true });
   };
 
-  useEffect(() => {
-    
-    // if(!store.defaultState?.menus?.default) {
-    handleMount();
+  const handleUpload = async (e) => {
+    e.preventDefault();
 
-    // }
+    await store.cardUploader({ images: [...e.target.files] });
+  };
+
+  const convertToExcel = async () => {
+    const columns = [
+      {
+        label: "*Action(SiteID=US|Country=US|Currency=USD|Version=1193)",
+        value: "action",
+      }, // Top level data
+      { label: "Custom label (SKU)", value: "sku" },
+      {
+        label: "Category name",
+        value: "categoryName",
+      },
+      {
+        label: "Title",
+        value: "title",
+      },
+      {
+        label: "Relationship",
+        value: "relationship",
+      },
+      {
+        label: "Relationship details",
+        value: "relationshipDetails",
+      },
+      {
+        label: "P:UPC",
+        value: "upc",
+      },
+      {
+        label: "P:ISBN",
+        value: "isbn",
+      },
+      {
+        label: "P:EAN",
+        value: "ean",
+      },
+      {
+        label: "P:EPID",
+        value: "epid",
+      },
+      {
+        label: "Start price",
+        value: "startPrice",
+      },
+      {
+        label: "Quantity",
+        value: "quantity",
+      },
+      {
+        label: "Item photo URL",
+        value: "primaryPhotoUrl",
+      },
+      {
+        label: "Condition ID",
+        value: "conditionId",
+      },
+      {
+        label: "Description",
+        value: "description",
+      },
+      {
+        label: "Format",
+        value: "format",
+      },
+      {
+        label: "Duration",
+        value: "duration",
+      },
+      {
+        label: "Buy It Now price",
+        value: "buyItNowPrice",
+      },
+      {
+        label: "Paypal accepted",
+        value: "paypalAccepted",
+      },
+      {
+        label: "Paypal email address",
+        value: "paypalEmailAddress",
+      },
+      {
+        label: "Immediate pay required",
+        value: "immediatePayRequired",
+      },
+      {
+        label: "Payment instructions",
+        value: "payInstructions",
+      },
+      {
+        label: "Location",
+        value: "location",
+      },
+      {
+        label: "Shipping service 1 option",
+        value: "shippingService1Option",
+      },
+      {
+        label: "Shipping service 1 cost",
+        value: "shippingService1Cost",
+      },
+      {
+        label: "Shipping service 1 priority",
+        value: "shippingService1Priority",
+      },
+      {
+        label: "Shipping service 2 option",
+        value: "shippingService2Option",
+      },
+      {
+        label: "Shipping service 2 cost",
+        value: "shippingService2Cost",
+      },
+      {
+        label: "Shipping service 2 priority",
+        value: "shippingService2Priority",
+      },
+      {
+        label: "Max dispatch time",
+        value: "maxDispatchTime",
+      },
+      {
+        label: "Returns accepted option",
+        value: "returnsAcceptedOption",
+      },
+      {
+        label: "Returns within option",
+        value: "returnsWithinOption",
+      },
+      {
+        label: "Refund option",
+        value: "refundOption",
+      },
+      {
+        label: "Return shipping cost paid by",
+        value: "returnShippingCostPaidBy",
+      },
+      {
+        label: "Shipping profile name",
+        value: "shippingProfileName",
+      },
+      {
+        label: "Return profile name",
+        value: "returnsProfileName",
+      },
+      {
+        label: "Payment profile name",
+        value: "paymentProfileName",
+      },
+      {
+        label: "TakeBackPolicyID",
+        value: "takeBackPolicyID",
+      },
+      {
+        label: "ProductCompliancePolicyID",
+        value: "productCompliancePolicyID",
+      },
+      {
+        label: "C:Subject",
+        value: "cSubject",
+      },
+      {
+        label: "C:Theme",
+        value: "cTheme",
+      },
+      {
+        label: "C:Occasion",
+        value: "cOccasion",
+      },
+      {
+        label: "C:Type",
+        value: "cType",
+      },
+      {
+        label: "C:Artist",
+        value: "cArtist",
+      },
+      {
+        label: "C:Country/Region of Manufacture",
+        value: "cCountry",
+      },
+      {
+        label: "C:Unit of Sale",
+        value: "cUnitOfSale",
+      },
+      {
+        label: "C:Postage Condition",
+        value: "cPostageCondition",
+      },
+      {
+        label: "C:Original/Licensed Reprint",
+        value: "cOriginalOrLicensed",
+      },
+      {
+        label: "C:Era",
+        value: "cEra",
+      },
+      {
+        label: "C:City",
+        value: "cCity",
+      },
+      {
+        label: "C:Region",
+        value: "cRegion",
+      },
+      {
+        label: "C:Country",
+        value: "cCountry",
+      },
+    ];
+
+    let data = [
+      {
+        sheet: "Products",
+        columns,
+        content: store.defaultState.content.map((item) => {
+          const {
+            items: {
+              photoOne,
+              photoTwo,
+              textDetectionOne,
+              textDetectionTwo,
+              sku,
+            },
+          } = item;
+          return {
+            action: "ADD",
+            buyItNowPrice: 7.99,
+            cArtist: "NA",
+            cCity: "",
+            cCountry: "United States",
+            cEra: "LINEN",
+            cOccasion: "NA",
+            cOriginalOrLicensed: "Original",
+            cPostageCondition: "C:Postage Condition",
+            cRegion: "",
+            cSubject: "",
+            cTheme: "",
+            cType: "Linen Postcard",
+            cUnitOfSale: "C:Unit of Sale",
+            categoryName:
+              "/Collectibles/Postcards & Supplies/Postcards/Non-Topographical Postcards",
+            conditionId: `3000-Used`,
+            description: textDetectionTwo,
+            duration: "GTC",
+            ean: "",
+            epid: "",
+            format: "FixedPrice",
+            immediatePayRequired: "",
+            isbn: "",
+            location: "Norwich, CT",
+            maxDispatchTime: "",
+            payInstructions: "",
+            paymentProfileName: "eBay Payments",
+            paypalAccepted: 1,
+            paypalEmailAddress: "EMAIL_HERE",
+            primaryPhotoUrl: `${photoOne};${photoTwo}`,
+            productCompliancePolicyID: "",
+            quantity: 1,
+            refundOption: "",
+            relationship: "Variation",
+            relationshipDetails: "",
+            returnShippingCostPaidBy: "",
+            returnsAcceptedOption: "",
+            returnsProfileName: "Returns Accepted,Seller,30 Days,Money back or",
+            returnsWithinOption: "",
+            shippingProfileName: "#Postcard",
+            shippingService1Cost: "",
+            shippingService1Option: "",
+            shippingService1Priority: "",
+            shippingService2Cost: "",
+            shippingService2Option: "",
+            shippingService2Priority: "",
+            sku: `PCO${sku}`,
+            startPrice: 7.99,
+            takeBackPolicyID: "",
+            title: textDetectionOne,
+            upc: "",
+          };
+        }),
+      },
+    ];
+
+    let settings = {
+      fileName: "MySpreadsheet", // Name of the resulting spreadsheet
+      extraLength: 3, // A bigger number means that columns will be wider
+      writeOptions: {}, // Style options from https://github.com/SheetJS/sheetjs#writing-options
+    };
+
+    xlsx(data, settings);
+  };
+
+  const handleOcr = async () => {
+    setPageConfig({ ...pageConfig, mounted: false });
+    const res = await Util.Request({
+      url: "/api/ocr",
+      method: "POST",
+      data: {
+        objects: store.defaultState.content,
+      },
+    });
+    handleMount();
+  };
+
+  const handleDelete = async () => {
+    setPageConfig({ ...pageConfig, mounted: false });
+
+    await Util.Request({ url: "/api/content", method: "DELETE" });
+    handleMount();
+  };
+
+  useEffect(() => {
+    handleMount();
   }, []);
 
   return pageConfig.mounted ? (
     <React.Fragment>
       <Layout.WindoW
         id="home"
-        backgroundUrl={{
-          url: store.defaultState.content.home.images.backgroundImage,
-        }}
         init
         xAlign="flex-start"
         yAlign="flex-start"
@@ -61,297 +370,150 @@ const Home: React.FC<Props> = (props) => {
           column
           xAlign="center"
           yAlign="flex-start">
-          <NavLogo></NavLogo>
-        
-
-          {store.window.clientWidth >
-            siteConfig.client.required.layouts.tablet && (
-            <Layout.Flex margin="1em 0 0" xAlign="center" yAlign="center">
-              <DesktopMenu></DesktopMenu>
-            </Layout.Flex>
-          )}
-          <Composed.Text accessor="homeLandingText" page='home'></Composed.Text>
-          <Typography.Typography
-            color="textQuinary"
-            variant="h3"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
+          <Layout.Flex
             margin="1em 0 0 0"
-            weight="bold">
-            Lily's is now open and we look forward to seeing you!{" "}
-          </Typography.Typography>
-          <Typography.Typography
-            color="textQuinary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-            weight="500">
-            Lily's is now open and we look forward to seeing you! Come in to
-            enjoy a concise menu of premium steaks, seafood, sandwiches, and
-            salads along with a selection of daily specials.
-          </Typography.Typography>
-          <Typography.Typography
-            color="textQuinary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-            weight="500">
-            The space is intimate with 8 tables in the main dining room, and 5
-            tables on the patio. There are 2 high tops on the patio considered
-            our bar dining that has a high level of energy from the bar situated
-            between the kitchen and patio.
-          </Typography.Typography>
-          <Typography.Typography
-            color="textQuinary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0"
-            weight="500">
-            Friendly, knowledgeable bartenders craft classic cocktails alongside
-            a chef chosen wine and beer selection to complement the menu. We
-            recommend making reservations and walk-ins are always welcome.
-          </Typography.Typography>
-
-          <Element.Buttons.Button
-            color="textQuinary"
-            background="backgroundPrimary"
-            variant="h5"
-            margin="2em 0"
-            onClick={() => {
-              const calculatedNavHeight =
-                global.document?.getElementById("navigation")?.clientHeight ||
-                0;
-              const content =
-                global.document.getElementById("diningGuidelines");
-              if (content) {
-                const { x, y } = content.getBoundingClientRect();
-
-                const scrollTo = content.offsetTop - calculatedNavHeight;
-
-                global.window.scroll({ top: scrollTo, behavior: "smooth" });
-              }
-            }}>
-            {" "}
-            Dining Guidelines
-          </Element.Buttons.Button>
-        </Layout.Flex>
-      </Layout.WindoW>
-      <Layout.WindoW
-        xAlign="center"
-        yAlign="center"
-        column
-        background="backgroundSecondary">
-        <Layout.Flex
-          id="menu"
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center">
-          <Composed.Menu id="default">
-            {" "}
-            <Layout.Flex yAlign="center" xAlign="center" width="80%">
-              <Typography.Typography
-                color="textTertiary"
-                variant="span"
-                displayAlign={{ alignSelf: "center" }}
-                textAlign="center"
-                margin="1em 0 0">
-                * CONSUMING RAW OR UNDERCOOKED MEATS, POULTRY, SEAFOOD,
-                SHELLFISH OR EGGS MAY INCREASE YOUR RISK OF FOODBORNE ILLNESS,
-                ESPECIALLY IF YOU HAVE CERTAIN MEDICAL CONDITIONS.
-              </Typography.Typography>
-              <Typography.Typography
-                color="textTertiary"
-                variant="span"
-                displayAlign={{ alignSelf: "center" }}
-                textAlign="center"
-                margin="1em 0 0">
-                Menu subject to change
-              </Typography.Typography>
-            </Layout.Flex>
-          </Composed.Menu>
-        </Layout.Flex>
-
-        <Layout.Flex
-          id="cocktails"
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center">
-          <Composed.Menu id="drinks"></Composed.Menu>
-        </Layout.Flex>
-
-        <Layout.Flex
-          id="gallery"
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center">
-          <Composed.Gallery
-            layoutConfig={{
-              mobile: 50,
-              desktop: 33,
-              tablet: 33,
-            }}
-            imageConfig={{
-              items: store.defaultState.content.gallery.images,
-              itemSpacing: "0",
-              dimensionsConfig: {
-                maxWidth: "100%",
-                minWidth: '5em'
-              },
-            }}></Composed.Gallery>
-        </Layout.Flex>
-      </Layout.WindoW>
-      <Layout.WindoW id="aboutUs" xAlign="center" yAlign="flex-start" column>
-        <Layout.Flex maxWidth="45em">
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[50, 50]}>
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/family.jpeg"></Content.Image>
+            column
+            xAlign="flex-start"
+            yAlign="flex-start">
             <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left">
-              Born in the Carolinas, Lily made her way to Connecticut at a young
-              age. Tough as nails, and soft as silk; one would never know the
-              hardships she’d endured by the sparkle in her eyes and smile
-              across her face. Seeing people happy and healthy has always been a
-              vigilant endeavor for her, and she’s as quick to hug and kiss as
-              she is to selflessly protect those in need. She’s been the soul of
-              our family since the beginning. And so, it’s only fitting that we
-              name our first restaurant after our beloved dog, Lily.
+              textAlign="left"
+              displayAlign={{ alignSelf: "flex-start" }}
+              variant="span">
+              Step One: Upload multiple files (even number in pairs in correct
+              order), then reload after a few seconds
             </Typography.Typography>
-          </Layout.Grid>
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[40, 60]}>
+            <form
+              // onSubmit={handleUpload}
+              action="/api/storage"
+              method="POST"
+              encType="multipart/form-data">
+              <input type="file" name="files" multiple></input>
+              <Buttons.Button
+                margin="1em 0 0"
+                variant="h6"
+                onClick={null}
+                type="submit">
+                Upload to Storage
+              </Buttons.Button>
+            </form>
+          </Layout.Flex>
+          <Layout.Flex
+            margin="1em 0 0 0"
+            column
+            xAlign="flex-start"
+            yAlign="flex-start">
             <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left">
-              Chef Michael and Emily Alfeld’s menu is simple, and focused on
-              using the freshest ingredients possible. With a love for local
-              food, wine, and beer the cuisine highlights the best that
-              Connecticut has to offer, and much more.
+              textAlign="left"
+              displayAlign={{ alignSelf: "flex-start" }}
+              variant="span">
+              Step Two: Click "OCR Scan" to get Title and Description
             </Typography.Typography>
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/building.jpeg"></Content.Image>
-          </Layout.Grid>
-          <Layout.Grid
-            gridGap="1.5em"
-            centerMobile
-            margin="2.5em 0 "
-            layout={[50, 50]}>
-            <Content.Image
-              boxShadow={true}
-              maxWidth="14em"
-              width="100%"
-              src="/assets/images/dining.jpeg"></Content.Image>
+            <Buttons.Button
+              disabled={!store.defaultState.content?.length}
+              margin="1em 0 0"
+              variant="h6"
+              onClick={handleOcr}>
+              OCR Scan
+            </Buttons.Button>
+          </Layout.Flex>
+          <Layout.Flex
+            margin="1em 0 0 0"
+            column
+            xAlign="flex-start"
+            yAlign="flex-start">
             <Typography.Typography
-              color="textQuinary"
-              variant="p"
-              displayAlign={{ alignSelf: "center", justifySelf: "center" }}
-              textAlign="left">
-              A simple and elegant dining room and bar, along with a beautiful
-              wrap around porch, is a quaint and quiet setting in the uniquely
-              historical and lively town of Colchester. With a full bar, and
-              generous beer and wine menus, Lily’s is the perfect spot for a
-              sumptuous dinner of the finest steaks and seafood, or just a
-              cocktail and some laughs with friends. With more than 40 years of
-              experience, Michael and Emily have brought their repertoires from
-              around the country back to our home here in one of the most
-              beautiful parts of New England. A fertile cornucopia with
-              incomparable farm land and food products.
+              textAlign="left"
+              displayAlign={{ alignSelf: "flex-start" }}
+              variant="span">
+              Step Three: Once everything looks good click "Export to XLSX"
             </Typography.Typography>
-          </Layout.Grid>
-        </Layout.Flex>
-      </Layout.WindoW>
-      <Layout.WindoW
-        id="diningGuidelines"
-        xAlign="center"
-        yAlign="flex-start"
-        column
-        background="backgroundSecondary"
+            <Buttons.Button
+              disabled={!store.defaultState.content?.length}
+              margin="1em 0 0"
+              variant="h6"
+              onClick={convertToExcel}>
+              Export to XLSX
+            </Buttons.Button>
+          </Layout.Flex>
+          <Layout.Flex
+            margin="1em 0 0 0"
+            column
+            xAlign="flex-start"
+            yAlign="flex-start">
+            <Typography.Typography
+              textAlign="left"
+              displayAlign={{ alignSelf: "flex-start" }}
+              variant="span">
+              Step Four: Delete the current items
+            </Typography.Typography>
+            <Buttons.Button
+              color="white"
+              background="danger"
+              disabled={!store.defaultState.content?.length}
+              margin="1em 0 0"
+              variant="h6"
+              onClick={handleDelete}>
+              Delete
+            </Buttons.Button>
+          </Layout.Flex>
 
-        // backgroundUrl="/assets/"
-      >
-        <Layout.Flex
-          margin="2em 0"
-          column
-          yAlign="center"
-          xAlign="center"
-          maxWidth="30em">
-          <Typography.Typography
-            color="textTertiary"
-            variant="h3"
-            textAlign="center"
-            margin="0 0 .5em">
-            Dining Guidelines & Dress Code
-          </Typography.Typography>
-          <Typography.Typography
-            color="textTertiary"
-            variant="h5"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0 0">
-            Dress Code
-          </Typography.Typography>
-          <Typography.Typography
-            color="textTertiary"
-            variant="p"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="1em 0 0">
-            Guest attire can elevate or diminish the experience of others. We
-            consider tank tops, hats, flip flops, and team athletic attire too
-            casual for our restaurants. Our staff takes pride in their
-            appearance and we ask our guests to respect our attire guidelines.
-          </Typography.Typography>
-
-          <Typography.Typography
-            color="textTertiary"
-            variant="h5"
-            displayAlign={{ alignSelf: "center" }}
-            textAlign="center"
-            margin="2em 0 0 0">
-            Dining Guidelines
-          </Typography.Typography>
-          <Typography.List
-            margin="1em 0 0"
-            listItemConfig={{
-              typographyConfig: {
-                color: "textTertiary",
-                variant: "p",
-                textAlign: "left",
-              },
-            }}
-            items={[
-              "We gladly accept Cash and most major Credit Cards (Visa, Mastercard and American Express).",
-
-              "Our restaurant is not intended for large groups. The majority of our tables can accommodate only up to 4 people. Tables cannot be combined and split parties will likely not be seated adjacent to one another.        ",
-              "Our restaurant is generally not the best environment for young children. We welcome families, but we ask parents to keep children at the table and calm vocal infants or youngsters outside of the main dining room and patio area. We do not offer child seating nor do we allow strollers/infant carriers in the main dining room or patio area.        ",
-              "While we consider special requests, modifications are not always possible as they can impact the focus of the kitchen and the integrity of many dishes.        ",
-              "Please notify us of any allergies as the ingredients listed on the menu are abbreviated.        ",
-              "To minimize distractions to other guests, please take cell phone conversations out of seated areas, set devices to silent, and limit the use of laptops or tablets.        ",
-              "Out of consideration for other guests who are waiting, we may ask for your table if a significant amount of time has passed. We typically never make this request short of 90 minutes after you are seated.      ",
-            ]}></Typography.List>
+          {store.defaultState.content?.length ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <Typography.Typography whiteSpace="nowrap" variant="span">
+                      URL One
+                    </Typography.Typography>
+                  </th>
+                  <th>
+                    <Typography.Typography whiteSpace="nowrap" variant="span">
+                      URL Two
+                    </Typography.Typography>
+                  </th>
+                  <th>
+                    <Typography.Typography variant="span">
+                      Title
+                    </Typography.Typography>
+                  </th>
+                  <th>
+                    <Typography.Typography variant="span">
+                      Description
+                    </Typography.Typography>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {store.defaultState?.content?.map((item) => {
+                  return (
+                    <tr>
+                      <td>
+                        {" "}
+                        <SmallImage src={item?.items?.photoOne}></SmallImage>
+                      </td>
+                      <td>
+                        <SmallImage src={item?.items?.photoTwo}></SmallImage>
+                      </td>
+                      <td>
+                        <Typography.Typography variant="span">
+                          {item?.items?.textDetectionOne}
+                        </Typography.Typography>
+                      </td>
+                      <td>
+                        <Typography.Typography variant="span">
+                          {item?.items?.textDetectionTwo}
+                        </Typography.Typography>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            <Typography.Typography variant="p">
+              No postcards to export{" "}
+            </Typography.Typography>
+          )}
         </Layout.Flex>
       </Layout.WindoW>
     </React.Fragment>
@@ -361,3 +523,8 @@ const Home: React.FC<Props> = (props) => {
 };
 
 export default observer(Home);
+
+const SmallImage = styled.img`
+  width: 1em;
+  height: 1em;
+`;

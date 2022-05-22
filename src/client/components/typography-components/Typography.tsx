@@ -30,6 +30,7 @@ const StyledElement = styled(Element).attrs({})`
   font-style: ${(props) => {
     return props?.fontStyle || "unset";
   }};
+  white-space: ${(props) => props.whiteSpace || ""};
 `;
 
 const Typography: React.FC<Interfaces.Typography.Typography> = (props) => {

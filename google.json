@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "postcarduploader",
+  "private_key_id": "17df84fd2934f30013dbe78964a3c5f79d64897c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDqnEFuT1Upcl/1\napWQv6pUsvjDFREbVsXmd1ZTNfkYGZh8uZhGJgT92+Kq+02u8zGDlft/wXGDvVea\n532o8tDjr+8ZAatAos7P8Id0KaMSFK5AkaHpHys/5R0pUCZY8Ibbx1yL1vS+IG/i\n6i9SYZ+OLBCBAXL9dIwAe5NbOZ0aINoGWoF0FoHU1hhWS9JMuoTfCfisytgHHZ1W\nB6R++3XM6Pr2SPYvVXH2VaNSDMPkwo75zsLiYKGTX9HJom+Fa/qXuGFouznKk1cm\nEGtpG1UCg6H6qOgyZLjEQR1mOzW86w5LSCSwIs/KmsQxSMrkPvyVukaMYOv1wKns\nR1COq+k1AgMBAAECggEANAIqJhpLmnnKqHS1jcZTa93V9CcoKOuaSO4lEqK5ItzP\ntzyMc2aLvjv/umAl1zX9wLofq/FV6PqxIDuXmXukj4jpo91BGb3Nw36ChJ+TUReJ\nDnLKVgvNEmfHyGgGbDp75t5B15UyIbC+pOq9zVErZgDCMtr/owyyWYwLfVJfD5KS\niyRWcyKvGUZAJCmzS4M0aWexc559wk5j1e3F4Jlql9q65hrnQx8zd4xPK5z9aOcu\nnbMYvVXFSG4xX4sbk4FZs8TbMRDI9EJ1nJuJqbs2RstvQCLzbFdAmY/CaFK6/Jcd\n9p1WyStx8VOhhOJQDWROarT4KdxHsQaNIrDFdYyJoQKBgQD/TUrWVded1qKTr+83\nnaiNXb+UEaAYI+V3520XPygpyCdWDYnnooov2N8CiXQVQFz9WSss6I/Py2ShYSOV\nnqaQubygqJHisugo4A4dUwN+Lhi1n+w2RlWAiP3/v67e9dPFpiLV5/IeueNWora1\n95ZHFmonHcEHK3eA66Ou4P2ZIQKBgQDrQHq+iEo5uTfinVD0BI2k+dQaNtf+1BEy\nfyb1QjLyw6VoHsMYJyPWL/yhdp31kESJyu8goYxehQtht0h1O0lRy4HF+gG4KjYz\n4U/jpJKzSvVKRbP8H2vOFRkQcTrA4D4tKmypIxnSfdz1avG6keoHRWCuCmTRpOc+\nImpjOpuplQKBgQCLGhX4inUcruGODoIMj35S6A2GI8RS4twYZKPv0p2ThlbIcD//\nUXRxdXys6S+ylIsWDwuTQHN7CJsfwsmcsACZQlogPzidiFUuUEXgfGaezYbxDt2p\nBNF5YyrhuhMRsGdefZLlcadeTnIrtiRPKUNcID5eabvOqERInhtlIXmLgQKBgAMV\nXkZ/DNIC3num6je4k461A5WwYFZjuzH5Pq56Rqat784UkSQQ50RYbqxDHMDqOivA\nMDAyTd+zSLnoKBf5RfW/gBzzMPCUBQ/bBSwLrSySb/KgRUKpusUBu8leYpHCnq4C\n31e8MQt0QOAqna5/WRztSN4fHsEssyc6VkCktQOdAoGBANwSRRoPvN//mk09bzqK\nuByuGk08gubvDacxJocIhE9qudaKZewhHv+SOHwZIb/HVkRtMULYZfQz2vo0jzse\n3dFWv0MNHCX1L0lZ+GQtn8n9wylovdojVf95Vb8yNtS2thoFSGogzQ2s+zM0t2s4\nRiTucScgLFY+lgIKFPjy1Z56\n-----END PRIVATE KEY-----\n",
+  "client_email": "postcard-account@postcarduploader.iam.gserviceaccount.com",
+  "client_id": "115113770479954971925",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/postcard-account%40postcarduploader.iam.gserviceaccount.com"
+}

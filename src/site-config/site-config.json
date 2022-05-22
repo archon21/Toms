@@ -26,9 +26,15 @@
     }
   },
   "server": {
+    "storage": {
+      "bucket": "postcard_bucket",
+      "projectId": "00b4903a97665dce538520882cfea7e47837250b44a1d5b03f8777c0c67f9531",
+      "key": "",
+      "keyFile": "google.json"
+    },
     "database": {
       "connection": {
-        "development": "mongodb://localhost:27017/Lily's"
+        "development": "mongodb://localhost:27017/Postcard"
       }
     },
     "htmlRoutes": [
@@ -40,12 +46,11 @@
           {
             "method": "GET",
             "services": [
-             
               {
                 "action": "GET",
-                "service": "Menu",
-                "stateName": "menus",
-                "accessorName": "menu"
+                "service": "Content",
+                "stateName": "content",
+                "accessorName": "content"
               }
             ]
           }
@@ -55,7 +60,7 @@
         "title": "Admin Login",
         "url": "/login",
         "component": "AdminLogin",
-        "methods": [{"method": "GET", "services": []}]
+        "methods": [{ "method": "GET", "services": [] }]
       }
     ]
   }

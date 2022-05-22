@@ -3,10 +3,6 @@ import { makeAutoObservable, toJS } from "mobx";
 import { siteConfig } from "../../site-config";
 import Util from "../util";
 
-export interface DefaultState {
-  menus?: {};
-}
-
 export interface Request {
   type: "GET" | "POST" | "PATCH" | "DELETE" | string;
 }
@@ -20,59 +16,16 @@ const defaultStateHandler = ({
   currentDefaultState,
 }: {
   action: Request;
-  currentDefaultState: DefaultState;
+  currentDefaultState: any;
 }) => {
   return currentDefaultState;
 };
 
 class Store {
-  defaultState: DefaultState = {
+  defaultState = {
     content: {
       home: {
-        images: {
-          backgroundImage: "/assets/images/lobster.jpeg",
-        },
-      },
-      menus: {},
-      gallery: {
-        images: [
-          {
-            id: 1,
-            src: "/assets/images/plate1.jpeg",
-          },
-          {
-            id: 2,
-            src: "/assets/images/bar.jpeg",
-          },
-          {
-            id: 3,
-            src: "/assets/images/plate2.jpeg",
-          },
-          {
-            id: 4,
-            src: "/assets/images/building.jpeg",
-          },
-          {
-            id: 5,
-            src: "/assets/images/lobster.jpeg",
-          },
-          {
-            id: 6,
-            src: "/assets/images/dining.jpeg",
-          },
-          {
-            id: 7,
-            src: "/assets/images/mike.jpeg",
-          },
-          {
-            id: 8,
-            src: "/assets/images/family.jpeg",
-          },
-          {
-            id: 9,
-            src: "/assets/images/plate3.jpeg",
-          },
-        ],
+        uploadedCards: [],
       },
     },
     mode: "view",
@@ -123,6 +76,8 @@ class Store {
           url: `/api/${service.accessorName.toLowerCase()}`,
           method: "GET",
         });
+        console.log(data, service.stateName);
+
         newDefaultState[service.stateName] = data;
       }
     }
@@ -171,6 +126,30 @@ class Store {
       } else if (action === "INITIAL") {
         this.content = content.content;
       }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  async cardUploader({ images }) {
+    try {
+      const formData = new FormData();
+      images.forEach((data) => {
+        if (data instanceof FileList) {
+          formData.append(data.name, data, data.name);
+        } else {
+          formData.append(data.name, data);
+        }
+      });
+      images.forEach((file) => {
+        formData.append("file", file.name);
+      });
+      // formData.append("files", images);
+      await axios.post("/api/storage", formData);
+      // await Util.Request({
+      //   method: "POST",
+      //   url: "/api/storage",
+      //   files: images ,
+      // });
     } catch (err) {
       console.error(err);
     }
